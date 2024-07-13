@@ -20,5 +20,14 @@
   "bugs": {
     "url": "https://github.com/artiphishle/ankh-ui/issues"
   },
-  "homepage": "https://github.com/artiphishle/ankh-ui#readme"
+  "homepage": "https://github.com/artiphishle/ankh-ui#readme",
+  "dependencies": {
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0"
+  }
 }

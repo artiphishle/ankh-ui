@@ -1,6 +1,6 @@
-import {type PropsWithChildren, type ReactNode} from 'react';
+import React, {type PropsWithChildren, type ReactNode} from 'react';
 
-export function Accordion({items}: IAccordion) {
+export function Accordion({items}: IUiAccordion) {
   return (
     <section data-comp="accordion">
       {items.map(({summary, details}, itemIndex) => (
@@ -13,11 +13,11 @@ export function Accordion({items}: IAccordion) {
   );
 }
 
-interface IAccordionItem {
+interface IUiAccordionItem {
   summary: ReactNode;
   details: ReactNode;
 }
 
-interface IAccordion extends PropsWithChildren {
-  items: IAccordionItem[];
+interface IUiAccordion extends PropsWithChildren {
+  items: IUiAccordionItem[];
 }
