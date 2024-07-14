@@ -7,5 +7,5 @@ export enum EUi {
   Image,
   Nav,
   Pagination,
-  PanelGroup
+  PanelGroup,
 }

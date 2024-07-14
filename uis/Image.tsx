@@ -4,6 +4,6 @@ interface IUiImage {
   style?: string;
 }
 
-export function Image({alt, src, style = ""}: IUiImage){
-  return <img alt={alt} src={src} style={style} />
+export function Image({alt, src, style = ''}: IUiImage) {
+  return <img alt={alt} src={src} style={style} />;
 }
