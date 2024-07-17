@@ -1,5 +1,3 @@
-import React from "react";
-
 export function TwoColumnLayout(){
   const style = [
     [".container", "display", "grid"],

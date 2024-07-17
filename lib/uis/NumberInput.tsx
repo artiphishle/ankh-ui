@@ -1,4 +1,6 @@
-import {ChangeEvent, useId, useState} from 'react';
+"use client";
+
+import {type ChangeEvent, useId, useState} from 'react';
 
 interface INumberInput {
   initialValue?: number;

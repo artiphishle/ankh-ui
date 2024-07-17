@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import { ahooks } from 'ankh-hook';
 import {Button} from "./Button";
 

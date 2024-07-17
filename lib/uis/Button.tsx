@@ -1,3 +1,5 @@
+"use client";
+
 import {MouseEvent} from 'react';
 
 interface IButton {

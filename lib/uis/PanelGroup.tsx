@@ -1,3 +1,5 @@
+"use client";
+
 import {type DragEvent, type PropsWithChildren} from 'react';
 
 export function PanelHandle() {

@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 /**
  * <main data-target-id='m'>
  *   <div data-comp='grid' style='display:grid'>

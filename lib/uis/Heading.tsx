@@ -1,4 +1,6 @@
-import React, { createElement, PropsWithChildren, ReactNode } from "react";
+"use client";
+
+import { type PropsWithChildren } from "react";
 
 type THeadingLevel = 1|2|3|4|5|6;
 

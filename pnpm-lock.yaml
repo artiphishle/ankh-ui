@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       ankh-hook:
-        specifier: ^1.0.7
-        version: 1.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^1.0.8
+        version: 1.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next:
         specifier: ^14.2.5
         version: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -471,8 +471,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  ankh-hook@1.0.7:
-    resolution: {integrity: sha512-H65zimXf/YXCEbboZGMeua9WEJxG5hj5gGh6vzQjf0yrxGteaKZgA1Lro0H60VV5oYcFulKeHylHksaR2fDU1w==}
+  ankh-hook@1.0.8:
+    resolution: {integrity: sha512-MO7UpJGo2JkbJ2cGGnsY75x9lulQfjxXER1qzyImCLaJqc+WQAqW655yXaaUxs+VM4AgoZDHZf3TqOSrE7YU8g==}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -1790,7 +1790,7 @@ snapshots:
       screenfull: 5.2.0
       tslib: 2.6.3
 
-  ankh-hook@1.0.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  ankh-hook@1.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       ahooks: 3.8.0(react@18.3.1)
       react-hotkeys-hook: 4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

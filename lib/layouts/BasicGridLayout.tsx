@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function BasicGridLayout() {
   const style = [
     ['.container', 'display', 'grid'],

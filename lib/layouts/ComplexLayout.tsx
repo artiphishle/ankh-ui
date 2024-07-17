@@ -1,5 +1,3 @@
-import React from "react";
-
 export function ComplexLayout(){
   const styles = [
     [".container", "display", "grid"],
@@ -48,8 +46,6 @@ export function ComplexLayout(){
     }
   }
   */
-
-
   return (
     <div className="container">
       <div className="header">Header</div>

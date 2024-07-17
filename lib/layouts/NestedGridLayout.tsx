@@ -1,5 +1,3 @@
-import React from "react";
-
 export function NestedGridLayout(){
   const styles = [
     [".container", "display", "grid"],

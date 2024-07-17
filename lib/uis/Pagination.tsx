@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import {useState} from 'react';
 
-interface Props {
+interface IPagination {
   totalPages?: number;
   initialPage?: number;
   siblingCount?: number;
@@ -15,7 +15,7 @@ export function Pagination({
   initialPage = 1,
   siblingCount = 1,
   onPageChange = (page: number) => {},
-}: Props) {
+}: IPagination) {
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const getPageNumbers = () => {

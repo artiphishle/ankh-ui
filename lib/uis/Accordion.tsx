@@ -1,4 +1,6 @@
-import React, {type PropsWithChildren, type ReactNode} from 'react';
+"use client";
+
+import {type PropsWithChildren, type ReactNode} from 'react';
 
 export function Accordion({items}: IUiAccordion) {
   return (

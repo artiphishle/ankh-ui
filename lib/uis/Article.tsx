@@ -1,8 +1,10 @@
-interface Props {
+"use client";
+
+interface IArticle {
   h2?: string;
 }
 
-export function Article({h2 = 'Title'}: Props) {
+export function Article({h2 = 'Title'}: IArticle) {
   return (
     <article className="p-1">
       <header>
