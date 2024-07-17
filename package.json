@@ -1,6 +1,6 @@
 {
   "name": "ankh-ui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Ankhorage UI",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
