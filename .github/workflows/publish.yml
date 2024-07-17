@@ -25,4 +25,5 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm run build
-          repo-token: ${{ secrets.ACTION_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
