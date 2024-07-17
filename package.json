@@ -9,6 +9,7 @@
     "bun": "please-use-pnpm",
     "npm": "please-use-pnpm",
     "yarn": "please-use-pnpm",
+    "lint": "tsc",
     "pnpm": "^9.4.0",
     "node": "^20.15.0"
   },
@@ -34,7 +35,7 @@
   },
   "homepage": "https://github.com/artiphishle/ankh-ui#readme",
   "dependencies": {
-    "ankh-hook": "^1.0.6",
+    "ankh-hook": "^1.0.7",
     "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
