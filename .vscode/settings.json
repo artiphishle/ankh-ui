@@ -1,0 +1,11 @@
+{
+  "editor.formatOnPaste": false,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.tsx$",
+        "cmd": "npm run format"
+      }
+    ]
+  }
+}
