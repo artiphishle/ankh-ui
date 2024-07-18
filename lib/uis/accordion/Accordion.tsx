@@ -1,3 +1,5 @@
+import "./accordion.css"
+
 import {type PropsWithChildren, type ReactNode} from 'react';
 
 export function Accordion({items}: IUiAccordion) {

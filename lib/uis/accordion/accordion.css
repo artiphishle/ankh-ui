@@ -1,0 +1,17 @@
+
+
+[data-ui='accordion'] summary::-webkit-details-marker,
+[data-ui='accordion'] summary::marker {
+  display: none;
+}
+
+[data-ui='accordion'] details {
+  margin: 0;
+}
+
+[data-ui='accordion'] details {
+  background: #eaeabb;
+  margin-bottom: .2rem;
+  padding: .4rem;
+  cursor: pointer;
+}

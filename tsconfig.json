@@ -10,6 +10,6 @@
     "strict": true,
     "target": "es2016",
   },
-  "include": ["lib/**/*.ts", "lib/**/*.tsx"],
+  "include": ["lib/**/*.ts", "lib/**/*.tsx", "stories/Button.stories.tsx"],
   "exclude": ["node_modules"]
 }
