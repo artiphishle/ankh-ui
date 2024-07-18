@@ -1,10 +1,8 @@
-"use client";
-
 import {type PropsWithChildren, type ReactNode} from 'react';
 
 export function Accordion({items}: IUiAccordion) {
   return (
-    <section data-comp="accordion">
+    <section data-ui="accordion">
       {items.map(({summary, details}, itemIndex) => (
         <details key={itemIndex}>
           <summary>{summary}</summary>
