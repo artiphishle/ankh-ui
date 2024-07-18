@@ -1,11 +1,7 @@
-"use client";
+import NextImage, {type ImageProps as INextImage} from "next/image";
 
-interface IUiImage {
-  alt: string;
-  src: string;
-  style?: Record<string, unknown>;
+export function Image({alt, height, src, width }: IUiImage) {
+  return <NextImage data-comp="image" height={height} width={width} alt={alt} src={src} />;
 }
 
-export function Image({alt, src, style = {}}: IUiImage) {
-  return <img alt={alt} src={src} style={style} />;
-}
+interface IUiImage extends INextImage {}

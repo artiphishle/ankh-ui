@@ -1,13 +1,12 @@
-"use client";
-
 import { type PropsWithChildren } from "react";
 
-type THeadingLevel = 1|2|3|4|5|6;
+export function Heading({text, level  }: IHeading){
+  const H = level;
+  
+  return <H>{text}</H>
+}
 
 interface IHeading extends PropsWithChildren {
-  text: string;
-  level?: THeadingLevel;
-}
-export function Heading({text, level = 1}: IHeading){
-  <h1>{text}</h1>
+  level: keyof JSX.IntrinsicElements;
+  text: string,
 }

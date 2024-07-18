@@ -1,12 +1,12 @@
-"use client";
+import { PropsWithChildren } from "react";
 
-interface IHtml {
-  tagName: keyof JSX.IntrinsicElements;
-  text: string;
+export function Html({children, tagName = "div", text}: IHtml) {
+  const Tag = tagName;
+  
+  return (<Tag>{text||children}</Tag>);
 }
 
-export function Html({tagName, text}: IHtml) {
-  const HtmlElm = tagName;
-
-  return (<HtmlElm>{text}</HtmlElm>);
+interface IHtml extends PropsWithChildren {
+  tagName?: keyof JSX.IntrinsicElements;
+  text?: string;
 }
