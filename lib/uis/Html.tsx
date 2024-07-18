@@ -1,8 +1,12 @@
 "use client";
 
-interface IHtml {}
+interface IHtml {
+  tagName: keyof JSX.IntrinsicElements;
+  text: string;
+}
 
-export function Html({}: IHtml) {
-  
-  return (<main />);
+export function Html({tagName, text}: IHtml) {
+  const HtmlElm = tagName;
+
+  return (<HtmlElm>{text}</HtmlElm>);
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import { PropsWithChildren, ReactNode } from "react";
+
 /**
  * <main data-target-id='m'>
  *   <div data-comp='grid' style='display:grid'>
@@ -17,28 +19,18 @@ const gridConfig = {
   target: "m" // will be in 'main'
 }
  */
-export function Grid({id, targets}: IUiGrid) {
+export function Grid({children}: IUiGrid) {
   return (
-    <div data-comp="grid">
-      {targets.map(({id, targets}, tIndex) => (
-        <div data-id={id} key={`grid-t-${tIndex}`} draggable={true}>
-          {targets?.map(({id: subId}, stIndex) => (
-            <div data-id={subId} key={`grid-st-${stIndex}`} />
-          ))}
-        </div>
-      ))}
-    </div>
+    <div data-comp="grid">{children}</div>
   );
 }
 
 interface IUiTarget {
-  id: string;
   styles?: Array<[string, string, string]>; // TStyle[]
   targets?: Omit<IUiTarget, 'targets'>[];
 }
 
-interface IUiGrid {
-  id: string;
+interface IUiGrid extends PropsWithChildren{
+  children?: ReactNode[];
   styles?: Array<[string, string, string]>; // TStyle[]
-  targets: IUiTarget[];
 }
