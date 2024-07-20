@@ -6,7 +6,7 @@ interface IArticle {
 
 export function Article({h2 = 'Title'}: IArticle) {
   return (
-    <article className="p-1">
+    <article data-ui="article" className="p-1">
       <header>
         <h2>{h2}</h2>
       </header>

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {Button, AnkhUiButton, EVariant} from './Button';
+import {Button, type AnkhUiButton} from './Button';
+import {EVariant} from "../../types";
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<AnkhUiButton> = {

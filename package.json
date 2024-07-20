@@ -1,42 +1,22 @@
 {
-  "name": "ankh-ui",
-  "version": "1.0.25",
+  "author": "artiphishle",
+  "bugs": {"url": "https://github.com/artiphishle/ankh-ui/issues"},
   "description": "Ankhorage UI",
+  "engines": {"node": "^20.15.x", "pnpm": "^9.5.x"},
+  "homepage": "https://github.com/artiphishle/ankh-ui#readme",
+  "keywords": ["ankhorage","ankh","ui"],
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "engines": {
-    "bun": "please-use-pnpm",
-    "npm": "please-use-pnpm",
-    "yarn": "please-use-pnpm",
-    "lint": "tsc",
-    "pnpm": "^9.4.0",
-    "node": "^20.15.0"
-  },
-  "scripts": {
-    "format": "npx prettier --config .prettierrc --write .",
-    "build": "tsup lib/index.ts --format cjs,esm --dts",
-    "lint": "tsc",
-    "prepublish": "npm run build",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/artiphishle/ankh-ui.git"
-  },
-  "keywords": [
-    "ankhorage",
-    "ankh",
-    "ui"
-  ],
-  "author": "artiphishle",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/artiphishle/ankh-ui/issues"
-  },
-  "homepage": "https://github.com/artiphishle/ankh-ui#readme",
+  "name": "ankh-ui",
+  "paths": {"@/*": ["./lib/*"]},
+  "repository": {"type": "git", "url": "git+https://github.com/artiphishle/ankh-ui.git"},
   "dependencies": {
+    "@dnd-kit/accessibility": "^3.1.0",
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/modifiers": "^7.0.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "ankh-hook": "^1.0.9",
     "next": "^14.2.5",
     "react": "^18.3.1",
@@ -61,5 +41,17 @@
     "storybook": "^8.2.4",
     "tsup": "^8.1.2",
     "typescript": "^5.5.3"
-  }
+  },
+  "scripts": {
+    "build": "tsup lib/index.ts --format cjs,esm --dts",
+    "prettier:validate": "pnpm dlx prettier --config .prettierrc --write .",
+    "prettier:write": "pnpm dlx prettier --config .prettierrc --write .",
+    "lint:validate": "tsc && pnpm dlx eslint",
+    "lint:fix": "tsc && pnpm dlx eslint --fix",
+    "prepublish": "pnpm run build",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build"
+  },
+  "types": "dist/index.d.ts",
+  "version": "1.1.0"
 }

@@ -1,4 +1,6 @@
+import { EVariant } from '@/types';
 import './button.css';
+import { Auth } from '@/auth/Auth';
 
 export const Button = ({
   size = 'medium',
@@ -9,25 +11,17 @@ export const Button = ({
 }: AnkhUiButton) => {
   
   return (
-    <button data-ui="button"
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, `${variant}`].join(' ')}
-      {...props}
-    >
-      {label}
-    </button>
+    <Auth.ReadRole>
+      <button data-ui="button"
+        type="button"
+        className={['storybook-button', `storybook-button--${size}`, `${variant}`].join(' ')}
+        {...props}
+      >
+        {label}
+      </button>
+    </Auth.ReadRole>
   );
 };
-
-export enum EVariant {
-  Default = "default",
-  Success = "success",
-  Warning = "warning",
-  Error = "error",
-  Info = "info",
-  Primary = "primary",
-  Secondary = "secondary"
-}
 
 export interface AnkhUiButton {
   label: string;

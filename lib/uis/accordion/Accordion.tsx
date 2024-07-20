@@ -1,25 +1,28 @@
+import { Auth } from "@/auth/Auth";
 import "./accordion.css"
 
 import {type PropsWithChildren, type ReactNode} from 'react';
 
-export function Accordion({items}: IUiAccordion) {
+export function Accordion({items}: IAnkhUiAccordion) {
   return (
-    <section data-ui="accordion">
-      {items.map(({summary, details}, itemIndex) => (
-        <details key={itemIndex}>
-          <summary>{summary}</summary>
-          {details}
-        </details>
+    <Auth.ReadRole>
+      <section data-ui="accordion">
+        {items.map(({summary, details}, itemIndex) => (
+          <details key={itemIndex}>
+            <summary>{summary}</summary>
+            {details}
+          </details>
       ))}
-    </section>
+      </section>
+    </Auth.ReadRole>
   );
 }
 
-interface IUiAccordionItem {
+interface IAnkhUiAccordionItem {
   summary: ReactNode;
   details: ReactNode;
 }
 
-interface IUiAccordion extends PropsWithChildren {
-  items: IUiAccordionItem[];
+interface IAnkhUiAccordion extends PropsWithChildren {
+  items: IAnkhUiAccordionItem[];
 }

@@ -1,0 +1,10 @@
+[data-ui='grid'] {
+  display: grid;
+  width: '100%';
+}
+
+[data-ui='grid'] > div {
+  margin: .4rem;
+  background-color: beige;
+  padding: 2rem;
+}

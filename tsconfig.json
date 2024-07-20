@@ -6,10 +6,11 @@
     "module": "commonjs",
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
+    "paths": {"@/*": ["./lib/*"]},
     "skipLibCheck": true,
     "strict": true,
     "target": "es2016",
   },
-  "include": ["lib/**/*.ts", "lib/**/*.tsx", "stories/Button.stories.tsx"],
+  "include": ["./lib/**/*.ts", "./lib/**/*.tsx"],
   "exclude": ["node_modules"]
 }

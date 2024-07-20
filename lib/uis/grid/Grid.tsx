@@ -1,4 +1,8 @@
-import { PropsWithChildren, ReactNode } from "react";
+"use client";
+import {PropsWithChildren, ReactNode } from "react";
+import { DndContext } from "@dnd-kit/core";
+import { Auth } from "@/auth/Auth";
+import "./grid.css";
 
 export function GridCell({children}: PropsWithChildren){
   return <div data-ui='grid-cell'>{children}</div>
@@ -6,9 +10,11 @@ export function GridCell({children}: PropsWithChildren){
 
 export function Grid({children}: IUiGrid) {
   return (
-    <div data-ui="grid">{children.map((child)=>
-      <GridCell>{child}</GridCell>)}
-    </div>
+    <Auth.ReadRole>
+      <DndContext>
+        <div data-ui='grid'>{children}</div>
+      </DndContext>
+    </Auth.ReadRole>
   );
 }
 

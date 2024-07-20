@@ -1,9 +1,13 @@
 "use client";
-
+import { Auth } from '@/auth/Auth';
 import {type DragEvent, type PropsWithChildren} from 'react';
 
 export function PanelHandle() {
-  return <div data-comp="panel-handle" draggable={true} />;
+  return (
+    <Auth.ReadRole>
+      <div data-ui="panel-handle" draggable={true} />
+    </Auth.ReadRole>
+  );
 }
 
 export function Panel({children}: IPanel) {
@@ -14,23 +18,27 @@ export function Panel({children}: IPanel) {
   };
 
   return (
-    <div
-      className="w-full"
-      data-comp="panel"
-      onDragEnter={onDragEnter}
-      onDragOver={onDragOver}
-      onDrop={onDrop}
-    >
-      {children}
-    </div>
+    <Auth.ReadRole>
+      <div
+        className="w-full"
+        data-ui="panel"
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDrop={onDrop}
+      >
+        {children}
+      </div>
+    </Auth.ReadRole>
   );
 }
 
 export function PanelGroup({children}: IPanelGroup) {
   return (
-    <div data-comp="panel-group" className="flex">
-      {children}
-    </div>
+    <Auth.ReadRole>
+      <div data-ui="panel-group" className="flex">
+        {children}
+      </div>
+    </Auth.ReadRole>
   );
 }
 
