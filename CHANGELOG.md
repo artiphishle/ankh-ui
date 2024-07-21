@@ -1,5 +1,11 @@
 # ankh-ui
 
+## 1.2.1
+
+### Patch Changes
+
+- f9b3631: Add missing build
+
 ## 1.2.0
 
 ### Minor Changes
