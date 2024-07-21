@@ -3,7 +3,11 @@
 ## Quickstart
 
 ```bash
+# Install package
 pnpm install ankh-ui
+
+# Start storybook
+pnpm run storybook
 ```
 
 ## Auth Roles
@@ -28,35 +32,31 @@ Not used atm. It will grant permission to delete a created UI component.
 
 ## Components
 
-Description to follow
+Available components:
 
 ### Accordion
 
-Description to follow
-
-### Article
-
-Description to follow
+Native HTML5 accordion using `<details>` and `<summary>`
 
 ### Button
 
-Description to follow
+Native `<button>` element
 
 ### Dialog
 
-Description to follow
+Native `<dialog>` element
 
 ### Grid
 
-Description to follow
+Customizable CSS Grid layout
 
 ### Nav
 
-Description to follow
+Native `<nav>` element used for routing
 
 ### Pagination
 
-Description to follow
+Customizable pagination component
 
 ### PanelGroup
 
