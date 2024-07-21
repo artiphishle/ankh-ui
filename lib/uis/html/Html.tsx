@@ -1,12 +1,13 @@
+"use client";
 import { type PropsWithChildren } from "react";
 import { Auth } from "@/auth/Auth";
 
-export function Html({children, tagName = "div", text}: IAnkhUiHtml) {
+export function Html({ children, tagName = "div", text }: IAnkhUiHtml) {
   const Tag = tagName;
-  
+
   return (
     <Auth.ReadRole>
-      <Tag data-ui="html">{text||children}</Tag>
+      <Tag data-ui="html">{text || children}</Tag>
     </Auth.ReadRole>
   );
 }

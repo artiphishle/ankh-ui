@@ -1,7 +1,8 @@
-import NextImage, {type ImageProps as INextImage} from "next/image";
+"use client";
+import NextImage, { type ImageProps as INextImage } from "next/image";
 import { Auth } from "@/auth/Auth";
 
-export function Image({alt, height, src, width }: IUiImage) {
+export function Image({ alt, height, src, width }: IUiImage) {
   return (
     <Auth.ReadRole>
       <NextImage data-ui="image" height={height} width={width} alt={alt} src={src} />;
@@ -9,4 +10,4 @@ export function Image({alt, height, src, width }: IUiImage) {
   );
 }
 
-interface IUiImage extends INextImage {}
+interface IUiImage extends INextImage { }

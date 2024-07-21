@@ -1,8 +1,9 @@
 "use client";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { PropsWithChildren } from "react";
 
-export function SortableItem({ id }: ISortableItem) {
+export function SortableItem({ children, id }: IAnkhUiSortableItem) {
   const {
     attributes,
     listeners,
@@ -17,10 +18,10 @@ export function SortableItem({ id }: ISortableItem) {
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>{/* ... */}</div>
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>{children}</div>
   );
 }
 
-interface ISortableItem {
+interface IAnkhUiSortableItem extends PropsWithChildren {
   id: string;
 }
