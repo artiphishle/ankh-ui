@@ -1,5 +1,11 @@
 # ankh-ui
 
+## 1.2.2
+
+### Patch Changes
+
+- 68d9b41: Add 'use client' for DnD library
+
 ## 1.2.1
 
 ### Patch Changes
