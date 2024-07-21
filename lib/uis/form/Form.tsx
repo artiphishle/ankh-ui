@@ -1,11 +1,11 @@
 "use client";
-import { ahooks } from 'ankh-hook';
+import { useDynamicList } from 'ahooks';
 import { Button } from "@/uis/button/Button";
 import "./form.css";
 import { Auth } from '@/auth/Auth';
 
 export function Form() {
-  const { list, remove, batchRemove, getKey, insert, replace } = ahooks.useDynamicList(['David', 'Jack']);
+  const { list, remove, batchRemove, getKey, insert, replace } = useDynamicList(['David', 'Jack']);
   const listIndexes = list.map((item, index) => index);
 
   const Row = (index: number, item: any) => (
