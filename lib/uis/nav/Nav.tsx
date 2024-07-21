@@ -2,13 +2,16 @@
 import Link from 'next/link';
 import { Auth } from '@/auth/Auth';
 
-export function Nav({items}: IAnkhUiNav) {
+export function Nav({ }: IAnkhUiNav) {
+  /** @todo Get pages from server */
+  const pageNames = ["home", "about"];
+
   return (
     <Auth.ReadRole>
       <nav data-ui="nav">
-        {items.map(({text}, itemIndex) => (
-          <Link key={`nav-${itemIndex}`} href="#">
-            {text}
+        {pageNames.map((pageName, i) => (
+          <Link key={`nav-${i}`} href={`/${pageName}`}>
+            {pageName}
           </Link>
         ))}
       </nav>
@@ -16,10 +19,4 @@ export function Nav({items}: IAnkhUiNav) {
   );
 }
 
-interface IAnkhUiNavItem {
-  text: string;
-}
-
-interface IAnkhUiNav {
-  items: IAnkhUiNavItem[];
-}
+interface IAnkhUiNav { }
