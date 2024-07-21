@@ -1,14 +1,15 @@
+"use client";
 import { useSortable } from "@dnd-kit/sortable";
-import {CSS} from "@dnd-kit/utilities";
+import { CSS } from "@dnd-kit/utilities";
 
-export function SortableItem({id}: ISortableItem){
+export function SortableItem({ id }: ISortableItem) {
   const {
     attributes,
     listeners,
     setNodeRef,
     transform,
     transition
-  } = useSortable({id});
+  } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
