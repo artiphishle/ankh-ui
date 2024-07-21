@@ -6,7 +6,7 @@ export function Nav({ items }: IAnkhUiNav) {
   return (
     <Auth.ReadRole>
       <nav data-ui="nav">
-        {items.map(({ name }, i) => (
+        {items.map((name, i) => (
           <Link key={`nav-${i}`} href={`/${name}`}>
             {name}
           </Link>
@@ -16,10 +16,6 @@ export function Nav({ items }: IAnkhUiNav) {
   );
 }
 
-interface IAnkhUiNavItem {
-  name: string;
-}
-
 interface IAnkhUiNav {
-  items: IAnkhUiNavItem[]
+  items: string[]
 }
