@@ -56,6 +56,8 @@
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "eslint": "^9.7.0",
+    "eslint-config-google": "^0.14.0",
     "prettier": "^3.3.3",
     "storybook": "^8.2.4",
     "tsup": "^8.1.2",
@@ -67,7 +69,7 @@
     "prettier:validate": "pnpm dlx prettier --config .prettierrc --write .",
     "prettier:write": "pnpm dlx prettier --config .prettierrc --write .",
     "lint:validate": "tsc && pnpm dlx eslint",
-    "lint:fix": "tsc && pnpm dlx eslint --fix",
+    "lint:fix": "tsc && pnpm eslint --fix",
     "prepublish": "pnpm run build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
