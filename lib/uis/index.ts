@@ -1,5 +1,7 @@
 export { Accordion } from "./accordion/Accordion";
 export { Button } from "./button/Button";
+export { ColorHue } from "./colorHue/ColorHue";
+export { ColorPicker } from "./colorPicker/ColorPicker";
 export { Dialog } from "./dialog/Dialog";
 export { Form } from "./form/Form";
 export { Grid } from "./grid/Grid";
