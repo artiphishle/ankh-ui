@@ -42,6 +42,10 @@ Native HTML5 accordion using `<details>` and `<summary>`
 
 Native `<button>` element
 
+### ColorPicker
+
+Simple Color 'Chooser' (not pickable yet)
+
 ### Dialog
 
 Native `<dialog>` element
