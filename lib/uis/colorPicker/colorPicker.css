@@ -1,0 +1,25 @@
+.colorPicker {
+  overflow: hidden;
+  border: 1px solid #aeaeae;
+  width: 200px;
+  border-radius: 15px;
+}
+
+.colorPicker form>div {
+  padding: 0 .4rem;
+}
+
+.colorPicker label {
+  display: flex;
+  width: 20px;
+  font-size: .7rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.colorPicker input {
+  outline: none;
+  border: 0;
+  background-color: #fff;
+  padding: .3rem;
+}

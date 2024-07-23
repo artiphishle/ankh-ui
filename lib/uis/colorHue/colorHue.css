@@ -1,0 +1,10 @@
+.colorHue {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: .4rem;
+}
+
+.colorHue>div {
+  height: 100px;
+  border: 1px solid #dfdfdf;
+}
