@@ -1,6 +1,6 @@
 'use client';
 
-import { Auth } from '@/auth/Auth';
+import {Auth} from '@/auth/Auth';
 import Link from 'next/link';
 import {useState} from 'react';
 

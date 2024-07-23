@@ -1,5 +1,5 @@
-import { Auth } from "@/auth/Auth";
-import "./accordion.css"
+import {Auth} from '@/auth/Auth';
+import './accordion.css';
 
 import {type PropsWithChildren, type ReactNode} from 'react';
 
@@ -12,7 +12,7 @@ export function Accordion({items}: IAnkhUiAccordion) {
             <summary>{summary}</summary>
             {details}
           </details>
-      ))}
+        ))}
       </section>
     </Auth.ReadRole>
   );

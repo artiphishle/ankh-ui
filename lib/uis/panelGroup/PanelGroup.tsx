@@ -1,5 +1,5 @@
-"use client";
-import { Auth } from '@/auth/Auth';
+'use client';
+import {Auth} from '@/auth/Auth';
 import {type DragEvent, type PropsWithChildren} from 'react';
 
 export function PanelHandle() {

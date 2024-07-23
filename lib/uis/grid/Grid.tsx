@@ -1,18 +1,16 @@
-import { PropsWithChildren, ReactNode, useState } from "react";
-import { Auth } from "@/auth/Auth";
-import "./grid.css";
+import {PropsWithChildren, ReactNode, useState} from 'react';
+import {Auth} from '@/auth/Auth';
+import './grid.css';
 
-export function GridCell({ id, children }: IAnkhUiGridCell) {
-  return <div data-ui='grid-cell'>{children}</div>
+export function GridCell({id, children}: IAnkhUiGridCell) {
+  return <div data-ui="grid-cell">{children}</div>;
 }
 
-export function Grid({ children }: IAnkhUiGrid) {
+export function Grid({children}: IAnkhUiGrid) {
   return (
     <Auth.ReadRole>
-      <div data-ui="grid">
-        {children}
-      </div>
-    </Auth.ReadRole >
+      <div data-ui="grid">{children}</div>
+    </Auth.ReadRole>
   );
 }
 

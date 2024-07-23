@@ -1,6 +1,6 @@
-import { EVariant } from '@/types';
+import {EVariant} from '@/types';
 import './button.css';
-import { Auth } from '@/auth/Auth';
+import {Auth} from '@/auth/Auth';
 
 export const Button = ({
   size = 'medium',
@@ -9,12 +9,16 @@ export const Button = ({
   variant = EVariant.Default,
   ...props
 }: AnkhUiButton) => {
-  
   return (
     <Auth.ReadRole>
-      <button data-ui="button"
+      <button
+        data-ui="button"
         type="button"
-        className={['storybook-button', `storybook-button--${size}`, `${variant}`].join(' ')}
+        className={[
+          'storybook-button',
+          `storybook-button--${size}`,
+          `${variant}`,
+        ].join(' ')}
         {...props}
       >
         {label}
@@ -28,6 +32,6 @@ export interface AnkhUiButton {
   backgroundColor?: string;
   primary?: boolean;
   size?: 'small' | 'medium' | 'large';
-  variant? : EVariant;
+  variant?: EVariant;
   onClick?: () => void;
 }

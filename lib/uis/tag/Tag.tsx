@@ -1,12 +1,16 @@
-import { Auth } from "@/auth/Auth";
-import type { IAnkhAuthRole } from "@/types";
+import {Auth} from '@/auth/Auth';
+import type {IAnkhAuthRole} from '@/types';
 
-export function Tag({label}: IAnkhUiTag){
+export function Tag({label}: IAnkhUiTag) {
   const $e = {
     tag: {
-      e: function(){ console.log("AnkhUi: 'Tag Edit' event triggered.")},
-      x: function(){ console.log("AnkhUi: 'Tag Delete' event triggered.")}
-    }
+      e: function () {
+        console.log("AnkhUi: 'Tag Edit' event triggered.");
+      },
+      x: function () {
+        console.log("AnkhUi: 'Tag Delete' event triggered.");
+      },
+    },
   };
 
   return (
@@ -15,11 +19,15 @@ export function Tag({label}: IAnkhUiTag){
         <span>{`#${label}`}</span>
 
         <Auth.WriteRole>
-          <a href="#" onClick={$e.tag.e}>e</a>
+          <a href="#" onClick={$e.tag.e}>
+            e
+          </a>
         </Auth.WriteRole>
 
         <Auth.DeleteRole>
-          <a href="#" onClick={$e.tag.x}>x</a>
+          <a href="#" onClick={$e.tag.x}>
+            x
+          </a>
         </Auth.DeleteRole>
       </div>
     </Auth.ReadRole>

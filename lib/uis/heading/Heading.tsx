@@ -1,9 +1,9 @@
-import { Auth } from "@/auth/Auth";
-import { type PropsWithChildren } from "react";
+import {Auth} from '@/auth/Auth';
+import {type PropsWithChildren} from 'react';
 
-export function Heading({text, level  }: IHeading){
+export function Heading({text, level}: IHeading) {
   const H = level;
-  
+
   return (
     <Auth.ReadRole>
       <H data-ui="heading">{text}</H>
@@ -13,5 +13,5 @@ export function Heading({text, level  }: IHeading){
 
 interface IHeading extends PropsWithChildren {
   level: keyof JSX.IntrinsicElements;
-  text: string,
+  text: string;
 }

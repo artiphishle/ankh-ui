@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import {Accordion } from './Accordion';
-import { Heading } from '../heading/Heading';
+import type {Meta, StoryObj} from '@storybook/react';
+import {Accordion} from './Accordion';
+import {Heading} from '../heading/Heading';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof Accordion> = {
@@ -15,12 +15,12 @@ export const AccordionTopic: Story = {
     items: [
       {
         summary: <Heading level="h3" text="Preprocessor"></Heading>,
-        details: <p>Here some good text because it's a good accordion.</p>
+        details: <p>Here some good text because it's a good accordion.</p>,
       },
       {
         summary: <Heading level="h3" text="Utility First"></Heading>,
-        details: <p>Here some good text because it's a good accordion.</p>
-      }
-    ]
+        details: <p>Here some good text because it's a good accordion.</p>,
+      },
+    ],
   },
 };

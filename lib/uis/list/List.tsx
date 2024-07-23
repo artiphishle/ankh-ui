@@ -1,12 +1,8 @@
-import { Auth } from "@/auth/Auth";
-import { PropsWithChildren } from "react";
+import {Auth} from '@/auth/Auth';
+import {PropsWithChildren} from 'react';
 
-export function List({ children }: IList) {
-  return (
-    <Auth.ReadRole>
-      {children}
-    </Auth.ReadRole>
-  );
+export function List({children}: IList) {
+  return <Auth.ReadRole>{children}</Auth.ReadRole>;
 }
 
-interface IList extends PropsWithChildren { }
+interface IList extends PropsWithChildren {}

@@ -1,7 +1,7 @@
-import { Auth } from "@/auth/Auth";
-import { icons, type LucideProps } from "lucide-react";
+import {Auth} from '@/auth/Auth';
+import {icons, type LucideProps} from 'lucide-react';
 
-export function Icon({ name, color, size }: LucideProps) {
+export function Icon({name, color, size}: LucideProps) {
   if (!name) return null;
   const LucideIcon = icons[name as keyof typeof icons];
 
@@ -10,4 +10,4 @@ export function Icon({ name, color, size }: LucideProps) {
       <LucideIcon color={color} size={size} />
     </Auth.ReadRole>
   );
-};
+}

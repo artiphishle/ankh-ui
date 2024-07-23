@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Pie } from './Pie';
+import type {Meta, StoryObj} from '@storybook/react';
+import {Pie} from './Pie';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof Pie> = {
@@ -11,24 +11,24 @@ type Story = StoryObj<typeof Pie>;
 
 export const Pie8: Story = {
   args: {
-    percentage: 8
+    percentage: 8,
   },
 };
 
 export const Pie25: Story = {
   args: {
-    percentage: 25
+    percentage: 25,
   },
 };
 
 export const Pie50: Story = {
   args: {
-    percentage: 50
+    percentage: 50,
   },
 };
 
 export const Pie65: Story = {
   args: {
-    percentage: 65
+    percentage: 65,
   },
 };

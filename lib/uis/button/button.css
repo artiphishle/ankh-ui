@@ -9,11 +9,11 @@
 }
 .success {
   color: #222;
-  background-color: "#00fd00"
+  background-color: '#00fd00';
 }
 .warning {
   color: #222;
-  background-color: "#ad4400";
+  background-color: '#ad4400';
 }
 .primary {
   color: #fff;

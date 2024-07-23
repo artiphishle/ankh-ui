@@ -1,8 +1,8 @@
-"use client";
-import { type PropsWithChildren } from "react";
-import { Auth } from "@/auth/Auth";
+'use client';
+import {type PropsWithChildren} from 'react';
+import {Auth} from '@/auth/Auth';
 
-export function Html({ children, tagName = "div", text }: IAnkhUiHtml) {
+export function Html({children, tagName = 'div', text}: IAnkhUiHtml) {
   const Tag = tagName;
 
   return (

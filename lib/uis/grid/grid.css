@@ -4,7 +4,7 @@
 }
 
 [data-ui='grid'] > div {
-  margin: .4rem;
+  margin: 0.4rem;
   background-color: beige;
   padding: 2rem;
 }

@@ -5,13 +5,17 @@
   border-radius: 50%;
   background-color: ghostwhite;
   color: transparent;
-  background-image: linear-gradient(to right, transparent 50%, cornflowerblue 0);
+  background-image: linear-gradient(
+    to right,
+    transparent 50%,
+    cornflowerblue 0
+  );
   text-align: center;
 }
 
 @keyframes spin {
   to {
-    transform: rotate(.5turn);
+    transform: rotate(0.5turn);
   }
 }
 
@@ -22,7 +26,7 @@
 }
 
 .pie::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +37,9 @@
   border-radius: 0 100% 100% 0 / 50%;
   background-color: inherit;
   transform-origin: left;
-  animation: spin 50s linear infinite, bg 100s step-end infinite;
+  animation:
+    spin 50s linear infinite,
+    bg 100s step-end infinite;
   animation-play-state: paused;
   animation-delay: inherit;
 }

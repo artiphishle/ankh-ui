@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type {Meta, StoryObj} from '@storybook/react';
 import {Form} from './Form';
 
 //👇 This default export determines where your story goes in the story list

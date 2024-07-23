@@ -1,9 +1,9 @@
 [data-ui='form'] {
-  padding: .4rem;
-  background: rgba(blue, 0.3)
+  padding: 0.4rem;
+  background: rgba(blue, 0.3);
 }
 
 [data-ui='form'] input {
-  padding: .4rem;
+  padding: 0.4rem;
   background: beige;
 }

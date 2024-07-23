@@ -5,14 +5,14 @@
   border-radius: 15px;
 }
 
-.colorPicker form>div {
-  padding: 0 .4rem;
+.colorPicker form > div {
+  padding: 0 0.4rem;
 }
 
 .colorPicker label {
   display: flex;
   width: 20px;
-  font-size: .7rem;
+  font-size: 0.7rem;
   gap: 1rem;
   align-items: center;
 }
@@ -21,5 +21,5 @@
   outline: none;
   border: 0;
   background-color: #fff;
-  padding: .3rem;
+  padding: 0.3rem;
 }

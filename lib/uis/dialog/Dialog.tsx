@@ -1,10 +1,11 @@
-import { Auth } from "@/auth/Auth";
-import { MouseEvent } from "react";
+import {Auth} from '@/auth/Auth';
+import {MouseEvent} from 'react';
 
 export function Dialog({message, actions}: IDialog) {
   return (
     <Auth.ReadRole>
-      <dialog data-ui="dialog">{message}
+      <dialog data-ui="dialog">
+        {message}
         {actions && <footer>Actions todo</footer>}
       </dialog>
     </Auth.ReadRole>
@@ -13,9 +14,9 @@ export function Dialog({message, actions}: IDialog) {
 
 interface IDialogAction {
   label: string;
-  onClick: (event: MouseEvent) => void
+  onClick: (event: MouseEvent) => void;
 }
 interface IDialog {
   message: string;
-  actions?: IDialogAction[]
+  actions?: IDialogAction[];
 }

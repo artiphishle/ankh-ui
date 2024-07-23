@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Auth } from '@/auth/Auth';
+import {Auth} from '@/auth/Auth';
 import {type ChangeEvent, useId, useState} from 'react';
 
 interface INumberInput {
