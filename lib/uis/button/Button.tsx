@@ -1,4 +1,4 @@
-import {EVariant} from '@/types';
+import {EAnkhUiVariant} from 'ankh-types';
 import './button.css';
 import {Auth} from '@/auth/Auth';
 
@@ -6,7 +6,7 @@ export const Button = ({
   size = 'medium',
   backgroundColor,
   label,
-  variant = EVariant.Default,
+  variant = EAnkhUiVariant.Default,
   ...props
 }: AnkhUiButton) => {
   return (
@@ -32,6 +32,6 @@ export interface AnkhUiButton {
   backgroundColor?: string;
   primary?: boolean;
   size?: 'small' | 'medium' | 'large';
-  variant?: EVariant;
+  variant?: EAnkhUiVariant;
   onClick?: () => void;
 }

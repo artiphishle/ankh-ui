@@ -1,12 +1,16 @@
-'use client';
+import {Auth} from '@/auth/Auth';
 
-import { useState } from 'react';
-import { Auth } from '@/auth/Auth';
-import './colorHue.css';
-
-export function ColorHue({ color: value }: IAnkhUiColorHue) {
-  function ColorHueItem({ value }: { value: IAnkhColor['value'] }) {
-    return <div style={{ backgroundColor: value }} />;
+export function ColorHue({color: value}: IAnkhUiColorHue) {
+  function ColorHueItem({value}: {value: string}) {
+    return (
+      <div
+        style={{
+          height: '100px',
+          border: '1px solid #dfdfdf',
+          backgroundColor: value,
+        }}
+      />
+    );
   }
 
   const $fn = {
@@ -87,7 +91,9 @@ export function ColorHue({ color: value }: IAnkhUiColorHue) {
           const numValues = $fn.color.getNumValues(colorValue);
           if (numValues?.length !== 3) return false;
           if (!$fn.color.isNumberArray) return false;
-          return numValues.every((numValue) => numValue > -1 && numValue <= 255);
+          return numValues.every(
+            (numValue) => numValue > -1 && numValue <= 255
+          );
         },
       },
       parse: {
@@ -116,7 +122,7 @@ export function ColorHue({ color: value }: IAnkhUiColorHue) {
           return numValues || [];
         },
         stringValue: (colorValue: string) => {
-          const parsed = { unit: $fn.color.getUnit(colorValue)! };
+          const parsed = {unit: $fn.color.getUnit(colorValue)!};
           switch (parsed.unit) {
             case EAnkhColorUnit.Hex:
               if (!$fn.color.validate.hex(colorValue))
@@ -158,25 +164,30 @@ export function ColorHue({ color: value }: IAnkhUiColorHue) {
     },
   };
 
-  const [currentColor, setCurrentColor] = useState<IAnkhColor>(
-    $fn.color.parse.stringValue(value)!
-  );
+  const currentColor = $fn.color.parse.stringValue(value)!;
 
-  const [hueItems, setHueItems] = useState<Pick<IAnkhColor, 'value'>[]>([
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: currentColor.value },
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-  ]);
+  const hueItems: Pick<IAnkhColor, 'value'>[] = [
+    {value: 'none'},
+    {value: 'none'},
+    {value: 'none'},
+    {value: 'none'},
+    {value: currentColor?.value || 'none'},
+    {value: 'none'},
+    {value: 'none'},
+    {value: 'none'},
+    {value: 'none'},
+  ];
 
   return (
     <Auth.ReadRole>
-      <div data-ui="color-hue" className="colorHue">
+      <div
+        data-ui="color-hue"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(9, 1fr)',
+          gap: '.4rem',
+        }}
+      >
         {hueItems.map((hueItem, i) => (
           <ColorHueItem key={`color-hue-item-${i}`} value={hueItem.value} />
         ))}

@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {fn} from '@storybook/test';
 import {Button} from './Button';
-import {EVariant} from '@/types';
+import {EAnkhUiVariant} from 'ankh-types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -32,7 +32,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     label: 'Secondary',
-    variant: EVariant.Secondary,
+    variant: EAnkhUiVariant.Secondary,
   },
 };
 

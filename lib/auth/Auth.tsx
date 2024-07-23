@@ -1,5 +1,7 @@
+'use client';
+
 import type {PropsWithChildren} from 'react';
-import type {IAnkhAuthRole} from '@/types';
+import type {IAnkhAuthRole} from 'ankh-types';
 
 /**
  * As long as no backend attached, we will permit all roles here

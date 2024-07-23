@@ -1,3 +1,5 @@
+'use client';
+
 import {Auth} from '@/auth/Auth';
 import {type PropsWithChildren} from 'react';
 

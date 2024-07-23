@@ -1,5 +1,5 @@
 import {Auth} from '@/auth/Auth';
-import type {IAnkhAuthRole} from '@/types';
+import type {IAnkhAuthRole} from 'ankh-types';
 
 export function Tag({label}: IAnkhUiTag) {
   const $e = {
