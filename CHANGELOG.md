@@ -1,5 +1,11 @@
 # ankh-ui
 
+## 1.4.0
+
+### Minor Changes
+
+- 36533b8: Add ColorPicker & ColorHue for theming in CMS
+
 ## 1.2.2
 
 ### Patch Changes
