@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {Button, type AnkhUiButton} from './Button';
-import {EVariant} from '../../types';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button, type AnkhUiButton } from './Button';
+import { EAnkhUiVariant } from 'ankh-types';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<AnkhUiButton> = {
@@ -13,14 +13,14 @@ type Story = StoryObj<AnkhUiButton>;
 export const SuccessButton: Story = {
   args: {
     label: 'Success',
-    variant: EVariant.Success,
+    variant: EAnkhUiVariant.Success,
     backgroundColor: '#ccffcc',
   },
 };
 
 export const WarningButton: Story = {
   args: {
-    variant: EVariant.Warning,
+    variant: EAnkhUiVariant.Warning,
     label: 'Warning',
     backgroundColor: '#ccffcc',
   },
@@ -28,7 +28,7 @@ export const WarningButton: Story = {
 
 export const ErrorButton: Story = {
   args: {
-    variant: EVariant.Error,
+    variant: EAnkhUiVariant.Error,
     label: 'Error',
     backgroundColor: '#ff0000',
   },
@@ -37,7 +37,7 @@ export const ErrorButton: Story = {
 export const InfoButton: Story = {
   args: {
     label: 'Info',
-    variant: EVariant.Info,
+    variant: EAnkhUiVariant.Info,
     backgroundColor: '#ababad',
   },
 };
@@ -45,7 +45,7 @@ export const InfoButton: Story = {
 export const DefaultButton: Story = {
   args: {
     label: 'Default',
-    variant: EVariant.Default,
+    variant: EAnkhUiVariant.Default,
     backgroundColor: '#fff',
   },
 };

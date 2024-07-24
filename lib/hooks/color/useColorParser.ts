@@ -1,13 +1,15 @@
-import { EAnkhColorUnit } from "@/hooks/color/types";
-import { useColorValidator } from "@/hooks/color/useColorValidator"; import { useColorHelper } from "./useColorHelper";
-;
+import { EAnkhColorParserError, EAnkhColorUnit } from "@/hooks/color/types";
+import { useColorValidator } from "@/hooks/color/useColorValidator";
+import { useColorHelper } from "@/hooks/color/useColorHelper";
+import { useError } from "@/hooks/mdd/useError";
 
 function getUnit(value: string) {
+  const { useFatalError } = useError();
   if (value.startsWith('#')) return EAnkhColorUnit.Hex;
   if (value.startsWith('rgb(') && value.endsWith(')')) return EAnkhColorUnit.Rgb;
   if (value.startsWith('lab(') && value.endsWith(')')) return EAnkhColorUnit.Lab;
   if (value.startsWith('hsl') && value.endsWith(')')) return EAnkhColorUnit.Hsl;
-  throw new Error(value);
+  useFatalError(EAnkhColorParserError.InvalidFormat);
 }
 
 export function useColorParser() {

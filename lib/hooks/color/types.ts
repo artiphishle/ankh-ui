@@ -13,14 +13,14 @@ export enum EAnkhColorParserError {
 }
 
 export interface IAnkhColor {
-  value: string;
-  parsedValue: string | number[];
-  unit: EAnkhColorUnit;
+  readonly value: string;
+  readonly parsedValue: string | number[];
+  readonly unit: EAnkhColorUnit;
 }
 export interface IAnkhUiColorHueItem {
-  value: string;
-  className?: string;
+  readonly value: string;
+  readonly className?: string;
 }
 export interface IAnkhUiColorHue {
-  color: string;
+  readonly color: string;
 }
