@@ -1,17 +1,20 @@
-import {Auth} from '@/auth/Auth';
+"use client";
+import { Auth } from '@/auth/Auth';
+import { useEffectOnce } from 'react-use';
 
-export function ColorHue({color: value}: IAnkhUiColorHue) {
-  function ColorHueItem({value}: {value: string}) {
-    return (
-      <div
-        style={{
-          height: '100px',
-          border: '1px solid #dfdfdf',
-          backgroundColor: value,
-        }}
-      />
-    );
-  }
+function ColorHueItem({ value }: { value: string }) {
+  return (
+    <div
+      style={{
+        height: '100px',
+        border: '1px solid #dfdfdf',
+        backgroundColor: value,
+      }}
+    />
+  );
+}
+
+export function ColorHue({ color: value }: IAnkhUiColorHue) {
 
   const $fn = {
     color: {
@@ -122,7 +125,7 @@ export function ColorHue({color: value}: IAnkhUiColorHue) {
           return numValues || [];
         },
         stringValue: (colorValue: string) => {
-          const parsed = {unit: $fn.color.getUnit(colorValue)!};
+          const parsed = { unit: $fn.color.getUnit(colorValue)! };
           switch (parsed.unit) {
             case EAnkhColorUnit.Hex:
               if (!$fn.color.validate.hex(colorValue))
@@ -167,15 +170,15 @@ export function ColorHue({color: value}: IAnkhUiColorHue) {
   const currentColor = $fn.color.parse.stringValue(value)!;
 
   const hueItems: Pick<IAnkhColor, 'value'>[] = [
-    {value: 'none'},
-    {value: 'none'},
-    {value: 'none'},
-    {value: 'none'},
-    {value: currentColor?.value || 'none'},
-    {value: 'none'},
-    {value: 'none'},
-    {value: 'none'},
-    {value: 'none'},
+    { value: 'none' },
+    { value: 'none' },
+    { value: 'none' },
+    { value: 'none' },
+    { value: currentColor?.value || 'none' },
+    { value: 'none' },
+    { value: 'none' },
+    { value: 'none' },
+    { value: 'none' },
   ];
 
   return (

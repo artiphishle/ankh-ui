@@ -70,5 +70,5 @@
     "storybook:build": "storybook build"
   },
   "types": "dist/index.d.ts",
-  "version": "1.4.9"
+  "version": "1.4.12"
 }
