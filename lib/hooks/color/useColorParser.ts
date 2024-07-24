@@ -1,5 +1,5 @@
-import { EAnkhColorUnit } from "@/hooks/types";
-import { useColorValidator } from "@/hooks/useColorValidator"; import { useColorHelper } from "./useColorHelper";
+import { EAnkhColorUnit } from "@/hooks/color/types";
+import { useColorValidator } from "@/hooks/color/useColorValidator"; import { useColorHelper } from "./useColorHelper";
 ;
 
 function getUnit(value: string) {

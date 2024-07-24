@@ -1,4 +1,4 @@
-import { useColorHelper } from "@/hooks/useColorHelper";
+import { useColorHelper } from "@/hooks/color/useColorHelper";
 
 function isNumberArray(maybeNumberArray: unknown[]) {
   if (!maybeNumberArray.length) return false;
