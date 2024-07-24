@@ -59,7 +59,7 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "build": "tsup lib/index.ts --format cjs,esm --dts",
+    "build": "tsup",
     "changeset:add": "pnpm changeset",
     "prettier:validate": "pnpm dlx prettier --config .prettierrc --write .",
     "prettier:write": "pnpm dlx prettier --config .prettierrc --write .",
@@ -69,6 +69,19 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
+  "tsup": {
+    "dts": true,
+    "entry": [
+      "lib/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "splitting": false,
+    "sourcemap": false,
+    "clean": true
+  },
   "types": "dist/index.d.ts",
-  "version": "1.4.12"
+  "version": "1.4.22"
 }

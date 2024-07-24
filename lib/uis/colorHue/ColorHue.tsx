@@ -1,20 +1,21 @@
-"use client";
-import { Auth } from '@/auth/Auth';
-import { useEffectOnce } from 'react-use';
+'use client';
+import {Auth} from '@/auth/Auth';
 
-function ColorHueItem({ value }: { value: string }) {
-  return (
-    <div
-      style={{
-        height: '100px',
-        border: '1px solid #dfdfdf',
-        backgroundColor: value,
-      }}
-    />
-  );
-}
-
-export function ColorHue({ color: value }: IAnkhUiColorHue) {
+export function ColorHue({color: value}: IAnkhUiColorHue) {
+  function ColorHueItem({value, className = ''}: IAnkhUiColorHueItem) {
+    return (
+      <div
+        className={className}
+        style={{
+          width: '50px',
+          height: '50px',
+          margin: '.2rem',
+          border: '1px solid rgba(255,255,255,.2)',
+          backgroundColor: value,
+        }}
+      />
+    );
+  }
 
   const $fn = {
     color: {
@@ -125,7 +126,7 @@ export function ColorHue({ color: value }: IAnkhUiColorHue) {
           return numValues || [];
         },
         stringValue: (colorValue: string) => {
-          const parsed = { unit: $fn.color.getUnit(colorValue)! };
+          const parsed = {unit: $fn.color.getUnit(colorValue)!};
           switch (parsed.unit) {
             case EAnkhColorUnit.Hex:
               if (!$fn.color.validate.hex(colorValue))
@@ -169,16 +170,16 @@ export function ColorHue({ color: value }: IAnkhUiColorHue) {
 
   const currentColor = $fn.color.parse.stringValue(value)!;
 
-  const hueItems: Pick<IAnkhColor, 'value'>[] = [
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: currentColor?.value || 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
-    { value: 'none' },
+  const hueItems: IAnkhUiColorHueItem[] = [
+    {value: 'none', className: 'primary-100'},
+    {value: 'none', className: 'primary-200'},
+    {value: 'none', className: 'primary-300'},
+    {value: 'none', className: 'primary-400'},
+    {value: currentColor?.value || 'none', className: 'primary-500'},
+    {value: 'none', className: 'primary-600'},
+    {value: 'none', className: 'primary-700'},
+    {value: 'none', className: 'primary-800'},
+    {value: 'none', className: 'primary-900'},
   ];
 
   return (
@@ -187,12 +188,16 @@ export function ColorHue({ color: value }: IAnkhUiColorHue) {
         data-ui="color-hue"
         style={{
           display: 'grid',
+          width: '50vw',
           gridTemplateColumns: 'repeat(9, 1fr)',
-          gap: '.4rem',
         }}
       >
         {hueItems.map((hueItem, i) => (
-          <ColorHueItem key={`color-hue-item-${i}`} value={hueItem.value} />
+          <ColorHueItem
+            className={hueItem.className}
+            key={`color-hue-item-${i}`}
+            value={hueItem.value}
+          />
         ))}
       </div>
     </Auth.ReadRole>
@@ -217,6 +222,10 @@ interface IAnkhColor {
   value: string;
   parsedValue: string | number[];
   unit: EAnkhColorUnit;
+}
+interface IAnkhUiColorHueItem {
+  value: string;
+  className?: string;
 }
 interface IAnkhUiColorHue {
   color: string;
