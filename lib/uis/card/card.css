@@ -1,0 +1,7 @@
+[data-ui='card'] {
+  padding: 1rem;
+}
+
+[data-ui='card'] h4 {
+  margin: 0
+}
