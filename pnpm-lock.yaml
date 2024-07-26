@@ -12,8 +12,8 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0(react@18.3.1)
       ankh-hooks:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.3
+        version: 1.0.3
       lucide-react:
         specifier: ^0.412.0
         version: 0.412.0(react@18.3.1)
@@ -1612,8 +1612,8 @@ packages:
   '@storybook/global@5.0.0':
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  '@storybook/icons@1.2.9':
-    resolution: {integrity: sha512-cOmylsz25SYXaJL/gvTk/dl3pyk7yBFRfeXTsHvTA3dfhoU/LWSq0NKL9nM7WBasJyn6XPSGnLS4RtKXLw5EUg==}
+  '@storybook/icons@1.2.10':
+    resolution: {integrity: sha512-310apKdDcjbbX2VSLWPwhEwAgjxTzVagrwucVZIdGPErwiAppX8KvBuWZgPo+rQLVrtH8S+pw1dbUwjcE6d7og==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -1997,8 +1997,8 @@ packages:
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
 
-  ankh-hooks@1.0.0:
-    resolution: {integrity: sha512-3Rm756Vk2SH25YwRRr/TZQ59wZq+bkVmbaa1aCa0B5m674McukKyoy2Cm6sBceRGAT0+xRtKbZYq6rZZqgCacg==}
+  ankh-hooks@1.0.3:
+    resolution: {integrity: sha512-FGu7RLxklWHNWEBLvxKNtkrh8dRPhfi0WWTk7soWmqK5y5q7iAc0w+uVcgRSCbOdFZaC0RBYXRNWzIjdNURY+g==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ankh-types@1.0.3:
@@ -6550,7 +6550,7 @@ snapshots:
     dependencies:
       '@storybook/csf': 0.1.11
       '@storybook/global': 5.0.0
-      '@storybook/icons': 1.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/icons': 1.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/lodash': 4.17.7
       color-convert: 2.0.1
       dequal: 2.0.3
@@ -6666,7 +6666,7 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/icons@1.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@storybook/icons@1.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -7209,7 +7209,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  ankh-hooks@1.0.0:
+  ankh-hooks@1.0.3:
     dependencies:
       uuidv4: 6.2.13
 
