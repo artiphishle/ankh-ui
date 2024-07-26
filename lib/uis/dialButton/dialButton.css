@@ -81,7 +81,7 @@
   --icon-back: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z'%3E%3C/path%3E%3C/svg%3E");
   --icon-house: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z'%3E%3C/path%3E%3C/svg%3E");
 
-  // Don't judge me 😞
+  /* Don't judge me 😞 */
   --icon-1: var(--icon-house);
   --icon-2: var(--icon-search);
   --icon-3: var(--icon-star);
@@ -108,7 +108,8 @@
   --color-grey: hsl(0 0% 87%);
   --color-dark-grey: hsl(0 0% 95.69%);
   --angle: -90deg;
-  --rotation: 0; // Useless
+  /* Useless */
+  --rotation: 0;
   --angle-offset: 90deg;
 
   --is-active: 0;
@@ -150,7 +151,7 @@ body {
 }
 
 main {
-  // Demo layout vars, only used for the layout
+  /* Demo layout vars, only used for the layout */
   --col-height: 100vh;
   --col-num: 1;
   --radius: 120px;
@@ -170,7 +171,7 @@ main {
   display: grid;
   grid-template-columns: repeat(var(--col-num), 1fr);
 
-  // theme
+  /* theme */
   --scene-bg: hsl(307deg 4% 94%);
 
   & [data-theme="dark"] {
@@ -198,10 +199,8 @@ main {
       var(--color-accent-off),
       var(--color-accent-off-darker));
 
-  // Here we declare the main transitions
-  // used all across the element.
-  //transition: ;
-
+  /* Here we declare the main transitions used all across the element.
+  /* transition: ; */
   width: var(--radius);
   aspect-ratio: 1/1;
   position: relative;
@@ -211,7 +210,7 @@ main {
     inset rgba(0, 0, 0, 0.13) 0px 2px 8px -2px,
     inset rgba(0, 0, 0, 0.13) 0px 8px 34px -2px;
 
-  // Knob & Knob Capt
+  /* Knob & Knob Capt */
   & .knob {
     position: absolute;
     width: 100%;
@@ -308,7 +307,7 @@ main {
     }
   }
 
-  // knob cap
+  /* knob cap */
   &:after {
     content: "";
     display: block;
@@ -407,7 +406,8 @@ main {
       }
 
       &:before {
-        --op: opacity(var(--is-selected)); // need to use a var or the linter yells 
+        /* need to use a var or the linter yells */
+        --op: opacity(var(--is-selected));
         width: 100%;
         aspect-ratio: 1/1;
         background: var(--color-accent-on);
@@ -419,7 +419,8 @@ main {
       }
 
       &:after {
-        --iv: invert(var(--invert)); // need to use a var or the linter yells 
+        /* need to use a var or the linter yells */
+        --iv: invert(var(--invert));
         width: 100%;
         aspect-ratio: 1/1;
         pointer-events: none;
@@ -435,13 +436,13 @@ main {
         }
       }
 
-      // Sorry, transform is busy 😅
+      /* Sorry, transform is busy 😅 */
       &:after,
       &>input[type="radio"] {
         top: calc(var(--icon-offset) * 1%);
       }
 
-      // Didn't found a better way 🤷‍♂️
+      /* Didn't found a better way 🤷‍♂️ */
       &:nth-child(2):after {
         transform: rotate(300deg);
       }
