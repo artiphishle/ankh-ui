@@ -5,7 +5,7 @@ export function AnkhUiCircle({ color, size = EAnkhUiSize.Md }: IAnkhUiCircle) {
   return <div data-ui="circle" style={{ width: size, height: size, backgroundColor: color.value }}></div>
 }
 
-interface IAnkhUiCircle {
+export interface IAnkhUiCircle {
   color: IAnkhColor;
   size: EAnkhUiSize;
 }
