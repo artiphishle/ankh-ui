@@ -1,10 +1,12 @@
 'use client';
 
 import { Auth } from '@/auth/Auth';
-import { IAnkhUiColorHue, IAnkhUiColorHueItem } from '@/hooks/color/types';
-import { useColorParser } from '@/hooks/color/useColorParser';
+import { useColorHues } from 'ankh-hooks';
+import { useColorParser } from 'ankh-hooks';
+import type { IAnkhUiColorHue, IAnkhUiColorHueItem } from 'ankh-types';
 
 function ColorHueItem({ value, className = '' }: IAnkhUiColorHueItem) {
+
   return (
     <div
       className={className}
@@ -20,19 +22,14 @@ function ColorHueItem({ value, className = '' }: IAnkhUiColorHueItem) {
 }
 
 export function ColorHue({ color: value }: IAnkhUiColorHue) {
+  const { genHues } = useColorHues();
   const { parseString } = useColorParser();
   const currentColor = parseString(value)!;
-  const hueItems: IAnkhUiColorHueItem[] = [
-    { value: 'none', className: 'primary-100' },
-    { value: 'none', className: 'primary-200' },
-    { value: 'none', className: 'primary-300' },
-    { value: 'none', className: 'primary-400' },
-    { value: currentColor?.value || 'none', className: 'primary-500' },
-    { value: 'none', className: 'primary-600' },
-    { value: 'none', className: 'primary-700' },
-    { value: 'none', className: 'primary-800' },
-    { value: 'none', className: 'primary-900' },
-  ];
+  const hueItems = genHues({ colorValue: currentColor.value })
+    .map((hue, hueIndex) => ({
+      value: hue,
+      className: `primary-${hueIndex + 1}00`
+    }));
 
   return (
     <Auth.ReadRole>
