@@ -1,6 +1,6 @@
 "use client";
 
-import { Image, Gallery, GalleryProps } from "react-grid-gallery";
+import { /* Image, */ Gallery, GalleryProps } from "react-grid-gallery";
 import { useEffect, useState, type MouseEvent } from "react";
 import { Auth } from "@/auth/Auth";
 
@@ -11,6 +11,7 @@ export function AnkhUiGridGallery(props: IAnkhUiGridGallery) {
     async function getPhoto(q: string) {
       const res = await fetch(`https://api.unsplash.com/photos/random?q=${q}&client_id=pWQstqRcdVLQwwi-FWsuVZflWzn4Weq16otmlBI2ouQ`, { method: "GET" });
       const photo = await res.json();
+      /*
       const img: Image = {
         caption: "test",
         alt: 'test',
@@ -19,7 +20,8 @@ export function AnkhUiGridGallery(props: IAnkhUiGridGallery) {
         height: 174,
         tags: [{ value: 'tag', title: 'tagTitle' }]
       };
-      setImages((images) => images.concat([img]))
+      setImages((images) => images.concat([img]));
+      */
     }
     getPhoto("model");
     getPhoto("darth&20vader");
