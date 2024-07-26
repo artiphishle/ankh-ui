@@ -16,7 +16,7 @@ export const PurpleCircleXs: Story = {
       value: "hsl(300, 100%, 25%)",
       unit: EAnkhColorUnit.Hsl
     },
-    size: EAnkhUiSize.Xs
+    size: EAnkhUiSize.Xs,
   },
 };
 
