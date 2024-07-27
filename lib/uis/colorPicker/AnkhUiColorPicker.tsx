@@ -1,7 +1,6 @@
 'use client';
-
-import {Auth} from '@/auth/Auth';
-import {ChangeEvent, useState} from 'react';
+import { Auth } from '@/auth/Auth';
+import { ChangeEvent, useState } from 'react';
 import './colorPicker.css';
 
 export function AnkhUiColorPicker() {
@@ -26,8 +25,8 @@ export function AnkhUiColorPicker() {
   return (
     <Auth.ReadRole>
       <div data-ui="color-picker" className="colorPicker">
-        <section style={{height: '80px', backgroundColor: hexColor}} />
-        <aside style={{padding: '.4rem'}}>
+        <section style={{ height: '80px', backgroundColor: hexColor }} />
+        <aside style={{ padding: '.4rem' }}>
           <form>
             <div>
               <label>

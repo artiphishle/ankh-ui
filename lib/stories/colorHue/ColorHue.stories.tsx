@@ -1,7 +1,5 @@
-'use client';
-
-import type {Meta, StoryObj} from '@storybook/react';
-import {AnkhUiColorHue} from '@/uis/colorHue/AnkhUiColorHue';
+import type { Meta, StoryObj } from '@storybook/react';
+import { AnkhUiColorHue } from '@/uis/colorHue/AnkhUiColorHue';
 
 const meta: Meta<typeof AnkhUiColorHue> = {
   component: AnkhUiColorHue,
