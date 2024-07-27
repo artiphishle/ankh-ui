@@ -1,12 +1,15 @@
-import { Heading } from "@/uis/heading/Heading";
-import { AnkhUiCircle, type IAnkhUiCircle } from "@/uis/shapes/circle/AnkhUiCircle"
+import {AnkhUiHeading} from '@/uis/heading/AnkhUiHeading';
+import {
+  AnkhUiCircle,
+  type IAnkhUiCircle,
+} from '@/uis/shapes/circle/AnkhUiCircle';
 
-export function AnkhUiCircles({ circles, title }: IAnkhUiCircles) {
+export function AnkhUiCircles({circles, title}: IAnkhUiCircles) {
   return (
-    <section data-ui='circles'>
-      {title && <Heading text={title} level="h3" />}
+    <section data-ui="circles">
+      {title && <AnkhUiHeading text={title} level="h3" />}
       <div className="circles">
-        {circles.map(({ color, size }) => (
+        {circles.map(({color, size}) => (
           <AnkhUiCircle color={color} size={size} />
         ))}
       </div>
