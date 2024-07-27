@@ -1,9 +1,9 @@
 [data-ui='grid'] {
   display: grid;
-  width: '100%';
+  width: 100%;
 }
 
-[data-ui='grid'] > div {
+[data-ui='grid']>div {
   margin: 0.4rem;
   background-color: beige;
   padding: 2rem;
