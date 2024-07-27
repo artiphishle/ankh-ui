@@ -38,6 +38,7 @@ In `lib/auth/Auth.tsx` replace the `tmpRoleDefinition` by serverside evaluated r
 | AnkhUiCharts | Pie chart available atm |
 | AnkhUiColorHues | Color Hue generator (e.g. primary-100 to primary-900 using different tones) |
 | AnkhUiColorPicker | Simple Color 'Chooser' (not pickable yet) |
+| AnkhUiColorWheel | SVG color wheel |
 | AnkhUiDialog | Native `<dialog>` element (under construction) |
 | AnkhUiForm | Form generator & Input components (under construction) |
 | AnkhUiGallery | Using `react-grid-gallery` |
