@@ -1,4 +1,5 @@
-import { ReactNode, useMemo, useRef } from 'react';
+"use client";
+import { type ReactNode, useMemo, useRef } from 'react';
 import { useVirtualList } from 'ahooks';
 import { Auth } from '@/auth/Auth';
 
