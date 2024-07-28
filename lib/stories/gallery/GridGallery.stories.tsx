@@ -1,6 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {AnkhUiGallery} from '@/uis/gallery/AnkhUiGallery';
-import {EAnkhUiVariant} from 'ankh-types';
+import type { Meta, StoryObj } from '@storybook/react';
+import { AnkhUiGallery } from '@/uis/gallery/AnkhUiGallery';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof AnkhUiGallery> = {
@@ -27,8 +26,8 @@ export const SuperGallery: Story = {
         width: 320,
         height: 212,
         tags: [
-          {value: 'Ocean', title: 'Ocean'},
-          {value: 'People', title: 'People'},
+          { value: 'Ocean', title: 'Ocean' },
+          { value: 'People', title: 'People' },
         ],
         alt: 'Boats (Jeshu John - designerspics.com)',
       },

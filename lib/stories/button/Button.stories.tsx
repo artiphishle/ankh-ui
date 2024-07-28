@@ -4,6 +4,7 @@ import { AnkhUiButton } from '../..//uis/button/AnkhUiButton';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof AnkhUiButton> = {
+  title: 'AnkhUi/Button',
   component: AnkhUiButton,
 };
 

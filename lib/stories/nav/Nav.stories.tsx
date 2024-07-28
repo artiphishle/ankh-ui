@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { House, Factory, Settings } from "lucide-react";
 import { AnkhUiNav } from '@/uis/nav/AnkhUiNav';
 
 const meta: Meta<typeof AnkhUiNav> = {
+  title: 'AnkhUi/Nav',
   component: AnkhUiNav,
 };
 export default meta;

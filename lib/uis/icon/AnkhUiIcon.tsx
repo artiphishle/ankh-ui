@@ -1,15 +1,16 @@
-"use client";
 import { Auth } from '@/auth/Auth';
-import { type LucideProps } from "lucide-react";
-import { useState } from 'react';
+import Image from 'next/image';
 
-export function AnkhUiIcon({ name, color, size }: LucideProps) {
-  const [Icon, setIcon] = useState(null);
-  import(`${name}`).then((setIcon));
+export function AnkhUiIcon({ name }: IAnkhUiIcon) {
+  const path = `/icons/${name.toLowerCase()}.svg`;
 
   return (
     <Auth.ReadRole>
-      {Icon}
+      <Image src={path} alt={name} width={24} height={24} />
     </Auth.ReadRole>
   );
+}
+
+interface IAnkhUiIcon {
+  name: string;
 }

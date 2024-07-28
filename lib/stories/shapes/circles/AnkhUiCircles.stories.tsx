@@ -4,6 +4,7 @@ import { EAnkhUiSize, EAnkhColorUnit } from 'ankh-types';
 import '@/uis/shapes/circles/circles.css';
 
 const meta: Meta<typeof AnkhUiCircles> = {
+  title: 'AnkhUi/Shapes/Circles',
   component: AnkhUiCircles,
 };
 export default meta;

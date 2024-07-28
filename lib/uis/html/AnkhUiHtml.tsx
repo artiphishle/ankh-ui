@@ -1,9 +1,14 @@
 'use client';
+import { type PropsWithChildren } from 'react';
+import { Auth } from '@/auth/Auth';
+import { useError } from 'ankh-hooks';
 
-import {type PropsWithChildren} from 'react';
-import {Auth} from '@/auth/Auth';
+export function AnkhUiHtml({ children, tagName = EAnkhUiHtmlTagName.Div, text }: IAnkhUiHtml) {
+  const { useFatalError } = useError();
 
-export function AnkhUiHtml({children, tagName = 'div', text}: IAnkhUiHtml) {
+  if (Object.keys(EAnkhUiHtmlTagName).includes(tagName))
+    useFatalError('[AnkhUiHtml::tagName] not allowed.');
+
   const Tag = tagName;
 
   return (
@@ -13,7 +18,17 @@ export function AnkhUiHtml({children, tagName = 'div', text}: IAnkhUiHtml) {
   );
 }
 
+enum EAnkhUiHtmlTagName {
+  Article = 'article',
+  Div = 'div',
+  Footer = 'footer',
+  Header = 'header',
+  Main = 'main',
+  Section = 'section',
+  Small = 'small'
+}
 interface IAnkhUiHtml extends PropsWithChildren {
-  tagName?: keyof JSX.IntrinsicElements;
+  tagName?: EAnkhUiHtmlTagName;
+  // tagName?: keyof JSX.IntrinsicElements;
   text?: string;
 }

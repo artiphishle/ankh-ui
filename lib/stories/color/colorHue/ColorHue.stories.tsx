@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AnkhUiColorHue } from '@/uis/colorHue/AnkhUiColorHue';
+import { AnkhUiColorHue } from '@/uis/color/colorHue/AnkhUiColorHue';
 
 const meta: Meta<typeof AnkhUiColorHue> = {
+  title: 'AnkhUi/Color/Hue',
   component: AnkhUiColorHue,
 };
 export default meta;

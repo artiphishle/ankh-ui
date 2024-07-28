@@ -3,6 +3,7 @@ import { AnkhUiForm } from '@/uis/form/AnkhUiForm';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof AnkhUiForm> = {
+  title: 'AnkhUi/Form',
   component: AnkhUiForm,
 };
 

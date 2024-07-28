@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { AnkhUiList } from '@/uis/list/AnkhUiList';
 
 const meta: Meta<typeof AnkhUiList> = {
+  title: 'AnkhUi/List',
   component: AnkhUiList,
 };
 export default meta;

@@ -1,9 +1,10 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {AnkhUiAccordion} from '@/uis/accordion/AnkhUiAccordion';
-import {AnkhUiHeading} from '@/uis/heading/AnkhUiHeading';
+import type { Meta, StoryObj } from '@storybook/react';
+import { AnkhUiAccordion } from '@/uis/accordion/AnkhUiAccordion';
+import { AnkhUiHeading } from '@/uis/heading/AnkhUiHeading';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof AnkhUiAccordion> = {
+  title: 'AnkhUi/Accordion',
   component: AnkhUiAccordion,
 };
 

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AnkhUiColorWheel } from '@/uis/colorWheel/AnkhUiColorWheel';
+import { AnkhUiColorWheel } from '@/uis/color/colorWheel/AnkhUiColorWheel';
 import { EAnkhUiSize } from 'ankh-types';
 
 const meta: Meta<typeof AnkhUiColorWheel> = {
+  title: 'AnkhUi/Color/Wheel',
   component: AnkhUiColorWheel,
 };
 export default meta;

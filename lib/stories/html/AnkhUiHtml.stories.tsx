@@ -9,7 +9,7 @@ export default meta;
 
 type Story = StoryObj<typeof AnkhUiGrid>;
 
-export const Grid: Story = {
+export const SwappableGrid: Story = {
   args: {
     children: [
       <div key="1">1</div>,

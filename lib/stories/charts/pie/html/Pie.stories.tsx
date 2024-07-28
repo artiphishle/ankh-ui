@@ -1,8 +1,9 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {Pie} from '@/uis/charts/pie/html/Pie';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Pie } from '@/uis/charts/pie/html/Pie';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof Pie> = {
+  title: "AnkhUi/Charts/PieChart",
   component: Pie,
 };
 

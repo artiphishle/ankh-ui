@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { AnkhUiCircle } from '@/uis/shapes/circle/AnkhUiCircle';
-import { EAnkhUiSize, EAnkhColorUnit } from 'ankh-types';
+import { EAnkhUiSize } from 'ankh-types';
 
 const meta: Meta<typeof AnkhUiCircle> = {
+  title: 'AnkhUi/Shapes/Circle',
   component: AnkhUiCircle,
 };
 export default meta;

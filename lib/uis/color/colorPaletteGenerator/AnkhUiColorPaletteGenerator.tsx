@@ -5,7 +5,7 @@ import { AnkhUiCircles, IAnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircle
 import { EAnkhUiSize } from 'ankh-types';
 import { AnkhUiHeading } from '@/uis/heading/AnkhUiHeading';
 import "./paletteGenerator.css";
-import { AnkhUiForm } from '../form/AnkhUiForm';
+import { AnkhUiForm } from '@/uis/form/AnkhUiForm';
 
 export function AnkhUiColorPaletteGenerator() {
   const [hue, setHue] = useState(240);
