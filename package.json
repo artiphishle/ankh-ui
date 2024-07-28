@@ -89,5 +89,5 @@
     "clean": true
   },
   "types": "dist/index.d.ts",
-  "version": "1.6.13"
+  "version": "1.6.15"
 }

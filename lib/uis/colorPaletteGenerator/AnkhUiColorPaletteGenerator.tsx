@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from 'react';
 import { useColorPalette, useColorParser } from 'ankh-hooks';
 import { AnkhUiCircles, IAnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircles';
