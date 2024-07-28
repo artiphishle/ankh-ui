@@ -1,9 +1,7 @@
-'use client';
+import { Auth } from '@/auth/Auth';
+import { type PropsWithChildren } from 'react';
 
-import {Auth} from '@/auth/Auth';
-import {type PropsWithChildren} from 'react';
-
-export function AnkhUiHeading({text, level}: IHeading) {
+export function AnkhUiHeading({ text, level }: IHeading) {
   const H = level;
 
   return (

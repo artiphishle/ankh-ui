@@ -1,5 +1,5 @@
-import { Auth } from '@/auth/Auth';
 import Image from 'next/image';
+import { Auth } from '@/auth/Auth';
 
 export function AnkhUiIcon({ name }: IAnkhUiIcon) {
   const path = `/icons/${name.toLowerCase()}.svg`;

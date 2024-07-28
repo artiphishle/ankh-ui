@@ -3,6 +3,7 @@ import { AnkhUiGallery } from '@/uis/gallery/AnkhUiGallery';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof AnkhUiGallery> = {
+  title: 'AnkhUiGallery',
   component: AnkhUiGallery,
 };
 
