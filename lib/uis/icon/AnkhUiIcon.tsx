@@ -1,13 +1,15 @@
-import {Auth} from '@/auth/Auth';
-import {icons, type LucideProps} from 'lucide-react';
+"use client";
+import { Auth } from '@/auth/Auth';
+import { type LucideProps } from "lucide-react";
+import { useState } from 'react';
 
-export function AnkhUiIcon({name, color, size}: LucideProps) {
-  if (!name) return null;
-  const LucideIcon = icons[name as keyof typeof icons];
+export function AnkhUiIcon({ name, color, size }: LucideProps) {
+  const [Icon, setIcon] = useState(null);
+  import(`${name}`).then((setIcon));
 
   return (
     <Auth.ReadRole>
-      <LucideIcon color={color} size={size} />
+      {Icon}
     </Auth.ReadRole>
   );
 }
