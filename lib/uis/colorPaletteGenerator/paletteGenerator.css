@@ -1,0 +1,13 @@
+[data-ui='color-palette-generator'] {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: #eee;
+}
+
+[data-ui='color-palette-generator'] [data-ui='form-row'] input {
+  border-radius: 8px;
+  padding: .8rem;
+  border: 1px solid #aaa;
+  background: #ddd
+}

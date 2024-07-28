@@ -1,4 +1,4 @@
-import type {StorybookConfig} from '@storybook/nextjs';
+import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
   stories: [
@@ -16,7 +16,9 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {
+      core: { builder: { options: { lazyCompilation: true } } }
+    },
   },
 };
 export default config;

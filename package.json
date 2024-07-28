@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "ahooks": "^3.8.0",
-    "ankh-hooks": "^1.0.3",
+    "ankh-hooks": "^1.0.8",
     "lucide-react": "^0.412.0",
     "next": "^14.2.5",
     "react": "^18.3.1",
@@ -50,7 +50,7 @@
     "@storybook/nextjs": "^8.2.6",
     "@storybook/react": "^8.2.6",
     "@storybook/test": "^8.2.6",
-    "@types/node": "^20.14.12",
+    "@types/node": "^20.14.13",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "ankh-types": "^1.0.5",
@@ -69,8 +69,10 @@
     "lint:validate": "tsc && pnpm dlx eslint",
     "lint:fix": "tsc && pnpm eslint --fix",
     "prepublish": "pnpm run build",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "sb": "storybook dev -p 6006",
+    "sb:debug": "storybook -- --debug-webpack",
+    "sb:build": "storybook build",
+    "sb:build:debug": "run build-storybook -- --debug-webpack",
     "test": "tsc lib/**/test/**/*.ts && node lib/hooks/color/tests/useColorContrast.test.js"
   },
   "tsup": {
@@ -87,5 +89,5 @@
     "clean": true
   },
   "types": "dist/index.d.ts",
-  "version": "1.6.12"
+  "version": "1.6.13"
 }

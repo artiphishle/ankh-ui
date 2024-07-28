@@ -1,8 +1,11 @@
 [data-ui='circles'] {
   display: flex;
-  flex-direction: column;
 }
 
 [data-ui='circles'] .circles {
   display: flex;
+}
+
+[data-ui='circles'] [data-ui='circle'] {
+  margin-right: -30px
 }

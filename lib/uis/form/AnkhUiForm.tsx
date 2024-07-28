@@ -1,11 +1,12 @@
 'use client';
-import {useDynamicList} from 'ahooks';
-import {AnkhUiButton} from '@/uis/button/AnkhUiButton';
+import { useDynamicList } from 'ahooks';
+import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
 import './form.css';
-import {Auth} from '@/auth/Auth';
+import { Auth } from '@/auth/Auth';
+import { PropsWithChildren } from 'react';
 
-export function AnkhUiForm() {
-  const {list, remove, batchRemove, getKey, insert, replace} = useDynamicList([
+export function AnkhUiForm({ }: IAnkhUiForm) {
+  const { list, remove, batchRemove, getKey, insert, replace } = useDynamicList([
     'David',
     'Jack',
   ]);
@@ -50,7 +51,8 @@ export function AnkhUiForm() {
           onClick={() =>
             batchRemove(listIndexes.filter((index) => index % 2 === 0))
           }
-          label="(-)"
+          label=''
+          icon="Trash-2"
         />
         <AnkhUiButton
           label="(-)"
@@ -64,3 +66,4 @@ export function AnkhUiForm() {
     </form>
   );
 }
+interface IAnkhUiForm extends PropsWithChildren { }

@@ -1,14 +1,14 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {EAnkhUiVariant} from 'ankh-types';
-import {AnkhUiButton} from '@/uis/button/AnkhUiButton';
+import type { Meta, StoryObj } from '@storybook/react';
+import { EAnkhUiVariant } from 'ankh-types';
+import { AnkhUiButton } from '../..//uis/button/AnkhUiButton';
 
 //👇 This default export determines where your story goes in the story list
-const meta: Meta<AnkhUiButton> = {
+const meta: Meta<typeof AnkhUiButton> = {
   component: AnkhUiButton,
 };
 
 export default meta;
-type Story = StoryObj<AnkhUiButton>;
+type Story = StoryObj<typeof AnkhUiButton>;
 
 export const SuccessButton: Story = {
   args: {
