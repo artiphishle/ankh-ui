@@ -1,66 +1,21 @@
-# Ankhorage Hooks
+# Ankhorage UI
 
-This is a library of hooks (functions) covering different categories.
+React.js UI library
 
-## Color
+## Quickstart
 
-Collection of hooks related to color
+### Ankhorage CMS
 
-### useColorContrast()
+This will setup a Next.js app with generated pages (from a config file) and `ankh-ui` is the used UI framework.
 
-By default the contrast will be rounded to 2 decimals but you can change this as a third param.
-
-```ts
-const { useColorContrastFromHex } = useColorContrast();
-
-useColorContrastFromHex("#767676", "#ffffff");
-// Output: 4.54
-
-useColorContrastFromHex("#abcdef", "#fbcdaa", 4);
-// Output: 1.1341
+```bash
+pnpm dlx ankh-cms@latest
 ```
 
-### useColorConverter()
+### Storybook
 
-Documentation to follow
+You could also just clone this repository and start the storybook to see the components in action.
 
-### useColorHelper()
-
-Documentation to follow
-
-### useColorHues()
-
-Documentation to follow
-
-### useColorLuminance()
-
-Documentation to follow
-
-### useColorParser()
-
-Documentation to follow
-
-### useColorValidator()
-
-Documentation to follow
-
-## MDD
-
-Metric driven design
-
-### useError()
-
-Enable logging will `useLogging` to either write a log to a provide API (C)rud Create function or if not provided `console.log()`.
-
-```ts
-const { useFatalError } = useError();
-
-useFatalError("Something went wrong!", {enableLogging: true});"
+```bash
+pnpm run sb
 ```
-
-### useLogging()
-
-```ts
-const { writeLog } = useAnkhLogging();
-```
-

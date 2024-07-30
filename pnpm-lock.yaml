@@ -12,8 +12,8 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0(react@18.3.1)
       ankh-hooks:
-        specifier: ^1.0.8
-        version: 1.0.8
+        specifier: ^1.0.9
+        version: 1.0.9
       lucide-react:
         specifier: ^0.412.0
         version: 0.412.0(react@18.3.1)
@@ -1993,8 +1993,8 @@ packages:
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
 
-  ankh-hooks@1.0.8:
-    resolution: {integrity: sha512-LWpF+aPIFCsp5Av4z97TYjZJ+ry5BBSFcC/ejx7tQmjpCdAcVJT7JqmUu6T4a4t383lAxpE47PMahmCeYhbooA==}
+  ankh-hooks@1.0.9:
+    resolution: {integrity: sha512-TctJtQeG0I993y5/F54JIn4vM7/HzLgkkesfrbBS6ZEA6InDGyOK5PjzOOLp/1pHBgEUm2AJKjp9qB+MBmW01Q==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ankh-types@1.0.6:
@@ -7200,7 +7200,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  ankh-hooks@1.0.8:
+  ankh-hooks@1.0.9:
     dependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
