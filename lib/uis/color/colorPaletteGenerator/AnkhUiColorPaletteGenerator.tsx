@@ -9,13 +9,15 @@ import "./paletteGenerator.css";
 export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorPaletteGenerator) {
   const [hue, setHue] = useState(240);
   const [tone, setTone] = useState<EAnkhColorTone>(initialTone);
-  const [title, setTitle] = useState('My Palette');
   const [count, setCount] = useState(5);
-  const [ui, setUi] = useState<IAnkhUiCircles>();
+  const [palette, setPalette] = useState<IAnkhUiCircles>({ title: 'My Palette', circles: [] });
   const fields = [
     {
       placeholder: `My Palette`, title: '1', onChange: (event: ChangeEvent) =>
-        setTitle((event?.target as HTMLInputElement).value)
+        setPalette(({ circles }) => ({
+          circles,
+          title: (event?.target as HTMLInputElement).value
+        }))
     },
     {
       placeholder: "Count", title: '2', onChange: (event: Event) =>
@@ -30,7 +32,6 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
   useEffect(() => {
     function reusePalette({ hue, count }: { tone: EAnkhColorTone, hue: number, count: number }) {
       const re = useColorPalette();
-      console.log('inside the mess', tone, hue, count)
       switch (tone) {
         case EAnkhColorTone.Earth: return re.useEarthPalette({ count, hue });
         case EAnkhColorTone.Fluorescent: return re.useFluorescentPalette({ count, hue });
@@ -40,19 +41,17 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
         case EAnkhColorTone.Shades: return re.useShadesPalette({ count, hue });
       }
     }
-    const circles = reusePalette({ tone, hue, count });
-    // .map((color) => useColorParser().parseHsl(color))
-    // .map(([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`)
-    // .map((color) => ({ color, size: EAnkhUiSize.Md }));
-    console.log('circles');
-    console.log(circles);
-
-    const palette = { title, circles }
+    setPalette({
+      circles: reusePalette({ tone, hue, count })
+        .map((color) => useColorParser().parseHsl(color))
+        .map(([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`)
+        .map((color) => ({ color, size: EAnkhUiSize.Md }))
+    });
   }, [hue, count])
 
   return (
     <div data-ui='color-palette-generator'>
-      {ui?.circles && <AnkhUiCircles title={""} circles={ui.circles} />}
+      {palette.circles && <AnkhUiCircles title={palette.title} circles={palette.circles} />}
       <section>
         <AnkhUiForm>{fields.map((field, i) => (<input title='1' key={`field-${i}`} />))}</AnkhUiForm>
       </section>
