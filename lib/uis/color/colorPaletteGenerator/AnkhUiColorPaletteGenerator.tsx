@@ -27,18 +27,19 @@ export function AnkhUiColorPaletteGenerator({ tone }: IAnkhUiColorPaletteGenerat
   ];
 
   useEffect(() => {
-    function reusePalette(tone: EAnkhColorTone) {
-      const { useEarthPalette, useFluorescentPalette, useJewelPalette, useNeutralPalette, usePastelPalette, useShadesPalette } = useColorPalette();
+    function reusePalette({ tone, hue, count }: { tone: EAnkhColorTone, hue: number, count: number }) {
+      const re = useColorPalette();
+      console.log('inside the mess', tone, hue, count)
       switch (tone) {
-        case EAnkhColorTone.Earth: return useEarthPalette;
-        case EAnkhColorTone.Fluorescent: return useFluorescentPalette;
-        case EAnkhColorTone.Jewel: return useJewelPalette;
-        case EAnkhColorTone.Neutral: return useNeutralPalette;
-        case EAnkhColorTone.Pastel: return usePastelPalette;
-        case EAnkhColorTone.Shades: return useShadesPalette;
+        case EAnkhColorTone.Earth: return re.useEarthPalette({ count, hue });
+        case EAnkhColorTone.Fluorescent: return re.useFluorescentPalette({ count, hue });
+        case EAnkhColorTone.Jewel: return re.useJewelPalette({ count, hue });
+        case EAnkhColorTone.Neutral: return re.useNeutralPalette({ count, hue });
+        case EAnkhColorTone.Pastel: return re.usePastelPalette({ count, hue });
+        case EAnkhColorTone.Shades: return re.useShadesPalette({ count, hue });
       }
     }
-    const circles = reusePalette(tone)({ count, hue });
+    const circles = reusePalette({ tone, hue, count });
     // .map((color) => useColorParser().parseHsl(color))
     // .map(([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`)
     // .map((color) => ({ color, size: EAnkhUiSize.Md }));
