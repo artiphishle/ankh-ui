@@ -1,13 +1,15 @@
 'use client';
 import { Auth } from '@/auth/Auth';
-import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
 import './form.css';
+import { ChangeEvent } from 'react';
 
 export function AnkhUiForm({ items }: IAnkhUiForm) {
   return (
     <Auth.ReadRole>
       <form data-ui="form">
-        {items.map(({ placeholder = '', type = EAnkhUiFormInputType.Text }, index) => <input type={type} placeholder={placeholder} key={`form-field-${index}`} />)}
+        {items.map(({ placeholder = '', type = EAnkhUiFormInputType.Text, onChange = () => { } }, index) =>
+          <input type={type} placeholder={placeholder} key={`form-field-${index}`} onChange={onChange} />
+        )}
       </form>
     </Auth.ReadRole>
   );
@@ -24,6 +26,7 @@ interface IAnkhUiFormItem {
   placeholder?: string;
   type?: EAnkhUiFormInputType;
   value?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 interface IAnkhUiForm {
   items: IAnkhUiFormItem[]

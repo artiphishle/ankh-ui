@@ -15,14 +15,19 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
     {
       placeholder: `My Palette`,
       title: '1',
-      onChange: (event: ChangeEvent) => setPalette(({ circles }) => ({ circles, title: (event?.target as HTMLInputElement).value })),
+      onChange: (event: ChangeEvent<HTMLInputElement>) =>
+        setPalette(({ circles }) => ({ circles, title: (event?.target as HTMLInputElement).value })),
     },
     {
-      placeholder: "Count", title: '2', onChange: (event: Event) =>
+      placeholder: "Count",
+      title: '2',
+      onChange: (event: ChangeEvent<HTMLInputElement>) =>
         setCount(Number((event.target as HTMLInputElement).value))
     },
     {
-      placeholder: "Hue", title: '3', onChange: (event: Event) =>
+      placeholder: "Hue",
+      title: '3',
+      onChange: (event: ChangeEvent<HTMLInputElement>) =>
         setHue(Number((event.target as HTMLInputElement).value))
     }
   ];
