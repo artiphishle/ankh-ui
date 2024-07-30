@@ -1,14 +1,15 @@
 'use client';
-import { useDynamicList } from 'ahooks';
 import { Auth } from '@/auth/Auth';
+import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
 import './form.css';
-import { AnkhUiButton } from '../button/AnkhUiButton';
 
 export function AnkhUiForm({ items }: IAnkhUiForm) {
   return (
-    <form data-ui="form">
-      {items.map(({ placeholder = '', type = EAnkhUiFormInputType.Text }, index) => <input type={type} placeholder={placeholder} key={`form-field-${index}`} />)}
-    </form>
+    <Auth.ReadRole>
+      <form data-ui="form">
+        {items.map(({ placeholder = '', type = EAnkhUiFormInputType.Text }, index) => <input type={type} placeholder={placeholder} key={`form-field-${index}`} />)}
+      </form>
+    </Auth.ReadRole>
   );
 }
 
