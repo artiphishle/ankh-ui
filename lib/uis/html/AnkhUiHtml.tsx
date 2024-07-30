@@ -1,7 +1,7 @@
 'use client';
 import { type PropsWithChildren } from 'react';
-import { Auth } from '@/auth/Auth';
 import { useError } from 'ankh-hooks';
+import { Auth } from '@/auth/Auth';
 
 export function AnkhUiHtml({ children, tagName = EAnkhUiHtmlTagName.Div, text }: IAnkhUiHtml) {
   const { useFatalError } = useError();

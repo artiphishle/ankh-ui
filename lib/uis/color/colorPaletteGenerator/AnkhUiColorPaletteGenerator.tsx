@@ -1,100 +1,67 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useColorPalette, useColorParser } from 'ankh-hooks';
 import { AnkhUiCircles, IAnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircles';
-import { EAnkhUiSize } from 'ankh-types';
-import { AnkhUiHeading } from '@/uis/heading/AnkhUiHeading';
-import "./paletteGenerator.css";
+import { EAnkhColorTone, EAnkhUiSize } from 'ankh-types';
 import { AnkhUiForm } from '@/uis/form/AnkhUiForm';
+import "./paletteGenerator.css";
 
-export function AnkhUiColorPaletteGenerator() {
+export function AnkhUiColorPaletteGenerator({ tone }: IAnkhUiColorPaletteGenerator) {
   const [hue, setHue] = useState(240);
-  const [saturationRange, setSaturationRange] = useState<[number, number]>([0, 100]);
-  const [lightnessRange, setLightnessRange] = useState<[number, number]>([0, 100]);
-  const [title, setTitle] = useState('My Color Palette');
+  const [title, setTitle] = useState('My Palette');
   const [count, setCount] = useState(5);
-  const [circles, setCircles] = useState<IAnkhUiCircles>();
-  const {
-    useEarthPalette,
-    useFluorescentPalette,
-    useJewelPalette,
-    useNeutralPalette,
-    usePastelPalette,
-    useShadesPalette
-  } = useColorPalette();
+  const [ui, setUi] = useState<IAnkhUiCircles>();
+  const [palettes, setPalettes] = useState();
+
+
+
+  const fields = [
+    {
+      placeholder: `My Palette`, title: '1', onChange: (event: ChangeEvent) =>
+        setTitle((event?.target as HTMLInputElement).value)
+    },
+    {
+      placeholder: "Count", title: '2', onChange: (event: Event) =>
+        setCount(Number((event.target as HTMLInputElement).value))
+    },
+    {
+      placeholder: "Hue", title: '3', onChange: (event: Event) =>
+        setHue(Number((event.target as HTMLInputElement).value))
+    }
+  ];
 
   useEffect(() => {
-    console.log('hue', hue);
-    console.log('lightnessRange', lightnessRange);
-    console.log('saturationRange', saturationRange);
-    console.log('count', count);
-    const tone = EColorTone.Earth;
-
-    const colors = useEarthPalette({ hue, count });
-
-    const circlesProps = {
-      title: "My Earth Tone Palette",
-      circles: colors
+    function reusePalette({ tone, hue, count }: { tone: EAnkhColorTone, hue: number, count: number }) {
+      const re = useColorPalette();
+      switch (tone) {
+        case EAnkhColorTone.Earth: return re.useEarthPalette({ count, hue });
+        case EAnkhColorTone.Fluorescent: return re.useFluorescentPalette({ count, hue });
+        case EAnkhColorTone.Jewel: return re.useJewelPalette({ count, hue });
+        case EAnkhColorTone.Neutral: return re.useNeutralPalette({ count, hue });
+        case EAnkhColorTone.Pastel: return re.usePastelPalette({ count, hue });
+        case EAnkhColorTone.Shades: return re.useShadesPalette({ count, hue });
+      }
+    }
+    const colors = reusePalette({ tone, hue, count });
+    const palette = {
+      title: { title }, circles: colors
         .map((color) => useColorParser().parseHsl(color))
         .map(([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`)
         .map((color) => ({ color, size: EAnkhUiSize.Md }))
     };
 
-    setCircles({ ...circlesProps });
-  }, [hue, lightnessRange, saturationRange, count])
-
-  const handleRangeChange = (setter: React.Dispatch<React.SetStateAction<[number, number]>>, index: number, value: number) => {
-    setter((prev) => {
-      const newRange = [...prev] as [number, number];
-      newRange[index] = value;
-      return newRange;
-    });
-  };
+  }, [hue, count])
 
   return (
-    <>
-      <AnkhUiHeading level="h1" text="Custom Color Palette Generator" />
-      <div data-ui='color-palette-generator'>
-        <div>{circles?.circles && <AnkhUiCircles title={""} circles={circles.circles} />}</div>
-        <section>
-          <AnkhUiForm>
-
-            <div data-ui='form-row'>
-              <label>Title:
-                <input style={{ border: '0', background: 'transparent' }} onChange={(e) => setTitle(e.target.value)} type='text' value={title} />
-              </label>
-              <label>Count:
-                <input
-                  type="number"
-                  value={count}
-                  onChange={(e) => setCount(Number(e.target.value))}
-                  min={1}
-                />
-              </label>
-            </div>
-            <div data-ui='form-row'>
-              <label>Hue:
-                <input
-                  type="number"
-                  value={hue}
-                  onChange={(e) => setHue(Number(e.target.value))}
-                  min={0}
-                  max={360}
-                />
-              </label>
-            </div>
-          </AnkhUiForm>
-        </section>
-      </div>
-    </>
+    <div data-ui='color-palette-generator'>
+      {ui?.circles && <AnkhUiCircles title={""} circles={ui.circles} />}
+      <section>
+        <AnkhUiForm>{fields.map((field, i) => (<input title='1' key={`field-${i}`} />))}</AnkhUiForm>
+      </section>
+    </div>
   );
 };
 
-enum EColorTone {
-  Earth,
-  Fluorescent,
-  Jewel,
-  Neutral,
-  Pastel,
-  Shades
+interface IAnkhUiColorPaletteGenerator {
+  tone: EAnkhColorTone;
 }
