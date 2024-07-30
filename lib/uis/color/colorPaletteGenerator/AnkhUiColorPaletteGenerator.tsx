@@ -6,8 +6,9 @@ import { EAnkhColorTone, EAnkhUiSize } from 'ankh-types';
 import { AnkhUiForm } from '@/uis/form/AnkhUiForm';
 import "./paletteGenerator.css";
 
-export function AnkhUiColorPaletteGenerator({ tone }: IAnkhUiColorPaletteGenerator) {
+export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorPaletteGenerator) {
   const [hue, setHue] = useState(240);
+  const [tone, setTone] = useState<EAnkhColorTone>(initialTone);
   const [title, setTitle] = useState('My Palette');
   const [count, setCount] = useState(5);
   const [ui, setUi] = useState<IAnkhUiCircles>();
