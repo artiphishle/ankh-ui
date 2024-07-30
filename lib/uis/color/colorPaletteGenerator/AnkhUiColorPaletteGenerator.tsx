@@ -28,7 +28,7 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
   ];
 
   useEffect(() => {
-    function reusePalette({ tone, hue, count }: { tone: EAnkhColorTone, hue: number, count: number }) {
+    function reusePalette({ hue, count }: { tone: EAnkhColorTone, hue: number, count: number }) {
       const re = useColorPalette();
       console.log('inside the mess', tone, hue, count)
       switch (tone) {
