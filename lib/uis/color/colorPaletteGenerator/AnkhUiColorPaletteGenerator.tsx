@@ -13,11 +13,9 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
   const [palette, setPalette] = useState<IAnkhUiCircles>({ title: 'My Palette', circles: [] });
   const fields = [
     {
-      placeholder: `My Palette`, title: '1', onChange: (event: ChangeEvent) =>
-        setPalette(({ circles }) => ({
-          circles,
-          title: (event?.target as HTMLInputElement).value
-        }))
+      placeholder: `My Palette`,
+      title: '1',
+      onChange: (event: ChangeEvent) => setPalette(({ circles }) => ({ circles, title: (event?.target as HTMLInputElement).value })),
     },
     {
       placeholder: "Count", title: '2', onChange: (event: Event) =>
@@ -53,7 +51,7 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
     <div data-ui='color-palette-generator'>
       {palette.circles && <AnkhUiCircles title={palette.title} circles={palette.circles} />}
       <section>
-        <AnkhUiForm>{fields.map((field, i) => (<input title='1' key={`field-${i}`} />))}</AnkhUiForm>
+        <AnkhUiForm items={fields} />
       </section>
     </div>
   );
