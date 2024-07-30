@@ -11,10 +11,6 @@ export function AnkhUiColorPaletteGenerator({ tone }: IAnkhUiColorPaletteGenerat
   const [title, setTitle] = useState('My Palette');
   const [count, setCount] = useState(5);
   const [ui, setUi] = useState<IAnkhUiCircles>();
-  const [palettes, setPalettes] = useState();
-
-
-
   const fields = [
     {
       placeholder: `My Palette`, title: '1', onChange: (event: ChangeEvent) =>
@@ -42,14 +38,14 @@ export function AnkhUiColorPaletteGenerator({ tone }: IAnkhUiColorPaletteGenerat
         case EAnkhColorTone.Shades: return re.useShadesPalette({ count, hue });
       }
     }
-    const colors = reusePalette({ tone, hue, count });
-    const palette = {
-      title: { title }, circles: colors
-        .map((color) => useColorParser().parseHsl(color))
-        .map(([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`)
-        .map((color) => ({ color, size: EAnkhUiSize.Md }))
-    };
+    const circles = reusePalette({ tone, hue, count });
+    // .map((color) => useColorParser().parseHsl(color))
+    // .map(([h, s, l]) => `hsl(${h}, ${s}%, ${l}%)`)
+    // .map((color) => ({ color, size: EAnkhUiSize.Md }));
+    console.log('circles');
+    console.log(circles);
 
+    const palette = { title, circles }
   }, [hue, count])
 
   return (

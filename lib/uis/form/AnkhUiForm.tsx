@@ -13,32 +13,30 @@ export function AnkhUiForm({ }: IAnkhUiForm) {
   const listIndexes = list.map((item, index) => index);
 
   const Row = (index: number, item: any) => (
-    <Auth.ReadRole>
-      <div key={getKey(index)}>
-        <input
-          placeholder="Please enter name"
-          onChange={(e) => replace(index, e.target.value)}
-          value={item}
-        />
-        <Auth.WriteRole>
-          {list.length > 1 && (
-            <div
-              onClick={() => {
-                remove(index);
-              }}
-            >
-              (-)
-            </div>
-          )}
+    <Auth.ReadRole key={getKey(index)}>
+      <input
+        placeholder="Please enter name"
+        onChange={(e) => replace(index, e.target.value)}
+        value={item}
+      />
+      <Auth.WriteRole>
+        {list.length > 1 && (
           <div
             onClick={() => {
-              insert(index + 1, '');
+              remove(index);
             }}
           >
-            (+)
+            (-)
           </div>
-        </Auth.WriteRole>
-      </div>
+        )}
+        <div
+          onClick={() => {
+            insert(index + 1, '');
+          }}
+        >
+          (+)
+        </div>
+      </Auth.WriteRole>
     </Auth.ReadRole>
   );
 
