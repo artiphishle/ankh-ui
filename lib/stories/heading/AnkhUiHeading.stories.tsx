@@ -26,6 +26,6 @@ export const H3: Story = {
 };
 export const H4: Story = {
   args: {
-    level: "H4"
+    level: "h4"
   }
 }
