@@ -1,7 +1,7 @@
 "use client";
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useColorPalette, useColorParser } from 'ankh-hooks';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 import { AnkhUiCircles, IAnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircles';
 import { EAnkhColorTone, EAnkhUiSize } from 'ankh-types';
 import { AnkhUiForm, EAnkhUiFormInputType, IAnkhUiFormItem } from '@/uis/form/AnkhUiForm';
@@ -10,7 +10,7 @@ import "./paletteGenerator.css";
 
 export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorPaletteGenerator) {
   const [hue] = useState(240); /** @deprecated */
-  const [repeatUuid, setRepeatUuid] = useState(uuid());
+  const [repeatUuid, setRepeatUuid] = useState(v4());
   const [tone, setTone] = useState<EAnkhColorTone>(initialTone);
   const [count, setCount] = useState(5);
   const [palette, setPalette] = useState<IAnkhUiCircles>({ title: 'My Palette', circles: [] });
@@ -69,7 +69,7 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
       {palette.circles && <AnkhUiCircles title={palette.title} circles={palette.circles} />}
       <section>
         <AnkhUiForm items={fields} />
-        <AnkhUiButton icon="refresh-ccw" label='' onClick={() => setRepeatUuid(uuid())} />
+        <AnkhUiButton icon="refresh-ccw" label='' onClick={() => setRepeatUuid(v4())} />
       </section>
     </div>
   );

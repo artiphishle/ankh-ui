@@ -1,6 +1,5 @@
 'use client';
 import { Auth } from '@/auth/Auth';
-import './form.css';
 import { ChangeEvent } from 'react';
 
 export function AnkhUiForm({ items }: IAnkhUiForm) {
