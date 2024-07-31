@@ -1,14 +1,16 @@
 "use client";
+import { v4 } from 'uuid';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useColorPalette, useColorParser } from 'ankh-hooks';
-import { v4 } from 'uuid';
-import { AnkhUiCircles, IAnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircles';
+import { useAnkhCmsConfig } from "ankh-config";
 import { EAnkhColorTone, EAnkhUiSize } from 'ankh-types';
+import { AnkhUiCircles, IAnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircles';
 import { AnkhUiForm, EAnkhUiFormInputType, IAnkhUiFormItem } from '@/uis/form/AnkhUiForm';
 import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
 import "./paletteGenerator.css";
 
 export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorPaletteGenerator) {
+  const { config, setConfig } = useAnkhCmsConfig()!;
   const [hue] = useState(240); /** @deprecated */
   const [repeatUuid, setRepeatUuid] = useState(v4());
   const [tone, setTone] = useState<EAnkhColorTone>(initialTone);
@@ -43,6 +45,8 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
         setTone(Number((event.target as HTMLOptionElement).value))
     }
   ];
+
+  console.log('config:', config);
 
   useEffect(() => {
     function reusePalette({ count }: { hue: number, tone: EAnkhColorTone, count: number }) {
