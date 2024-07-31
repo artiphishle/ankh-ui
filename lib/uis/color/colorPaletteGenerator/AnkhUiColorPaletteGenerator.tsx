@@ -15,15 +15,15 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
   const [repeatUuid, setRepeatUuid] = useState(v4());
   const [tone, setTone] = useState<EAnkhColorTone>(initialTone);
   const [count, setCount] = useState(5);
-  const [palette, setPalette] = useState<IAnkhUiCircles>({ title: 'My Palette', circles: [] });
+  const [palette, setPalette] = useState<IAnkhUiCircles>({ circles: [] });
   const fields: IAnkhUiFormItem[] = [
-    {
+    /*{
       placeholder: 'Title',
       title: 'Palette Title',
       value: palette.title,
       onChange: (event: ChangeEvent<HTMLElement>) =>
         setPalette(({ circles }) => ({ circles, title: (event?.target as HTMLInputElement).value })),
-    },
+    },*/
     {
       placeholder: "Count",
       title: 'Color Count',
@@ -69,7 +69,7 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
 
   return (
     <div data-ui='color-palette-generator'>
-      {palette.circles && <AnkhUiCircles title={palette.title} circles={palette.circles} />}
+      {palette.circles && <AnkhUiCircles circles={palette.circles} />}
       <section>
         <AnkhUiForm items={fields} />
         <AnkhUiButton icon="refresh-ccw" label='' onClick={() => setRepeatUuid(v4())} />

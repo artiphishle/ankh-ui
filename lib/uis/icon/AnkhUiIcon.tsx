@@ -1,27 +1,35 @@
 "use client";
-import { Auth } from '@/auth/Auth';
+import { FC, SVGProps, useEffect, useState } from 'react';
+// import Image from 'next/image';
 import { EAnkhUiSize } from 'ankh-types';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { Auth } from '@/auth/Auth';
+import { useSvg } from 'ankh-hooks';
 
 export function AnkhUiIcon({ name, size = EAnkhUiSize.Xs }: IAnkhUiIcon) {
-  const [icon, setIcon] = useState<any>();
+  const [Svg, setSvg] = useState<SvgElement>();
+
   useEffect(() => {
-    async function importIcon() {
-      setIcon((await import(`./icons/${name.toLowerCase()}.svg`)));
+    async function fetchSvg() {
+      const LoadedSvg: SvgElement = await useSvg({ name });
+      setSvg(() => LoadedSvg);
     }
-    importIcon();
-  }, [])
+    fetchSvg();
+  }, [name])
+
+  /** @todo Show loader? */
+  if (!Svg) return <Auth.ReadRole></Auth.ReadRole>
 
   return (
     <Auth.ReadRole>
-      <Image alt={name} src={`./icons/${name.toLowerCase()}.svg`} width={parseInt(size)} height={parseInt(size)} />
+      <Svg />
+      {/*<Image alt={name} src={`./icons/${name.toLowerCase()}.svg`} width={parseInt(size)} height={parseInt(size)} />*/}
     </Auth.ReadRole>
   );
 }
 
-type SvgInHtml = SVGElement & HTMLElement;
 interface IAnkhUiIcon {
   name: string;
   size?: EAnkhUiSize;
 }
+
+type SvgElement = FC<SVGProps<SVGSVGElement>>;
