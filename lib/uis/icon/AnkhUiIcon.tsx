@@ -1,5 +1,5 @@
 "use client";
-import { FC, SVGProps, useEffect, useState } from 'react';
+import { type FC, type SVGProps } from 'react';
 // import Image from 'next/image';
 import { EAnkhUiSize } from 'ankh-types';
 import { Auth } from '@/auth/Auth';

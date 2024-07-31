@@ -18,5 +18,6 @@ const config: StorybookConfig = {
       core: { builder: { options: { lazyCompilation: true } } }
     },
   },
+  staticDirs: ['./static'],
 };
 export default config;
