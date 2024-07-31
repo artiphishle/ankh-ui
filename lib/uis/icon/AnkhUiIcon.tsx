@@ -6,22 +6,14 @@ import { Auth } from '@/auth/Auth';
 import { useSvg } from 'ankh-hooks';
 
 export function AnkhUiIcon({ name, size = EAnkhUiSize.Xs }: IAnkhUiIcon) {
-  const [Svg, setSvg] = useState<SvgElement>();
-
-  useEffect(() => {
-    async function fetchSvg() {
-      const LoadedSvg: SvgElement = await useSvg({ name });
-      setSvg(() => LoadedSvg);
-    }
-    fetchSvg();
-  }, [name])
+  const { svg }: any = useSvg(`/icons/${name.toLowerCase()}.svg`);
 
   /** @todo Show loader? */
-  if (!Svg) return <Auth.ReadRole></Auth.ReadRole>
+  if (!svg) return <Auth.ReadRole></Auth.ReadRole>
 
   return (
     <Auth.ReadRole>
-      <Svg />
+      <div dangerouslySetInnerHTML={{ __html: svg }}></div>
       {/*<Image alt={name} src={`./icons/${name.toLowerCase()}.svg`} width={parseInt(size)} height={parseInt(size)} />*/}
     </Auth.ReadRole>
   );

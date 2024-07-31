@@ -23,13 +23,14 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
       value: palette.title,
       onChange: (event: ChangeEvent<HTMLElement>) =>
         setPalette(({ circles }) => ({ circles, title: (event?.target as HTMLInputElement).value })),
-    },*/
+    },
     {
       placeholder: "Count",
       title: 'Color Count',
+      value: count.toString(),
       onChange: (event: ChangeEvent<HTMLElement>) =>
         setCount(Number((event.target as HTMLInputElement).value))
-    },
+    },*/
     {
       type: EAnkhUiFormInputType.Select,
       title: 'Tone',
@@ -69,11 +70,21 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
 
   return (
     <div data-ui='color-palette-generator'>
-      {palette.circles && <AnkhUiCircles circles={palette.circles} />}
-      <section>
-        <AnkhUiForm items={fields} />
-        <AnkhUiButton icon="refresh-ccw" label='' onClick={() => setRepeatUuid(v4())} />
-      </section>
+      {palette.circles && (
+        <div style={{ display: 'flex' }}>
+          <div style={{ marginRight: '.4rem', display: 'flex', flexDirection: 'column' }}>
+            <div>
+              <AnkhUiForm items={fields} />
+              <AnkhUiButton icon="refresh-ccw" label='' onClick={() => setRepeatUuid(v4())} />
+            </div>
+            <div>
+              <AnkhUiButton label='-' onClick={() => setCount((prevCount) => prevCount - 1)} />
+              <AnkhUiButton label='+' onClick={() => setCount((prevCount) => prevCount + 1)} />
+            </div>
+          </div>
+          <AnkhUiCircles circles={palette.circles} />
+        </div>
+      )}
     </div>
   );
 };
