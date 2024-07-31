@@ -12,8 +12,8 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0(react@18.3.1)
       ankh-config:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       ankh-hooks:
         specifier: ^1.0.9
         version: 1.0.9
@@ -2005,8 +2005,8 @@ packages:
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
 
-  ankh-config@1.0.0:
-    resolution: {integrity: sha512-QwvjkKmzZ6ospm63J8eWy7jF5EXfLxtlzQ0lpcTORCF75De684kx3mQIGVSSp/ZYHCMtDQ1SZvA5EwyoUjgvWw==}
+  ankh-config@1.0.1:
+    resolution: {integrity: sha512-FlJLGX5PaA86fx3WGvu6h0AJ1uU2fAhZGHJMygm6MnuoXTfYg8zePkVe4LSF4LHxl4coh9ZoOfEET2zutdg+Bg==}
 
   ankh-hooks@1.0.9:
     resolution: {integrity: sha512-TctJtQeG0I993y5/F54JIn4vM7/HzLgkkesfrbBS6ZEA6InDGyOK5PjzOOLp/1pHBgEUm2AJKjp9qB+MBmW01Q==}
@@ -7228,7 +7228,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  ankh-config@1.0.0:
+  ankh-config@1.0.1:
     dependencies:
       '@types/node': 22.0.0
       react: 18.3.1
