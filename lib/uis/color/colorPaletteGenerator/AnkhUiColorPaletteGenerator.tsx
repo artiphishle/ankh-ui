@@ -46,11 +46,10 @@ export function AnkhUiColorPaletteGenerator({ tone: initialTone }: IAnkhUiColorP
     }
   ];
 
-  console.log('config:', config);
-
   useEffect(() => {
     function reusePalette({ count }: { hue: number, tone: EAnkhColorTone, count: number }) {
       const re = useColorPalette();
+      console.log('config:', config);
       switch (tone) {
         case EAnkhColorTone.Earth: return re.useEarthPalette({ count, hue });
         case EAnkhColorTone.Fluorescent: return re.useFluorescentPalette({ count, hue });
