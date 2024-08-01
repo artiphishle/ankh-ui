@@ -1,27 +1,44 @@
-import { useState, type PropsWithChildren, type ReactNode } from 'react';
+"use client";
+import { useState, type PropsWithChildren } from 'react';
 import { Auth } from '@/auth/Auth';
+import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
 import './grid.css';
-import { AnkhUiButton } from '../button/AnkhUiButton';
+import { useAnkhCmsConfig } from 'ankh-config';
+import type { IAnkhUiIntrinsicProps, IAnkhCmsConfig } from 'ankh-types';
 
-/*
-Think about Context and how to ingest to UI's FIRST!!
-1. Add 'id' for every UI in config
-2. hook to update props 'p' param in config 
-*/
+function updateUiConfigById(config: IAnkhCmsConfig, id: string) {
+  config.pages.forEach((page) => {
+    page.uis.forEach((ui) => {
+      const props = ui.p as { [k: string]: unknown } & IAnkhUiIntrinsicProps;
+      if (props._ui?.id === id) {
+        console.log('found', props);
+        return;
+      };
+    });
+  })
+}
 
 export function GridCell({ children }: IAnkhUiGridCell) {
   return <div data-ui="grid-cell">{children}</div>;
 }
 
-export function AnkhUiGrid({ children, columns: initialColumns = 1 }: IAnkhUiGrid) {
+
+export function AnkhUiGrid({ _ui, children, columns: initialColumns = 1 }: IAnkhUiGrid) {
   const [columns, setColumns] = useState(initialColumns);
+  const config = useAnkhCmsConfig();
+
+  updateUiConfigById(config, _ui.id);
 
   return (
     <Auth.ReadRole>
-      <Auth.WriteRole>
-        <span><AnkhUiButton onClick={() => setColumns((prev) => prev - 1)} icon='minus' label='' />{columns} Cols<AnkhUiButton onClick={() => setColumns((prev) => prev + 1)} icon='plus' label='' /></span>
-      </Auth.WriteRole>
-      <div data-ui="grid" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>{children}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', background: 'beige', padding: '1rem' }}>
+        <Auth.WriteRole>
+          <div>
+            <AnkhUiButton onClick={() => setColumns((prev) => prev - 1)} icon='minus' label='' />{columns} Cols<AnkhUiButton onClick={() => setColumns((prev) => prev + 1)} icon='plus' label='' />
+          </div>
+        </Auth.WriteRole>
+        <div data-ui="grid" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>{children}</div>
+      </div>
     </Auth.ReadRole>
   );
 }
@@ -29,7 +46,7 @@ export function AnkhUiGrid({ children, columns: initialColumns = 1 }: IAnkhUiGri
 interface IAnkhUiGridCell extends PropsWithChildren {
   id: string;
 }
-interface IAnkhUiGrid extends PropsWithChildren {
+interface IAnkhUiGrid extends PropsWithChildren, IAnkhUiIntrinsicProps {
   columns?: number;
   styles?: Array<[string, string, string]>; // TStyle[]
 }
