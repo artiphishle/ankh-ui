@@ -6,13 +6,27 @@ export function AnkhUiForm({ items }: IAnkhUiForm) {
   return (
     <Auth.ReadRole>
       <form data-ui="form">
-        {items.map(({ title, placeholder = '', type = EAnkhUiFormInputType.Text, options, onChange = () => { } }, index) => {
+        {items.map(({ title, placeholder = '', value, type = EAnkhUiFormInputType.Text, options, min = 1, max = 50, onChange = () => { } }, index) => {
           switch (type) {
-            case EAnkhUiFormInputType.Text: return (<input title={title} type={type} placeholder={placeholder} key={`form-field-${index}`} onChange={onChange} />)
+            case EAnkhUiFormInputType.Range:
+            case EAnkhUiFormInputType.Text: return (
+              <input
+                title={title}
+                type={type}
+                min={min}
+                max={max}
+                placeholder={placeholder}
+                key={`form-field-${index}`}
+                onChange={onChange}
+                value={value}
+              />)
             case EAnkhUiFormInputType.Select:
               return (
                 <select title={title} key={`form-field-${index}`} onChange={onChange}>
-                  {options?.map(({ name, value }, optionIndex) => <option key={`form-tone-option-${optionIndex}`} value={value}>{name}</option>)}
+                  {options?.map(
+                    ({ name, value, selected }, optionIndex) =>
+                      <option key={`form-tone-option-${optionIndex}`} value={value} selected={selected}>{name}</option>
+                  )}
                 </select>
               )
           }
@@ -32,10 +46,12 @@ export enum EAnkhUiFormInputType {
 }
 export interface IAnkhUiFormItem {
   title: string;
+  min?: number;
+  max?: number;
   options?: IAnkhUiFormSelectOptions[];
   placeholder?: string;
   type?: EAnkhUiFormInputType;
-  value?: string;
+  value?: string | number;
   onChange?: (event: ChangeEvent<HTMLElement>) => void;
 }
 interface IAnkhUiForm {
@@ -44,4 +60,5 @@ interface IAnkhUiForm {
 interface IAnkhUiFormSelectOptions {
   name: string;
   value: string | number;
+  selected?: boolean;
 }

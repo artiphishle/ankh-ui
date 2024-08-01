@@ -8,7 +8,6 @@ export function AnkhUiButton({
   backgroundColor,
   icon,
   label,
-  style = {},
   variant = EAnkhUiVariant.Default,
   ...props
 }: IAnkhUiButton) {
@@ -16,7 +15,7 @@ export function AnkhUiButton({
     <Auth.ReadRole>
       <button
         data-ui="button"
-        style={style}
+        style={{ display: 'flex' }}
         type="button"
         className={[
           'storybook-button',
