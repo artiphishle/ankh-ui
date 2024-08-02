@@ -1,52 +1,57 @@
 "use client";
-import { useState, type PropsWithChildren } from 'react';
+import { useEffect, useState, type PropsWithChildren } from 'react';
 import { Auth } from '@/auth/Auth';
 import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
+import { useIndexedDb } from "ankh-hooks";
+import type { IAnkhUiIntrinsicProps, TStyle } from 'ankh-types';
 import './grid.css';
-import { useAnkhCmsConfig } from 'ankh-config';
-import type { IAnkhUiIntrinsicProps, IAnkhCmsConfig } from 'ankh-types';
-
-function updateUiConfigById(config: IAnkhCmsConfig, id: string) {
-  config.pages.forEach((page) => {
-    page.uis.forEach((ui) => {
-      const props = ui.p as { [k: string]: unknown } & IAnkhUiIntrinsicProps;
-      if (props._ui?.id === id) {
-        console.log('found', props);
-        return;
-      };
-    });
-  })
-}
 
 export function GridCell({ children }: IAnkhUiGridCell) {
   return <div data-ui="grid-cell">{children}</div>;
 }
 
-
-export function AnkhUiGrid({ _ui, children, columns: initialColumns = 1 }: IAnkhUiGrid) {
+export function AnkhUiGrid(props: IAnkhUiGrid) {
+  const { _ui: { id }, columns: initialColumns = 1, styles = [] } = props;
+  const { api } = useIndexedDb<IAnkhUiGridConfig>({ dbName: 'ankh-cms', storeName: 'ui-config' });
   const [columns, setColumns] = useState(initialColumns);
-  const config = useAnkhCmsConfig();
 
-  updateUiConfigById(config, _ui.id);
+  useEffect(() => {
+    if (!api?.read) return;
+
+    const loadConfig = async () => {
+      const storedConfig = await api.read(id) as IAnkhUiGridConfig;
+      storedConfig ? setColumns(storedConfig.columns) : await api.create({ columns, styles }, id);
+    };
+    loadConfig();
+  }, [api?.read])
+
+  const handleColumnChange = (newColumns: number) => {
+    setColumns(newColumns);
+    api?.update({ styles, columns: newColumns }, id)
+  };
 
   return (
     <Auth.ReadRole>
-      <div style={{ display: 'flex', flexDirection: 'column', background: 'beige', padding: '1rem' }}>
-        <Auth.WriteRole>
-          <div>
-            <AnkhUiButton onClick={() => setColumns((prev) => prev - 1)} icon='minus' label='' />{columns} Cols<AnkhUiButton onClick={() => setColumns((prev) => prev + 1)} icon='plus' label='' />
-          </div>
-        </Auth.WriteRole>
-        <div data-ui="grid" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>{children}</div>
+      <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', background: 'rgba(0,0,0,.3', padding: '1rem' }}>
+          <Auth.WriteRole>
+            <AnkhUiButton onClick={() => handleColumnChange(columns - 1)} icon='minus' label='' />
+            <span>{columns} Cols</span>
+            <AnkhUiButton onClick={() => handleColumnChange(columns + 1)} icon='plus' label='' />
+          </Auth.WriteRole>
+        </div>
+        <div data-ui="grid" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>{props.children}</div>
       </div>
     </Auth.ReadRole>
   );
 }
 
 interface IAnkhUiGridCell extends PropsWithChildren {
-  id: string;
+  id: number;
 }
 interface IAnkhUiGrid extends PropsWithChildren, IAnkhUiIntrinsicProps {
   columns?: number;
-  styles?: Array<[string, string, string]>; // TStyle[]
+  styles?: TStyle[]
 }
+
+interface IAnkhUiGridConfig { columns: number; styles: TStyle[] }
