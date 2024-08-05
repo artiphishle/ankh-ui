@@ -1,15 +1,18 @@
 "use client";
 import { Auth } from "@/auth/Auth";
 import { EAnkhColorTone, EAnkhUiSize, IAnkhColorHsl } from "ankh-types";
-import { /* AnkhUiForm, */ EAnkhUiFormInputType, IAnkhUiFormItem } from "@/uis/form/AnkhUiForm";
+import { AnkhUiForm, EAnkhUiFormInputType, IAnkhUiFormItem } from "@/uis/form/AnkhUiForm";
 import { AnkhUiCircles } from "@/uis/shapes/circles/AnkhUiCircles";
 import type { IAnkhUiCircle } from "@/uis/shapes/circle/AnkhUiCircle";
 import { ChangeEvent, useState } from "react";
 import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
+import { useColorPalette } from "ankh-hooks";
 
-export function AnkhUiColorPalette({ colors }: IAnkhUiColorPalette) {
-  const [selectedTone, setSelectedTone] = useState<EAnkhColorTone>(EAnkhColorTone.Earth);
-  const toneOptions = Object.keys(EAnkhColorTone).map((name: string) => ({ name, value: name }));
+export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
+  const { getUsedColorTone } = useColorPalette();
+  const [selectedTone, setSelectedTone] = useState<EAnkhColorTone | undefined | "">(getUsedColorTone(colors));
+  const [isEditMode, setIsEditMode] = useState(false);
+  const toneOptions = Object.keys(EAnkhColorTone).map((toneName: string) => ({ name: toneName, value: toneName }));
   const circles: IAnkhUiCircle[] = colors.map(({ h, s, l }) => ({ color: `hsl(${h},${s}%,${l}%)`, size: EAnkhUiSize.Sm }));
 
   const $e = {
@@ -25,20 +28,33 @@ export function AnkhUiColorPalette({ colors }: IAnkhUiColorPalette) {
     }
   ];
 
+  console.log(formItems)
+
   return (
     <Auth.ReadRole>
       <div style={{ display: 'flex', alignItems: 'center', background: '#eee', padding: '1rem', marginBottom: '.4rem' }} data-ui='color-palette'>
-        <AnkhUiCircles circles={circles} />
-        <AnkhUiButton icon="pencil" label='' />
-        {/*<Auth.WriteRole>
-          <AnkhUiForm items={formItems} />
-        </Auth.WriteRole>*/}
+        <div>
+          <h4>{name}</h4>
+          <AnkhUiCircles circles={circles} />
+        </div>
+        <Auth.WriteRole>
+          {!isEditMode
+            ? <AnkhUiButton icon="pencil" label='' onClick={() => setIsEditMode(true)} />
+            :
+            <>
+              <AnkhUiForm items={formItems}></AnkhUiForm>
+              <AnkhUiButton label="OK" onClick={() => setIsEditMode(false)} />
+              <AnkhUiButton label="Cancel" onClick={() => setIsEditMode(false)} />
+            </>
+          }
+        </Auth.WriteRole>
       </div>
     </Auth.ReadRole>
   );
 }
 
-interface IAnkhUiColorPalette {
+export interface IAnkhUiColorPalette {
+  name: string;
   colors: IAnkhColorHsl[];
   active?: boolean;
 }
