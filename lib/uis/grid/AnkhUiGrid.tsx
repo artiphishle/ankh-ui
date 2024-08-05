@@ -12,22 +12,29 @@ export function GridCell({ children }: IAnkhUiGridCell) {
 
 export function AnkhUiGrid(props: IAnkhUiGrid) {
   const { _ui: { id }, columns: initialColumns = 1, styles = [] } = props;
-  const { api } = useIndexedDb<IAnkhUiGridConfig>({ dbName: 'ankh-cms', storeName: 'ui-config' });
-  const [columns, setColumns] = useState(initialColumns);
+  const { db, api } = useIndexedDb<IAnkhUiGridConfig>({ dbName: 'ankh-cms', storeName: 'ui-config' });
+  const [columns, setColumns] = useState<number>(initialColumns);
 
   useEffect(() => {
-    if (!api?.read) return;
+    if (!db) return;
 
     const loadConfig = async () => {
-      const storedConfig = await api.read(id) as IAnkhUiGridConfig;
-      storedConfig ? setColumns(storedConfig.columns) : await api.create({ columns, styles }, id);
+      const defaultConfig = { id, styles, columns: initialColumns };
+
+      const storedConfig = await api.get(id);
+      if (!storedConfig) await api.add(defaultConfig);
+
+      const config = storedConfig || defaultConfig;
+      setColumns(config.columns);
     };
     loadConfig();
-  }, [api?.read])
+  }, [db, api.add, api.get])
+
+  useEffect(() => { columns >= 1 && setColumns(columns) }, [columns]);
 
   const handleColumnChange = (newColumns: number) => {
+    api.put({ id, styles, columns: newColumns });
     setColumns(newColumns);
-    api?.update({ styles, columns: newColumns }, id)
   };
 
   return (
@@ -36,7 +43,7 @@ export function AnkhUiGrid(props: IAnkhUiGrid) {
         <div style={{ display: 'flex', background: 'rgba(0,0,0,.3', padding: '1rem' }}>
           <Auth.WriteRole>
             <AnkhUiButton onClick={() => handleColumnChange(columns - 1)} icon='minus' label='' />
-            <span>{columns} Cols</span>
+            {<span>{columns} Cols</span>}
             <AnkhUiButton onClick={() => handleColumnChange(columns + 1)} icon='plus' label='' />
           </Auth.WriteRole>
         </div>
@@ -54,4 +61,4 @@ interface IAnkhUiGrid extends PropsWithChildren, IAnkhUiIntrinsicProps {
   styles?: TStyle[]
 }
 
-interface IAnkhUiGridConfig { columns: number; styles: TStyle[] }
+interface IAnkhUiGridConfig { id: number | string; columns: number; styles: TStyle[] }
