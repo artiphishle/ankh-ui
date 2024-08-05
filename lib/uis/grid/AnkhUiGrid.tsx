@@ -28,7 +28,7 @@ export function AnkhUiGrid(props: IAnkhUiGrid) {
       setColumns(config.columns);
     };
     loadConfig();
-  }, [db, api.add, api.get])
+  }, [db])
 
   useEffect(() => { columns >= 1 && setColumns(columns) }, [columns]);
 

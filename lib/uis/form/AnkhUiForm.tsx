@@ -22,7 +22,7 @@ export function AnkhUiForm({ items }: IAnkhUiForm) {
               />)
             case EAnkhUiFormInputType.Select:
               return (
-                <select title={title} key={`form-field-${index}`} onChange={onChange}>
+                <select value={value} title={title} key={`form-field-${index}`} onChange={onChange}>
                   {options?.map(
                     ({ name, value, selected }, optionIndex) =>
                       <option key={`form-tone-option-${optionIndex}`} value={value} selected={selected}>{name}</option>
