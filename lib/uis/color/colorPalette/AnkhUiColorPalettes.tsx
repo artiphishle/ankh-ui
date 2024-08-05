@@ -8,7 +8,7 @@ import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 
 export const THEME_ID = 1337;
 
-export function AnkhUiColorPalettes({ }: IAnkhUiColorPalette[]) {
+export function AnkhUiColorPalettes({ }) {
   const { api, db } = useIndexedDb<{ id: IDBValidKey, palettes: IAnkhUiColorPalette[] }>({ dbName: "ankh-cms", storeName: "ui-config" });
   const theme = useAnkhCmsConfig().theme;
   const [palettes, setPalettes] = useState<IAnkhUiColorPalette[]>([]);
