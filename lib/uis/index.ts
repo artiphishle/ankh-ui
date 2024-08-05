@@ -3,7 +3,8 @@ export { AnkhUiButton } from './button/AnkhUiButton';
 export { AnkhUiCard } from './card/AnkhUiCard';
 
 export { AnkhUiColorHue } from './color/colorHue/AnkhUiColorHue';
-export { AnkhUiColorPaletteGenerator } from './color/colorPaletteGenerator/AnkhUiColorPaletteGenerator';
+export { AnkhUiColorPalette } from './color/colorPalette/AnkhUiColorPalette';
+export { AnkhUiColorPalettes } from './color/colorPalette/AnkhUiColorPalettes';
 export { AnkhUiColorPicker } from './color/colorPicker/AnkhUiColorPicker';
 export { AnkhUiColorWheel } from './color/colorWheel/AnkhUiColorWheel';
 
