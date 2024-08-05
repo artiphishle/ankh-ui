@@ -6,7 +6,6 @@ import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 
 export function AnkhUiColorPalettes({ }: IAnkhUiColorPalettes) {
   const { palettes } = useAnkhCmsConfig().theme;
-  console.log('palettes:', palettes);
 
   return (
     <Auth.ReadRole>
