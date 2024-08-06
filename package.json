@@ -28,8 +28,9 @@
     "url": "git+https://github.com/artiphishle/ankh-ui.git"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.4",
     "ahooks": "^3.8.0",
-    "ankh-config": "^1.1.3",
+    "ankh-config": "^1.1.5",
     "ankh-hooks": "^1.4.2",
     "lucide-react": "^0.412.0",
     "next": "^14.2.5",
@@ -92,5 +93,5 @@
     "clean": true
   },
   "types": "dist/index.d.ts",
-  "version": "1.10.6"
+  "version": "1.10.7"
 }
