@@ -11,11 +11,24 @@ const meta: Meta<typeof AnkhUiButton> = {
 export default meta;
 type Story = StoryObj<typeof AnkhUiButton>;
 
+export const PrimaryButton: Story = {
+  args: {
+    label: 'Primary',
+    variant: EAnkhUiVariant.Primary,
+  },
+};
+
+export const SecondaryButton: Story = {
+  args: {
+    label: 'Secondary',
+    variant: EAnkhUiVariant.Secondary,
+  },
+};
+
 export const SuccessButton: Story = {
   args: {
     label: 'Success',
     variant: EAnkhUiVariant.Success,
-    backgroundColor: '#ccffcc',
   },
 };
 
@@ -23,7 +36,6 @@ export const WarningButton: Story = {
   args: {
     variant: EAnkhUiVariant.Warning,
     label: 'Warning',
-    backgroundColor: '#ccffcc',
   },
 };
 
@@ -31,7 +43,6 @@ export const ErrorButton: Story = {
   args: {
     variant: EAnkhUiVariant.Error,
     label: 'Error',
-    backgroundColor: '#ff0000',
   },
 };
 
@@ -39,7 +50,6 @@ export const InfoButton: Story = {
   args: {
     label: 'Info',
     variant: EAnkhUiVariant.Info,
-    backgroundColor: '#ababad',
   },
 };
 
@@ -47,6 +57,5 @@ export const DefaultButton: Story = {
   args: {
     label: 'Default',
     variant: EAnkhUiVariant.Default,
-    backgroundColor: '#fff',
   },
 };

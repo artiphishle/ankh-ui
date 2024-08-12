@@ -11,5 +11,6 @@ type Story = StoryObj<typeof AnkhUiPagination>;
 
 export const NavTextOnly: Story = {
   args: {
+    _ui: { id: 1617 }
   },
 };

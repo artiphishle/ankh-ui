@@ -9,6 +9,6 @@ export default meta;
 
 type Story = StoryObj<typeof AnkhUiDialog>;
 
-export const ColorWheel: Story = {
+export const ModalDialog: Story = {
   args: {}
 };

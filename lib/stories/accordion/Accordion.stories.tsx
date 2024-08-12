@@ -13,6 +13,7 @@ type Story = StoryObj<typeof AnkhUiAccordion>;
 
 export const Accordion: Story = {
   args: {
+    _ui: { id: 1335 },
     items: [
       {
         summary: <AnkhUiHeading level="h3" text="Preprocessor" />,

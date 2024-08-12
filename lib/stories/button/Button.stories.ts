@@ -1,51 +1,24 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {fn} from '@storybook/test';
-import {AnkhUiButton} from '@/uis/button/AnkhUiButton';
-import {EAnkhUiVariant} from 'ankh-types';
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
+import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
+import { EAnkhUiVariant } from 'ankh-types';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Example/Button',
   component: AnkhUiButton,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
-  },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  parameters: { layout: 'centered' },
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {
-    backgroundColor: {control: 'color'},
-  },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: {onClick: fn()},
+  argTypes: { backgroundColor: { control: 'color' } },
+  args: { onClick: fn() },
 } satisfies Meta<typeof AnkhUiButton>;
-
 export default meta;
+
+export const Primary: Story = { args: { label: 'Primary', variant: EAnkhUiVariant.Primary } };
+export const Secondary: Story = { args: { label: 'Secondary', variant: EAnkhUiVariant.Secondary } };
+export const Default: Story = { args: { label: 'Default', variant: EAnkhUiVariant.Default } };
+export const Info: Story = { args: { label: 'Info', variant: EAnkhUiVariant.Info } };
+export const Success: Story = { args: { label: 'Success', variant: EAnkhUiVariant.Success } };
+export const Warning: Story = { args: { label: 'Warning', variant: EAnkhUiVariant.Warning } };
+export const Error: Story = { args: { label: 'Error', variant: EAnkhUiVariant.Error } };
+
 type Story = StoryObj<typeof meta>;
-
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
-  args: {primary: true, label: 'Primary'},
-};
-
-export const Secondary: Story = {
-  args: {
-    label: 'Secondary',
-    variant: EAnkhUiVariant.Secondary,
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'small',
-    label: 'Button',
-  },
-};
