@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useState, type PropsWithChildren } from 'react';
+import { useActivePalette } from 'ankh-config';
+import { useIndexedDb } from "ankh-hooks";
 import { Auth } from '@/auth/Auth';
 import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
-import { useIndexedDb } from "ankh-hooks";
-import type { IAnkhUiIntrinsicProps, TStyle } from 'ankh-types';
-import './grid.css';
+import { EAnkhUiSize, type IAnkhCmsThemePalette, type IAnkhColorHsl, type IAnkhUiIntrinsicProps, type TStyle } from 'ankh-types';
 
 export function GridCell({ children }: IAnkhUiGridCell) {
   return <div data-ui="grid-cell">{children}</div>;
@@ -28,26 +28,42 @@ export function AnkhUiGrid(props: IAnkhUiGrid) {
       setColumns(config.columns);
     };
     loadConfig();
-  }, [db])
+  }, [db]);
 
-  useEffect(() => { columns >= 1 && setColumns(columns) }, [columns]);
+  useEffect(() => {
+    if (columns === null) return;
+    columns >= 1 && setColumns(columns >= 1 ? columns : initialColumns);
+  }, [columns]);
 
   const handleColumnChange = (newColumns: number) => {
     api.put({ id, styles, columns: newColumns });
     setColumns(newColumns);
   };
 
+  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
+  const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
+  useActivePalette().then((activePalette) => setPalette(activePalette));
+
+  if (!palette || columns === null) return;
+
+  const $ = {
+    display: 'grid',
+    gap: '.8rem',
+    width: '100%',
+    backgroundColor: stringifyHsl(palette.colors[2]!)
+  };
+
   return (
     <Auth.ReadRole>
       <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', background: 'rgba(0,0,0,.3', padding: '1rem' }}>
+        <div style={{ display: 'flex', color: '#fff', gap: '.8rem', backgroundColor: "#000", padding: '1rem', alignItems: 'center' }}>
           <Auth.WriteRole>
-            <AnkhUiButton onClick={() => handleColumnChange(columns - 1)} icon='minus' label='' />
+            <AnkhUiButton size={EAnkhUiSize.Xs} onClick={() => handleColumnChange(columns - 1)} icon='minus' label='' />
             {<span>{columns} Cols</span>}
-            <AnkhUiButton onClick={() => handleColumnChange(columns + 1)} icon='plus' label='' />
+            <AnkhUiButton size={EAnkhUiSize.Xs} onClick={() => handleColumnChange(columns + 1)} icon='plus' label='' />
           </Auth.WriteRole>
         </div>
-        <div data-ui="grid" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>{props.children}</div>
+        <div data-ui="grid" style={{ ...$, gridTemplateColumns: `repeat(${columns}, 1fr)` }}>{props.children}</div>
       </div>
     </Auth.ReadRole>
   );

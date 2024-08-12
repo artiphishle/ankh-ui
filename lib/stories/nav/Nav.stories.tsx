@@ -11,6 +11,7 @@ type Story = StoryObj<typeof AnkhUiNav>;
 
 export const NavTextOnly: Story = {
   args: {
+    _ui: { id: 141 },
     items: [
       { name: 'home' }, { name: 'company' }
     ],
@@ -19,9 +20,10 @@ export const NavTextOnly: Story = {
 
 export const NavWithIcons: Story = {
   args: {
+    _ui: { id: 141 },
     items: [
       { name: 'home', icon: 'House' },
-      { name: 'company', icon: 'Fabric' },
+      { name: 'company', icon: 'building-2' },
     ],
   },
 };

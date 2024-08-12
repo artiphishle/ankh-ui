@@ -9,11 +9,11 @@ export function AnkhUiIcon({ name, size = EAnkhUiSize.Xs }: IAnkhUiIcon) {
   const { svg }: any = useSvg(`/icons/${name.toLowerCase()}.svg`);
 
   /** @todo Show loader? */
-  if (!svg) return <Auth.ReadRole></Auth.ReadRole>
+  if (!svg) return <Auth.ReadRole />
 
   return (
     <Auth.ReadRole>
-      <div dangerouslySetInnerHTML={{ __html: svg }}></div>
+      <div dangerouslySetInnerHTML={{ __html: svg }} />
       {/*<Image alt={name} src={`./icons/${name.toLowerCase()}.svg`} width={parseInt(size)} height={parseInt(size)} />*/}
     </Auth.ReadRole>
   );

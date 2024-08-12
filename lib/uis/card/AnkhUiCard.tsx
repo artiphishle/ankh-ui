@@ -1,7 +1,9 @@
-import {AnkhUiHeading} from '@/uis/heading/AnkhUiHeading';
-import {IAnkhColor} from 'ankh-types';
-import Image, {type ImageProps} from 'next/image';
-import './card.css';
+"use client";
+import { useState } from 'react';
+import { useActivePalette } from 'ankh-config';
+import { AnkhUiHeading } from '@/uis/heading/AnkhUiHeading';
+import Image, { type ImageProps } from 'next/image';
+import type { IAnkhCmsThemePalette, IAnkhColor, IAnkhColorHsl } from 'ankh-types';
 
 export function AnkhUiCard({
   color,
@@ -10,14 +12,25 @@ export function AnkhUiCard({
   title,
   width = 200,
 }: IAnkhUiCard) {
+  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
+  const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
+  useActivePalette().then((activePalette) => setPalette(activePalette));
+
+  if (!palette) return;
+
+  const $ = {
+    backgroundColor: stringifyHsl(palette.colors[2]!),
+    color: stringifyHsl(palette.colors[3]!)
+  };
+
   return (
     <div
       data-ui="card"
-      style={{backgroundColor: color?.value, width: `${width}px`}}
+      style={{ padding: '.8rem', backgroundColor: $.backgroundColor, width: `${width}px` }}
     >
       <header>{title && <AnkhUiHeading text={title} level="h4" />}</header>
       <div>
-        {text && <p>{text}</p>}
+        {text && <p style={{ color: $.color }}>{text}</p>}
         {image && (
           <Image
             alt={image.alt}
