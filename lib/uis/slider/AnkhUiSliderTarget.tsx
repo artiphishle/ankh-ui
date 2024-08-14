@@ -13,7 +13,7 @@ export function AnkhUiSliderTarget({ _ui: { id }, fx = EAnkhUiSliderFx.SlideLeft
 
   return (
     <section className={fx} data-ui='slider-target' style={{ ...$, flexDirection: 'column' }} id={sliderId}>
-      {toggleBack && <AnkhUiSliderToggle _ui={{ id: 70661384 }} toggleId="" icon="x" />}
+      {toggleBack && <AnkhUiSliderToggle _ui={{ id: '70661384' }} toggleId="" icon="x" />}
       {children}
     </section>
   );

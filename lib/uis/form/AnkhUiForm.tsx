@@ -5,7 +5,7 @@ import { ChangeEvent } from 'react';
 export function AnkhUiForm({ items }: IAnkhUiForm) {
   return (
     <Auth.ReadRole>
-      <form data-ui="form">
+      <form data-ui='form' style={{ display: 'flex', flexDirection: 'column' }}>
         {items.map(({ title, placeholder = '', value, type = EAnkhUiFormInputType.Text, options, min = 1, max = 50, onChange = () => { } }, index) => {
           switch (type) {
             case EAnkhUiFormInputType.Range:
@@ -28,6 +28,10 @@ export function AnkhUiForm({ items }: IAnkhUiForm) {
                       <option key={`form-tone-option-${optionIndex}`} value={value} selected={selected}>{name}</option>
                   )}
                 </select>
+              )
+            case EAnkhUiFormInputType.Textarea:
+              return (
+                <textarea onChange={onChange} value={value} key={`form-field-${index}`} title={title} placeholder={placeholder} />
               )
           }
         }
