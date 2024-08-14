@@ -1,6 +1,6 @@
 import { type PropsWithChildren } from "react";
 import type { IAnkhUiIntrinsicProps } from "ankh-types";
-import { AnkhUiSliderToggle } from "./AnkhUiSliderToggle";
+import { AnkhUiSliderToggle } from "@/uis/slider/AnkhUiSliderToggle";
 import "./slider.css";
 
 export function AnkhUiSliderTarget({ _ui: { id }, fx = EAnkhUiSliderFx.SlideLeft, sliderId, toggleBack, children }: IAnkhUiSlider) {
