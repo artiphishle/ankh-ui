@@ -9,7 +9,6 @@ export function AnkhUiPagination({
   totalPages = 5,
   initialPage = 1,
   siblingCount = 1,
-  onPageChange = (page: number) => { },
 }: IPagination) {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
@@ -50,12 +49,17 @@ export function AnkhUiPagination({
   return (
     <Auth.ReadRole>
       <nav data-ui="pagination" aria-label="Pagination">
-        <ul style={{ display: 'flex', gap: '.4rem' }}>
-          <li style={{ padding: '.4rem', width: 'fit-content', color: $.color, backgroundColor: $.backgroundColor }}>
-            <Link style={{ color: $.color }}
+        <ul style={{ display: 'flex', gap: '.4rem', alignItems: 'center' }}>
+          <li style={{ visibility: currentPage === 1 ? 'hidden' : 'visible', padding: '.4rem .8rem', width: 'fit-content', color: $.color, backgroundColor: $.backgroundColor }}>
+            <Link style={{ color: $.color, textDecoration: 'none' }}
               className="block px-3 py-1 border rounded"
               href="#"
-              onClick={() => setCurrentPage((n) => n - 1)}
+              onClick={() => {
+                setCurrentPage((n) => {
+                  if (n - 1 === 0) return n;
+                  return n - 1;
+                });
+              }}
             >
               &laquo;
             </Link>
@@ -72,7 +76,7 @@ export function AnkhUiPagination({
                 key={index}
               >
                 <Link
-                  style={{ padding: '.4rem', color: currentPage === page ? $.colorActive : $.color, backgroundColor: currentPage === page ? $.backgroundColorActive : $.backgroundColor }}
+                  style={{ textDecoration: 'none', padding: '.4rem .8rem', color: currentPage === page ? $.colorActive : $.color, backgroundColor: currentPage === page ? $.backgroundColorActive : $.backgroundColor }}
                   href="#"
                   onClick={() => setCurrentPage(page as number)}
                 >
@@ -81,10 +85,13 @@ export function AnkhUiPagination({
               </li>
             )
           )}
-          <li style={{ color: $.color, backgroundColor: $.backgroundColor }}>
-            <Link
+          <li style={{ visibility: currentPage === totalPages ? 'hidden' : 'visible', padding: '.4rem .8rem', backgroundColor: $.backgroundColor }}>
+            <Link style={{ color: $.color, textDecoration: 'none' }}
               href="#"
-              onClick={() => setCurrentPage((n) => n + 1)}
+              onClick={() => setCurrentPage((n) => {
+                if (n === totalPages) return n;
+                return n + 1;
+              })}
             >
               &raquo;
             </Link>

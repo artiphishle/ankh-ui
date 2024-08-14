@@ -3,13 +3,10 @@
   width: 100px;
   line-height: 100px;
   border-radius: 50%;
-  background-color: ghostwhite;
   color: transparent;
-  background-image: linear-gradient(
-    to right,
-    transparent 50%,
-    cornflowerblue 0
-  );
+  background-image: linear-gradient(to right,
+      transparent 50%,
+      cornflowerblue 0);
   text-align: center;
 }
 

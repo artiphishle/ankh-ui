@@ -1,0 +1,30 @@
+[data-ui='slider-target'] {
+  display: flex;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+[data-ui='slider-target'].slideLeft {
+  transform: translateX(-100%);
+}
+
+[data-ui='slider-target'].slideRight {
+  transform: translateX(100%);
+}
+
+[data-ui='slider-target']:target {
+  visibility: visible;
+  transition-duration: 300ms;
+}
+
+[data-ui='slider-target'].slideLeft:target {
+  transform: translateX(0);
+  left: 0;
+}
+
+[data-ui='slider-target'].slideRight:target {
+  transform: translateX(0);
+  right: 0;
+}

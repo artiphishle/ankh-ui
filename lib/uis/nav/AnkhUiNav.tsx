@@ -14,15 +14,17 @@ export function AnkhUiNav({ items }: IAnkhUiNav) {
   if (!palette) return;
 
   const $ = {
-    color: stringifyHsl(palette.colors[3]!)
+    backgroundColor: stringifyHsl(palette.colors[2]!),
+    color: stringifyHsl(palette.colors[3]!),
+    marginBottom: '1px'
   };
 
   return (
     <Auth.ReadRole>
       <nav data-ui="nav">
         {items.map(({ name, icon }, i) => (
-          <Link key={`nav-${i}`} href={`/${name}`}>
-            <span style={{ color: $.color }}>
+          <Link style={$} key={`nav-${i}`} href={`/${name}`}>
+            <span>
               {icon && <AnkhUiIcon name={icon} />}
               {name}
             </span>
