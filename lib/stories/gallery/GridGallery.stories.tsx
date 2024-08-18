@@ -10,7 +10,7 @@ const meta: Meta<typeof AnkhUiGallery> = {
 export default meta;
 type Story = StoryObj<typeof AnkhUiGallery>;
 
-export const SuperGallery: Story = {
+export const SelectablePhotos: Story = {
   args: {
     enableImageSelection: true,
     // defaultContainerWidth: 600,

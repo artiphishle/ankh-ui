@@ -28,6 +28,7 @@ export function AnkhUiColorHue({ color: value }: IAnkhUiColorHue) {
       className: `primary-${hueIndex + 1}00`,
     })
   );
+  console.log(hueItems);
 
   return (
     <Auth.ReadRole>

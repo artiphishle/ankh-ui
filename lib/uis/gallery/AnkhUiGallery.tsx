@@ -1,20 +1,19 @@
 'use client';
-
-import {/* Image, */ Gallery, GalleryProps} from 'react-grid-gallery';
-import {useEffect, useState, type MouseEvent} from 'react';
-import {Auth} from '@/auth/Auth';
+import { Gallery, GalleryProps } from 'react-grid-gallery';
+import { useState } from 'react';
+import { Auth } from '@/auth/Auth';
 
 export function AnkhUiGallery(props: IAnkhUiGridGallery) {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(props.images || []);
 
+  /*
   useEffect(() => {
     async function getPhoto(q: string) {
       const res = await fetch(
         `https://api.unsplash.com/photos/random?q=${q}&client_id=pWQstqRcdVLQwwi-FWsuVZflWzn4Weq16otmlBI2ouQ`,
-        {method: 'GET'}
+        { method: 'GET' }
       );
       const photo = await res.json();
-      /*
       const img: Image = {
         caption: "test",
         alt: 'test',
@@ -24,31 +23,26 @@ export function AnkhUiGallery(props: IAnkhUiGridGallery) {
         tags: [{ value: 'tag', title: 'tagTitle' }]
       };
       setImages((images) => images.concat([img]));
-      */
     }
     getPhoto('model');
     getPhoto('darth&20vader');
     getPhoto('superman');
     getPhoto('smiley');
   }, []);
+  */
 
-  /*
-  function onSelect(index: number, item: typeof Image, event: MouseEvent<HTMLElement>) {
+  function onSelect(index: number) {
     const nextImages = images.map((image, i) =>
       i === index ? { ...image, isSelected: !image.isSelected } : image
     )
     setImages(nextImages);
   };
-  */
-  function onClick(event: MouseEvent<HTMLElement>) {
-    console.log('onClick', event);
-  }
 
   return (
     <Auth.ReadRole>
-      <Gallery images={images} />
+      <Gallery onSelect={onSelect} images={images} />
     </Auth.ReadRole>
   );
 }
 
-interface IAnkhUiGridGallery extends GalleryProps {}
+interface IAnkhUiGridGallery extends GalleryProps { }
