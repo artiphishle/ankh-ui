@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { type ColumnDef, flexRender, getCoreRowModel, getFilteredRowModel, useReactTable } from "@tanstack/react-table";
+import { type ColumnDef, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
 import { Filters, IColumnFilter } from "./Filters";
+import { AnkhUiPagination } from "../pagination/AnkhUiPagination";
 
 const columns: ColumnDef<any, any>[] = [
   {
@@ -26,7 +27,8 @@ export function AnkhUiTable<T>({ endpoint }: IAnkhUiTable) {
       columnFilters
     },
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel()
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel()
   });
 
   useEffect(() => {
@@ -64,6 +66,9 @@ export function AnkhUiTable<T>({ endpoint }: IAnkhUiTable) {
             ))
             }
           </div>)}
+      </div>
+      <div>
+        <AnkhUiPagination handlePrevClick={table.previousPage} handleNextClick={table.nextPage} totalPages={table.getState().pagination.pageSize} initialPage={table.getState().pagination.pageIndex} _ui={{ id: '345435345435' }} />
       </div>
     </div>
   );

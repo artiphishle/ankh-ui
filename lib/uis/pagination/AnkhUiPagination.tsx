@@ -7,35 +7,14 @@ import type { IAnkhCmsThemePalette, IAnkhColorHsl, IAnkhUiIntrinsicProps } from 
 
 export function AnkhUiPagination({
   totalPages = 5,
-  initialPage = 1,
-  siblingCount = 1,
+  initialPage = 0,
+  handlePrevClick = () => { },
+  handleNextClick = () => { }
 }: IPagination) {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
-
-  const getPageNumbers = () => {
-    const totalNumbers = siblingCount * 2 + 5;
-    const totalBlocks = totalNumbers + 2;
-
-    if (totalPages > totalBlocks) {
-      const startPage = Math.max(2, currentPage - siblingCount);
-      const endPage = Math.min(totalPages - 1, currentPage + siblingCount);
-
-      let pages: string[] = Array.from(
-        { length: endPage - startPage + 1 },
-        (_, i) => (startPage + i).toString()
-      );
-      if (startPage > 2) pages = ['...', ...pages];
-      if (endPage < totalPages - 1) pages = [...pages, '...'];
-
-      return [1, ...pages, totalPages];
-    }
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  };
-
-  const pageNumbers = getPageNumbers();
 
   if (!palette) return;
 
@@ -50,13 +29,14 @@ export function AnkhUiPagination({
     <Auth.ReadRole>
       <nav data-ui="pagination" aria-label="Pagination">
         <ul style={{ display: 'flex', gap: '.4rem', alignItems: 'center' }}>
-          <li style={{ visibility: currentPage === 1 ? 'hidden' : 'visible', padding: '.4rem .8rem', width: 'fit-content', color: $.color, backgroundColor: $.backgroundColor }}>
+          <li style={{ visibility: currentPage === 0 ? 'hidden' : 'visible', padding: '.4rem .8rem', width: 'fit-content', color: $.color, backgroundColor: $.backgroundColor }}>
             <Link style={{ color: $.color, textDecoration: 'none' }}
               className="block px-3 py-1 border rounded"
               href="#"
               onClick={() => {
+                handlePrevClick && handlePrevClick();
                 setCurrentPage((n) => {
-                  if (n - 1 === 0) return n;
+                  if (n - 1 === -1) return n;
                   return n - 1;
                 });
               }}
@@ -64,34 +44,17 @@ export function AnkhUiPagination({
               &laquo;
             </Link>
           </li>
-          {pageNumbers.map((page, index) =>
-            page === '...' ? (
-              <li key={index} className="px-3 py-1">
-                ...
-              </li>
-            ) : (
-              <li style={{
-                width: 'fit-content',
-              }}
-                key={index}
-              >
-                <Link
-                  style={{ textDecoration: 'none', padding: '.4rem .8rem', color: currentPage === page ? $.colorActive : $.color, backgroundColor: currentPage === page ? $.backgroundColorActive : $.backgroundColor }}
-                  href="#"
-                  onClick={() => setCurrentPage(page as number)}
-                >
-                  {page}
-                </Link>
-              </li>
-            )
-          )}
-          <li style={{ visibility: currentPage === totalPages ? 'hidden' : 'visible', padding: '.4rem .8rem', backgroundColor: $.backgroundColor }}>
+          <li>{currentPage + 1}/{totalPages}</li>
+          <li style={{ visibility: currentPage === totalPages - 1 ? 'hidden' : 'visible', padding: '.4rem .8rem', backgroundColor: $.backgroundColor }}>
             <Link style={{ color: $.color, textDecoration: 'none' }}
               href="#"
-              onClick={() => setCurrentPage((n) => {
-                if (n === totalPages) return n;
-                return n + 1;
-              })}
+              onClick={() => {
+                handleNextClick && handleNextClick();
+                setCurrentPage((n) => {
+                  if (n === totalPages - 1) return n;
+                  return n + 1;
+                })
+              }}
             >
               &raquo;
             </Link>
@@ -106,5 +69,7 @@ interface IPagination extends IAnkhUiIntrinsicProps {
   readonly totalPages?: number;
   readonly initialPage?: number;
   readonly siblingCount?: number;
+  readonly handlePrevClick?: () => void;
+  readonly handleNextClick?: () => void;
   readonly onPageChange?: (page: number) => void;
 }
