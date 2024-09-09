@@ -13,6 +13,6 @@ export default meta;
 
 export const Slider = () =>
   <div>
-    <AnkhUiSliderTarget fx={EAnkhUiSliderFx.SlideLeft} toggleBack={true} _ui={{ id: 234324 }} sliderId='slider'>Content</AnkhUiSliderTarget>
-    <AnkhUiSliderToggle _ui={{ id: 234325 }} icon='menu' label='Menu' toggleId='slider' />
+    <AnkhUiSliderTarget fx={EAnkhUiSliderFx.SlideLeft} toggleBack={true} _ui={{ id: 'sb-slider-target-01' }} sliderId='slider'>Content</AnkhUiSliderTarget>
+    <AnkhUiSliderToggle _ui={{ id: 'sb-slider-toggle-01' }} icon='menu' label='Menu' toggleId='slider' />
   </div>;

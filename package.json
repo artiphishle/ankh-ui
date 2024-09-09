@@ -94,5 +94,5 @@
     "clean": true
   },
   "types": "dist/index.d.ts",
-  "version": "1.14.18"
+  "version": "1.14.19"
 }

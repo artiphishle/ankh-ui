@@ -11,7 +11,7 @@ type Story = StoryObj<typeof AnkhUiHero>;
 
 export const Hero: Story = {
   args: {
-    _ui: { id: 8518 },
+    _ui: { id: 'sb-hero-01' },
     heading: { title: "Hero Title" },
     button: { label: "Action" }
   }

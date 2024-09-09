@@ -11,7 +11,7 @@ type Story = StoryObj<typeof AnkhUiGrid>;
 
 export const Grid: Story = {
   args: {
-    _ui: { id: 80 },
+    _ui: { id: 'sb-grid-80' },
     children: [
       <div key="1">1</div>,
       <div key="2">2</div>,
