@@ -21,8 +21,8 @@ importers:
         specifier: ^1.3.5
         version: 1.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ankh-hooks:
-        specifier: ^1.4.4
-        version: 1.4.4
+        specifier: ^1.4.5
+        version: 1.4.5
       lucide-react:
         specifier: ^0.412.0
         version: 0.412.0(react@18.3.1)
@@ -94,8 +94,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0
       ankh-types:
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^1.1.3
+        version: 1.1.3
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.45)
@@ -2058,12 +2058,12 @@ packages:
       react: ^18.3.1
       react-dom: ^18.3.1
 
-  ankh-hooks@1.4.4:
-    resolution: {integrity: sha512-RH6UieV8qqx50+HNOIoElNUwdSLJkrUKWKsiOM/QD4jNDmMBpOw3yR4cy1Q/NbXz8EyV3W+lLOP4Q6YTCLgIAg==}
+  ankh-hooks@1.4.5:
+    resolution: {integrity: sha512-QE4Pe7vftXHJn7PFJgdopkeCgZNcnrjfIQRCgMbSHnAmmZ41D67OHRIdYd9NT/1PzWPWk9K3OsQ0d3Z8Ys306Q==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-types@1.1.2:
-    resolution: {integrity: sha512-ZAXt255KEBxt9INWadJ6sL2yKr32Xo0q3Vf0tQgod9nLGcyL1DBlfF1pH32Iwc4oofL+FSLX4O8vwBbiK2qiMg==}
+  ankh-types@1.1.3:
+    resolution: {integrity: sha512-2tY/jFRB46wRlEIxLtQ100IwvEac3xBZNe8aEfwVibuMkBVaCzcya2p8DT4OGchpLu8gG0boC9SxaMfXW5qwSg==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-colors@4.1.3:
@@ -7397,11 +7397,11 @@ snapshots:
 
   ankh-config@1.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      ankh-hooks: 1.4.4
+      ankh-hooks: 1.4.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  ankh-hooks@1.4.4:
+  ankh-hooks@1.4.5:
     dependencies:
       '@types/react': 18.3.5
       '@types/react-dom': 18.3.0
@@ -7409,7 +7409,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       uuidv4: 6.2.13
 
-  ankh-types@1.1.2: {}
+  ankh-types@1.1.3: {}
 
   ansi-colors@4.1.3: {}
 
