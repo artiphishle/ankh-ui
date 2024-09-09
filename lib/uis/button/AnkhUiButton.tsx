@@ -4,7 +4,7 @@ import { useActivePalette } from 'ankh-config';
 import { EAnkhUiVariant, type IAnkhCmsThemePalette } from 'ankh-types';
 import { Auth } from '@/auth/Auth';
 import { AnkhUiIcon } from '@/uis/icon/AnkhUiIcon';
-import { stringifyHsl } from '@/utils/color.util';
+import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function AnkhUiButton({
   size = EAnkhUiSize.Md,

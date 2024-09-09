@@ -5,7 +5,7 @@ import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
 import { AnkhUiIcon } from '@/uis/icon/AnkhUiIcon';
 import type { IAnkhCmsThemePalette, IAnkhUiIntrinsicProps } from 'ankh-types';
-import { stringifyHsl } from '@/utils/color.util';
+import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function AnkhUiNav({ items }: IAnkhUiNav) {
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);

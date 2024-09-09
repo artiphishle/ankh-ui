@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useActivePalette } from "ankh-config";
 import { AnkhUiCircle } from "@/uis/shapes/circle/AnkhUiCircle";
 import { EAnkhUiSize, EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhUiIntrinsicProps } from "ankh-types";
-import { stringifyHsl } from "@/utils/color.util";
+import { stringifyHsl } from "@/uis/utils/color.util";
 
 export function AnkhUiBatch({ initialValue = 1, variant = EAnkhUiVariant.Primary }: IAnkhUiBatch) {
   const [value] = useState(initialValue);

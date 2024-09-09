@@ -4,7 +4,7 @@ import { useActivePalette } from 'ankh-config';
 import { AnkhUiHeading } from '@/uis/heading/AnkhUiHeading';
 import Image, { type ImageProps } from 'next/image';
 import type { IAnkhCmsThemePalette, IAnkhColor } from 'ankh-types';
-import { stringifyHsl } from '@/utils/color.util';
+import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function AnkhUiCard({
   color,

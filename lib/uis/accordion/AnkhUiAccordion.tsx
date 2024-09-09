@@ -4,7 +4,7 @@ import { useIndexedDb } from 'ankh-hooks';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
 import type { IAnkhCmsThemePalette, IAnkhUiIntrinsicProps } from 'ankh-types';
-import { stringifyHsl } from "@/utils/color.util";
+import { stringifyHsl } from "@/uis/utils/color.util";
 
 export function AnkhUiAccordion({ _ui: { id }, items }: IAnkhUiAccordion) {
   const { db, api } = useIndexedDb<IAnkhUiAccordionConfig>({ dbName: 'ankh-cms', storeName: 'ui-config' });

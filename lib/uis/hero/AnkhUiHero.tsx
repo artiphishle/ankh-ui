@@ -5,7 +5,7 @@ import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 import { AnkhUiHeading } from "@/uis/heading/AnkhUiHeading";
 import { useActivePalette } from "ankh-config";
 import { EAnkhUiSize, EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhUiIntrinsicProps } from "ankh-types";
-import { stringifyHsl } from "@/utils/color.util";
+import { stringifyHsl } from "@/uis/utils/color.util";
 
 export function AnkhUiHero({ _ui: { id }, heading, button }: IAnkhUiHero) {
   const { db, api } = useIndexedDb<any>({ dbName: 'ankh-cms', storeName: 'ui-config' });

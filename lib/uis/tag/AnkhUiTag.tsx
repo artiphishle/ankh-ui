@@ -4,7 +4,7 @@ import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
 import { EAnkhUiVariant, type IAnkhAuthRole, type IAnkhCmsThemePalette } from 'ankh-types';
 import { AnkhUiIcon } from '@/uis/icon/AnkhUiIcon';
-import { stringifyHsl } from '@/utils/color.util';
+import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function AnkhUiTag({ variant = EAnkhUiVariant.Default, label }: IAnkhUiTag) {
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);

@@ -3,7 +3,7 @@ import { useState, type PropsWithChildren } from 'react';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
 import type { IAnkhCmsThemePalette, IAnkhUiIntrinsicProps } from 'ankh-types';
-import { stringifyHsl } from '@/utils/color.util';
+import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function AnkhUiHeading({ text, level, style = {} }: IHeading) {
   const H = level;

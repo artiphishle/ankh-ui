@@ -5,7 +5,7 @@ import { useIndexedDb } from "ankh-hooks";
 import { Auth } from '@/auth/Auth';
 import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
 import { EAnkhUiSize, type IAnkhCmsThemePalette, type IAnkhUiIntrinsicProps, type TStyle } from 'ankh-types';
-import { stringifyHsl } from '@/utils/color.util';
+import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function GridCell({ children }: IAnkhUiGridCell) {
   return <div data-ui="grid-cell">{children}</div>;
