@@ -1,8 +1,9 @@
 'use client';
-import NextImage, {type ImageProps as INextImage} from 'next/image';
-import {Auth} from '@/auth/Auth';
+import NextImage, { type ImageProps as INextImage } from 'next/image';
+import { Auth } from '@/auth/Auth';
+import { IAnkhUiIntrinsicProps } from 'ankh-types';
 
-export function AnkhUiImage({alt, height, src, width}: IUiImage) {
+export function AnkhUiImage({ alt, height, src, width }: IUiImage) {
   return (
     <Auth.ReadRole>
       <NextImage
@@ -17,4 +18,4 @@ export function AnkhUiImage({alt, height, src, width}: IUiImage) {
   );
 }
 
-interface IUiImage extends INextImage {}
+interface IUiImage extends INextImage, IAnkhUiIntrinsicProps { }

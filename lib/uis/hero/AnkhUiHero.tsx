@@ -37,7 +37,7 @@ export function AnkhUiHero({ _ui: { id }, heading, button }: IAnkhUiHero) {
 
   return (
     <section data-ui='hero' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor, padding: '2rem' }}>
-      <AnkhUiHeading level="h1" text={headingTitle} />
+      <AnkhUiHeading _ui={{ id: 'heading-from-hero-4325' }} level="h1" text={headingTitle} />
       <AnkhUiButton size={EAnkhUiSize.Xl} variant={EAnkhUiVariant.Primary} label={buttonLabel} />
     </section>
   );

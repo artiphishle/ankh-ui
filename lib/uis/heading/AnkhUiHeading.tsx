@@ -2,7 +2,7 @@
 import { useState, type PropsWithChildren } from 'react';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
-import type { IAnkhCmsThemePalette, IAnkhColorHsl } from 'ankh-types';
+import type { IAnkhCmsThemePalette, IAnkhColorHsl, IAnkhUiIntrinsicProps } from 'ankh-types';
 
 export function AnkhUiHeading({ text, level, style = {} }: IHeading) {
   const H = level;
@@ -23,7 +23,7 @@ export function AnkhUiHeading({ text, level, style = {} }: IHeading) {
   );
 }
 
-interface IHeading extends PropsWithChildren {
+interface IHeading extends PropsWithChildren, IAnkhUiIntrinsicProps {
   level: keyof JSX.IntrinsicElements;
   text: string;
   style?: any;

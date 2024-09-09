@@ -5,10 +5,11 @@ import { Auth } from "@/auth/Auth";
 import { useAnkhCmsConfig } from "ankh-config";
 import { AnkhUiColorPalette, IAnkhUiColorPalette } from '@/uis/color/colorPalette/AnkhUiColorPalette';
 import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
+import { IAnkhUiIntrinsicProps } from "ankh-types";
 
 export const THEME_ID = 1337;
 
-export function AnkhUiColorPalettes({ }) {
+export function AnkhUiColorPalettes({ }: IAnkhUiColorPalettes) {
   const { api, db } = useIndexedDb<{ id: IDBValidKey, palettes: IAnkhUiColorPalette[] }>({ dbName: "ankh-cms", storeName: "ui-config" });
   const theme = useAnkhCmsConfig().theme;
   const [palettes, setPalettes] = useState<IAnkhUiColorPalette[]>([]);
@@ -42,3 +43,5 @@ export function AnkhUiColorPalettes({ }) {
     </Auth.ReadRole >
   )
 };
+
+interface IAnkhUiColorPalettes extends IAnkhUiIntrinsicProps { }

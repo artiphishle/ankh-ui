@@ -8,10 +8,10 @@ import "./circles.css";
 export function AnkhUiCircles({ circles, title }: IAnkhUiCircles) {
   return (
     <section data-ui="circles">
-      {title && <AnkhUiHeading text={title} level="h3" />}
+      {title && <AnkhUiHeading _ui={{ id: 'from-circles-423535' }} text={title} level="h3" />}
       <div className="circles">
-        {circles.map(({ color, size }, index) => (
-          <AnkhUiCircle key={index} color={color} size={size} />
+        {circles.map(({ style, size }, index) => (
+          <AnkhUiCircle _ui={{ id: 'from-circles-34545' }} key={index} style={style} size={size} />
         ))}
       </div>
     </section>

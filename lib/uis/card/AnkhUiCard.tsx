@@ -28,7 +28,7 @@ export function AnkhUiCard({
       data-ui="card"
       style={{ padding: '.8rem', backgroundColor: $.backgroundColor, width: `${width}px` }}
     >
-      <header>{title && <AnkhUiHeading text={title} level="h4" />}</header>
+      <header>{title && <AnkhUiHeading _ui={{ id: 'in-card-id-43435' }} text={title} level="h4" />}</header>
       <div>
         {text && <p style={{ color: $.color }}>{text}</p>}
         {image && (
