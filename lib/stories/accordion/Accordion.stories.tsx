@@ -13,14 +13,14 @@ type Story = StoryObj<typeof AnkhUiAccordion>;
 
 export const Accordion: Story = {
   args: {
-    _ui: { id: 1335 },
+    _ui: { id: 'accordion-1335' },
     items: [
       {
-        summary: <AnkhUiHeading level="h3" text="Preprocessor" />,
+        summary: <AnkhUiHeading _ui={{ id: 'sb-accordion-heading-01' }} level="h3" text="Preprocessor" />,
         details: <p>Here some good text because it's a good accordion.</p>,
       },
       {
-        summary: <AnkhUiHeading level="h3" text="Utility First" />,
+        summary: <AnkhUiHeading _ui={{ id: 'sb-accordion-heading-02' }} level="h3" text="Utility First" />,
         details: <p>Here some good text because it's a good accordion.</p>,
       },
     ],
