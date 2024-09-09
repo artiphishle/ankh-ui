@@ -27,7 +27,11 @@ export function AnkhUiBatch({ initialValue = 1, variant = EAnkhUiVariant.Primary
     [EAnkhUiVariant.Default]: { backgroundColor: COLORS[EAnkhUiVariant.Default], color: COLORS[EAnkhUiVariant.Primary] }
   };
 
-  return <AnkhUiCircle _ui={{ id: '847ch' }} style={{ backgroundColor: BATCH_VARIANTS[variant]!.backgroundColor, color: BATCH_VARIANTS[variant]!.color }} size={EAnkhUiSize.Xs} >{value.toString()}</AnkhUiCircle>
+  return (
+    <AnkhUiCircle _ui={{ id: '847ch' }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: BATCH_VARIANTS[variant]!.backgroundColor, color: BATCH_VARIANTS[variant]!.color }} size={EAnkhUiSize.Xs} >
+      <span>{value.toString()}</span>
+    </AnkhUiCircle>
+  );
 }
 
 interface IAnkhUiBatch extends IAnkhUiIntrinsicProps {

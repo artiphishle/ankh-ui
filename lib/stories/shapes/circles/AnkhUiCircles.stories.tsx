@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { EAnkhUiSize } from 'ankh-types';
 import { AnkhUiCircles } from '@/uis/shapes/circles/AnkhUiCircles';
-import { EAnkhUiSize, EAnkhColorUnit } from 'ankh-types';
 import '@/uis/shapes/circles/circles.css';
 
 const meta: Meta<typeof AnkhUiCircles> = {
@@ -27,8 +27,9 @@ const green = {
 export const PurpleCirclesXs: Story = {
   args: {
     title: purple.title,
-    circles: purple.ls.map((l) => ({
-      color: purple.getValue(l),
+    circles: purple.ls.map((l, index) => ({
+      _ui: { id: `circle-${index}` },
+      style: { backgroundColor: purple.getValue(l) },
       size: EAnkhUiSize.Sm,
     })),
   },
@@ -37,8 +38,9 @@ export const PurpleCirclesXs: Story = {
 export const greenCirclesXs: Story = {
   args: {
     title: green.title,
-    circles: green.ls.map((l) => ({
-      color: green.getValue(l),
+    circles: green.ls.map((l, index) => ({
+      _ui: { id: `circle2-${index}` },
+      style: { backgroundColor: green.getValue(l) },
       size: EAnkhUiSize.Sm,
     })),
   },
