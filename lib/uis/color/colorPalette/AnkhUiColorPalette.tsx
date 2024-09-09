@@ -10,7 +10,7 @@ import { useColorPalette } from "ankh-hooks";
 
 export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
   const { getUsedColorTone } = useColorPalette();
-  const [selectedTone, setSelectedTone] = useState<EAnkhColorTone | undefined | "">(getUsedColorTone(colors));
+  const [selectedTone, setSelectedTone] = useState<EAnkhColorTone>(getUsedColorTone(colors));
   const [isEditMode, setIsEditMode] = useState(false);
   const toneOptions = Object.keys(EAnkhColorTone).map((toneName: string) => ({ name: toneName, value: toneName }));
   const circles: IAnkhUiCircle[] = colors.map(({ h, s, l }, colorIndex) => ({ _ui: { id: `color-${colorIndex}` }, style: { backgroundColor: `hsl(${h},${s}%,${l}%)` }, size: EAnkhUiSize.Sm }));
@@ -24,26 +24,31 @@ export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
   const formItems: IAnkhUiFormItem[] = [
     // { title: "Hue", type: EAnkhUiFormInputType.Range, min: 0, max: 360, value: 240 },
     {
-      title: "Tone", type: EAnkhUiFormInputType.Select, options: toneOptions, value: selectedTone, onChange: $e.change.tone
+      title: "Tone",
+      type: EAnkhUiFormInputType.Select,
+      options: toneOptions,
+      value: selectedTone,
+      onChange: $e.change.tone
     }
   ];
 
   return (
     <Auth.ReadRole>
-      <div className="flex align-center bg-[#eee] p-[1rem] mb-[.4rem]" data-ui='color-palette'>
+      <div className="flex items-start bg-[#eee] p-[1rem] mb-[.4rem]" data-ui='color-palette'>
         <div>
           <h4>{name}</h4>
           <AnkhUiCircles circles={circles} />
         </div>
         <Auth.WriteRole>
-          {!isEditMode
-            ? <AnkhUiButton icon="pencil" label='' onClick={() => setIsEditMode(true)} />
-            :
+          {isEditMode
+            ?
             <>
-              <AnkhUiForm items={formItems}></AnkhUiForm>
+              <AnkhUiForm items={formItems} />
               <AnkhUiButton label="OK" onClick={() => setIsEditMode(false)} />
               <AnkhUiButton label="Cancel" onClick={() => setIsEditMode(false)} />
             </>
+            :
+            <AnkhUiButton icon="pencil" label='' onClick={() => setIsEditMode(true)} />
           }
         </Auth.WriteRole>
       </div>
