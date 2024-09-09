@@ -3,11 +3,11 @@ import { useState, type ReactNode } from 'react';
 import { useIndexedDb } from 'ankh-hooks';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
-import type { IAnkhCmsThemePalette, IAnkhColorHsl, IAnkhUiIntrinsicProps } from 'ankh-types';
+import type { IAnkhCmsThemePalette, IAnkhUiIntrinsicProps } from 'ankh-types';
+import { stringifyHsl } from "@/utils/color.util";
 
 export function AnkhUiAccordion({ _ui: { id }, items }: IAnkhUiAccordion) {
   const { db, api } = useIndexedDb<IAnkhUiAccordionConfig>({ dbName: 'ankh-cms', storeName: 'ui-config' });
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 
@@ -22,7 +22,7 @@ export function AnkhUiAccordion({ _ui: { id }, items }: IAnkhUiAccordion) {
     <Auth.ReadRole>
       <section data-ui="accordion">
         {items.map(({ summary, details }, itemIndex) => (
-          <details style={{ backgroundColor: $.backgroundColor, marginBottom: '1px', padding: '.4rem', cursor: 'pointer' }} key={itemIndex}>
+          <details className="cursor-pointer mb-[1px] p-[.4rem]" style={{ backgroundColor: $.backgroundColor }} key={itemIndex}>
             <summary style={{ color: $.color }}>{summary}</summary>
             {details}
           </details>

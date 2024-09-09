@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
 import { AnkhUiIcon } from '@/uis/icon/AnkhUiIcon';
-import type { IAnkhCmsThemePalette, IAnkhColorHsl, IAnkhUiIntrinsicProps } from 'ankh-types';
+import type { IAnkhCmsThemePalette, IAnkhUiIntrinsicProps } from 'ankh-types';
+import { stringifyHsl } from '@/utils/color.util';
 
 export function AnkhUiNav({ items }: IAnkhUiNav) {
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 

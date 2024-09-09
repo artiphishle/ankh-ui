@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
-import { EAnkhUiVariant, type IAnkhAuthRole, type IAnkhCmsThemePalette, type IAnkhColorHsl } from 'ankh-types';
+import { EAnkhUiVariant, type IAnkhAuthRole, type IAnkhCmsThemePalette } from 'ankh-types';
 import { AnkhUiIcon } from '@/uis/icon/AnkhUiIcon';
+import { stringifyHsl } from '@/utils/color.util';
 
 export function AnkhUiTag({ variant = EAnkhUiVariant.Default, label }: IAnkhUiTag) {
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
@@ -22,7 +23,6 @@ export function AnkhUiTag({ variant = EAnkhUiVariant.Default, label }: IAnkhUiTa
     },
   };
 
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const colors = palette.colors;
   const c = {
     primary: stringifyHsl(colors[0]!),

@@ -4,14 +4,14 @@ import { useIndexedDb } from "ankh-hooks";
 import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 import { AnkhUiHeading } from "@/uis/heading/AnkhUiHeading";
 import { useActivePalette } from "ankh-config";
-import { EAnkhUiSize, EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhColorHsl, type IAnkhUiIntrinsicProps } from "ankh-types";
+import { EAnkhUiSize, EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhUiIntrinsicProps } from "ankh-types";
+import { stringifyHsl } from "@/utils/color.util";
 
 export function AnkhUiHero({ _ui: { id }, heading, button }: IAnkhUiHero) {
   const { db, api } = useIndexedDb<any>({ dbName: 'ankh-cms', storeName: 'ui-config' });
   const [headingTitle, setHeadingTitle] = useState("");
   const [buttonLabel, setButtonLabel] = useState("");
 
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 

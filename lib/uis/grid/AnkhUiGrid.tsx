@@ -4,7 +4,8 @@ import { useActivePalette } from 'ankh-config';
 import { useIndexedDb } from "ankh-hooks";
 import { Auth } from '@/auth/Auth';
 import { AnkhUiButton } from '@/uis/button/AnkhUiButton';
-import { EAnkhUiSize, type IAnkhCmsThemePalette, type IAnkhColorHsl, type IAnkhUiIntrinsicProps, type TStyle } from 'ankh-types';
+import { EAnkhUiSize, type IAnkhCmsThemePalette, type IAnkhUiIntrinsicProps, type TStyle } from 'ankh-types';
+import { stringifyHsl } from '@/utils/color.util';
 
 export function GridCell({ children }: IAnkhUiGridCell) {
   return <div data-ui="grid-cell">{children}</div>;
@@ -40,7 +41,6 @@ export function AnkhUiGrid(props: IAnkhUiGrid) {
     setColumns(newColumns);
   };
 
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 

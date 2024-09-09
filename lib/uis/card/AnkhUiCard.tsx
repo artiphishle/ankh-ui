@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useActivePalette } from 'ankh-config';
 import { AnkhUiHeading } from '@/uis/heading/AnkhUiHeading';
 import Image, { type ImageProps } from 'next/image';
-import type { IAnkhCmsThemePalette, IAnkhColor, IAnkhColorHsl } from 'ankh-types';
+import type { IAnkhCmsThemePalette, IAnkhColor } from 'ankh-types';
+import { stringifyHsl } from '@/utils/color.util';
 
 export function AnkhUiCard({
   color,
@@ -12,7 +13,6 @@ export function AnkhUiCard({
   title,
   width = 200,
 }: IAnkhUiCard) {
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 

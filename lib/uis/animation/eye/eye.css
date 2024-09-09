@@ -9,19 +9,20 @@
 .scene {
   width: 300px;
   height: 300px;
-  display: inline-box;
   margin: 20px;
+  position: relative;
   perspective: 1200px;
   perspective-origin: 50% 50%;
 }
 
 .white {
   display: inline-block;
+  position: relative;
+  border-radius: 50%;
   width: 100%;
   height: 100%;
   margin: 0;
-  border-radius: 50%;
-  position: relative;
+
   background: radial-gradient(circle at 50% 40%, #fcfcfc, #efeff1 66%, #9b5050 100%);
 }
 
@@ -57,9 +58,9 @@
   height: 40%;
   margin: 30%;
   border-radius: 50%;
+  position: absolute;
   background: radial-gradient(circle at 50% 50%, #208ab4 0%, #6fbfff 30%, #4381b2 100%);
   transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg);
-  position: absolute;
   animation: move-eye-skew 5s ease-out infinite;
 }
 

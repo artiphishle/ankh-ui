@@ -3,7 +3,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useActivePalette } from 'ankh-config';
 import { Auth } from '@/auth/Auth';
-import type { IAnkhCmsThemePalette, IAnkhColorHsl, IAnkhUiIntrinsicProps } from 'ankh-types';
+import type { IAnkhCmsThemePalette, IAnkhUiIntrinsicProps } from 'ankh-types';
+import { stringifyHsl } from '@/utils/color.util';
 
 export function AnkhUiPagination({
   totalPages = 5,
@@ -12,7 +13,6 @@ export function AnkhUiPagination({
   handleNextClick = () => { }
 }: IPagination) {
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 

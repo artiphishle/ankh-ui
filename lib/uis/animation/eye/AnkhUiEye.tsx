@@ -1,3 +1,5 @@
+import "./eye.css";
+
 export function AnkhUiEye() {
   return (
     <div className="scene">

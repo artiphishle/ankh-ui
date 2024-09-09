@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react"
 import type { IAnkhUiIntrinsicProps } from "ankh-types"
 
 export function AnkhUiButtonGroup({ children }: IAnkhUiButtonGroup) {
-  return <div data-ui="button-group" style={{ borderCollapse: 'collapse', display: 'flex', alignItems: 'center', borderRadius: '1rem' }}>
+  return <div data-ui="button-group" className="flex items-center">
     {children}
   </div>
 }

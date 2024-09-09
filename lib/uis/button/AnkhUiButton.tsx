@@ -1,9 +1,10 @@
 "use client";
 import { type MouseEvent, useState } from 'react';
 import { useActivePalette } from 'ankh-config';
-import { EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhColorHsl } from 'ankh-types';
+import { EAnkhUiVariant, type IAnkhCmsThemePalette } from 'ankh-types';
 import { Auth } from '@/auth/Auth';
 import { AnkhUiIcon } from '@/uis/icon/AnkhUiIcon';
+import { stringifyHsl } from '@/utils/color.util';
 
 export function AnkhUiButton({
   size = EAnkhUiSize.Md,
@@ -13,7 +14,6 @@ export function AnkhUiButton({
   onClick = () => { }
 }: IAnkhUiButton) {
   /** @todo Extract this function to ankh-hooks */
-  const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
   useActivePalette().then((activePalette) => setPalette(activePalette));
 
@@ -45,15 +45,13 @@ export function AnkhUiButton({
     backgroundColor: COLOR[variant]!.bg,
     color: COLOR[variant]!.text,
     borderColor: COLOR[variant]!.border,
-    borderWidth: '1px',
-    display: 'flex',
     fontSize: `${size}rem`,
     padding: `${size as number / 2}rem ${size}rem`
   };
 
   return (
     <Auth.ReadRole>
-      <button
+      <button className='flex border-[1px]'
         data-ui="button"
         style={$}
         type="button"

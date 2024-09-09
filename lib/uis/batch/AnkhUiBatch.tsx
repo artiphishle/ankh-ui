@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useActivePalette } from "ankh-config";
 import { AnkhUiCircle } from "@/uis/shapes/circle/AnkhUiCircle";
-import { EAnkhUiSize, EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhColorHsl, type IAnkhUiIntrinsicProps } from "ankh-types";
-
-/** @todo Extract this function instead of copying it into every UI */
-const stringifyHsl = ({ h, s, l }: IAnkhColorHsl) => `hsl(${h}, ${s}%, ${l}%)`;
+import { EAnkhUiSize, EAnkhUiVariant, type IAnkhCmsThemePalette, type IAnkhUiIntrinsicProps } from "ankh-types";
+import { stringifyHsl } from "@/utils/color.util";
 
 export function AnkhUiBatch({ initialValue = 1, variant = EAnkhUiVariant.Primary }: IAnkhUiBatch) {
   const [value] = useState(initialValue);
@@ -28,7 +26,7 @@ export function AnkhUiBatch({ initialValue = 1, variant = EAnkhUiVariant.Primary
   };
 
   return (
-    <AnkhUiCircle _ui={{ id: '847ch' }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: BATCH_VARIANTS[variant]!.backgroundColor, color: BATCH_VARIANTS[variant]!.color }} size={EAnkhUiSize.Xs} >
+    <AnkhUiCircle _ui={{ id: '847ch' }} className="flex justify-center items-center" style={{ backgroundColor: BATCH_VARIANTS[variant]!.backgroundColor, color: BATCH_VARIANTS[variant]!.color }} size={EAnkhUiSize.Xs} >
       <span>{value.toString()}</span>
     </AnkhUiCircle>
   );
