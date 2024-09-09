@@ -35,7 +35,7 @@ export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
   return (
     <Auth.ReadRole>
       <div className="flex items-start bg-[#eee] p-[1rem] mb-[.4rem]" data-ui='color-palette'>
-        <div>
+        <div className="flex-1">
           <h4>{name}</h4>
           <AnkhUiCircles circles={circles} />
         </div>
