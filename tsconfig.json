@@ -7,12 +7,20 @@
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@/*": ["./lib/*"]
+      "@/*": [
+        "./lib/*"
+      ]
     },
     "skipLibCheck": true,
     "strict": true,
     "target": "es2016"
   },
-  "include": ["./lib/**/*.ts", "./lib/**/*.tsx", ".eslint.config.mjs"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./lib/**/*.ts",
+    "./lib/**/*.tsx",
+    ".eslint.config.mjs",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
