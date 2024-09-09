@@ -13,7 +13,7 @@ export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
   const [selectedTone, setSelectedTone] = useState<EAnkhColorTone | undefined | "">(getUsedColorTone(colors));
   const [isEditMode, setIsEditMode] = useState(false);
   const toneOptions = Object.keys(EAnkhColorTone).map((toneName: string) => ({ name: toneName, value: toneName }));
-  const circles: IAnkhUiCircle[] = colors.map(({ h, s, l }, colorIndex) => ({ _ui: { id: `color-${colorIndex}` }, color: `hsl(${h},${s}%,${l}%)`, size: EAnkhUiSize.Sm }));
+  const circles: IAnkhUiCircle[] = colors.map(({ h, s, l }, colorIndex) => ({ _ui: { id: `color-${colorIndex}` }, style: { backgroundColor: `hsl(${h},${s}%,${l}%)` }, size: EAnkhUiSize.Sm }));
 
   const $e = {
     change: {
@@ -27,8 +27,6 @@ export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
       title: "Tone", type: EAnkhUiFormInputType.Select, options: toneOptions, value: selectedTone, onChange: $e.change.tone
     }
   ];
-
-  console.log(formItems)
 
   return (
     <Auth.ReadRole>
