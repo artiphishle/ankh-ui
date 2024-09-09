@@ -31,7 +31,7 @@ export function AnkhUiColorPalettes({ }: IAnkhUiColorPalettes) {
 
   return (
     <Auth.ReadRole>
-      <p>Found {palettes.length} palettes.</p>
+      <p className='text-4xl'>Found {palettes.length} palettes.</p>
 
       <section data-ui='color-palettes'>
         {palettes.map(({ name, colors }, paletteIndex) => <AnkhUiColorPalette key={`palette-${paletteIndex}`} name={name} colors={colors} />)}
