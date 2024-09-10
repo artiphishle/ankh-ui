@@ -5,21 +5,25 @@ import { ChangeEvent } from 'react';
 export function AnkhUiForm({ items }: IAnkhUiForm) {
   return (
     <Auth.ReadRole>
-      <form data-ui='form' style={{ display: 'flex', flexDirection: 'column' }}>
-        {items.map(({ title, placeholder = '', value, type = EAnkhUiFormInputType.Text, options, min = 1, max = 50, onChange = () => { } }, index) => {
+      <form data-ui='form' className="flex flex-col">
+        {items.map(({ title, label, placeholder = '', value, type = EAnkhUiFormInputType.Text, options, min = 1, max = 50, onChange = () => { } }, index) => {
           switch (type) {
             case EAnkhUiFormInputType.Range:
             case EAnkhUiFormInputType.Text: return (
-              <input
-                title={title}
-                type={type}
-                min={min}
-                max={max}
-                placeholder={placeholder}
-                key={`form-field-${index}`}
-                onChange={onChange}
-                value={value}
-              />)
+              <div key={`form-field-${index}`} className='flex items-center gap-1'>
+                {label && <label>{label}</label>}
+                <input
+                  title={title}
+                  type={type}
+                  min={min}
+                  max={max}
+                  placeholder={placeholder}
+                  key={`form-field-${index}`}
+                  onChange={onChange}
+                  value={value}
+                />
+              </div>
+            )
             case EAnkhUiFormInputType.Select:
               return (
                 <select value={value} title={title} key={`form-field-${index}`} onChange={onChange}>
@@ -49,20 +53,21 @@ export enum EAnkhUiFormInputType {
   Textarea = 'textarea'
 }
 export interface IAnkhUiFormItem {
-  title: string;
-  min?: number;
-  max?: number;
-  options?: IAnkhUiFormSelectOptions[];
-  placeholder?: string;
-  type?: EAnkhUiFormInputType;
-  value?: string | number;
-  onChange?: (event: ChangeEvent<HTMLElement>) => void;
+  readonly title: string;
+  readonly label?: string;
+  readonly min?: number;
+  readonly max?: number;
+  readonly options?: IAnkhUiFormSelectOptions[];
+  readonly placeholder?: string;
+  readonly type?: EAnkhUiFormInputType;
+  readonly value?: string | number;
+  readonly onChange?: (event: ChangeEvent<HTMLElement>) => void;
 }
 interface IAnkhUiForm {
-  items: IAnkhUiFormItem[]
+  readonly items: IAnkhUiFormItem[]
 }
 interface IAnkhUiFormSelectOptions {
-  name: string;
-  value: string | number;
-  selected?: boolean;
+  readonly name: string;
+  readonly value: string | number;
+  readonly selected?: boolean;
 }
