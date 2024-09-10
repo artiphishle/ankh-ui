@@ -4,17 +4,19 @@ import { EAnkhColorTone, EAnkhUiSize, IAnkhColorHsl } from "ankh-types";
 import { AnkhUiForm, EAnkhUiFormInputType, IAnkhUiFormItem } from "@/uis/form/AnkhUiForm";
 import { AnkhUiCircles } from "@/uis/shapes/circles/AnkhUiCircles";
 import type { IAnkhUiCircle } from "@/uis/shapes/circle/AnkhUiCircle";
-import { ChangeEvent, useState } from "react";
+import { type ChangeEvent, useState } from "react";
 import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 import { useColorPalette } from "ankh-hooks";
 
 export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
-  const { getUsedColorTone } = useColorPalette();
-  const [selectedTone, setSelectedTone] = useState<EAnkhColorTone>(getUsedColorTone(colors));
+  const { getUsedColorTone, useColorRules } = useColorPalette();
+  const [currentColors, setCurrentColors] = useState(colors);
+  const [selectedTone, setSelectedTone] = useState<EAnkhColorTone>(getUsedColorTone(currentColors));
   const [isEditMode, setIsEditMode] = useState(false);
   const [currentColorIndex, setCurrentColorIndex] = useState<number | null>(null);
+  const rules = useColorRules();
   const toneOptions = Object.keys(EAnkhColorTone).map((toneName: string) => ({ name: toneName, value: toneName }));
-  const circles: IAnkhUiCircle[] = colors.map(({ h, s, l }, colorIndex) => ({ _ui: { id: `color-${colorIndex}` }, style: { backgroundColor: `hsl(${h},${s}%,${l}%)` }, size: EAnkhUiSize.Sm }));
+  const circles: IAnkhUiCircle[] = currentColors.map(({ h, s, l }, colorIndex) => ({ _ui: { id: `color-${colorIndex}` }, style: { backgroundColor: `hsl(${h},${s}%,${l}%)` }, size: EAnkhUiSize.Sm }));
 
   const $e = {
     change: {
@@ -40,7 +42,18 @@ export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
     {
       title: "Hue",
       type: EAnkhUiFormInputType.Range,
-      value: colors[currentColorIndex as number]?.h || 0,
+      value: currentColors[currentColorIndex as number]?.h || 0,
+      /** @todo onChange function extract (same for h, s and l) */
+      onChange: (event) => setCurrentColors((curCols) => {
+        if (isNaN(currentColorIndex as number)) return curCols;
+
+        const currentCol = curCols[currentColorIndex as number];
+        if (!currentCol) return curCols;
+
+        currentCol.h = parseInt((event.target as HTMLInputElement).value, 10);
+        curCols.splice(currentColorIndex as number, 1, currentCol!);
+        return [...curCols];
+      }),
       label: "H",
       min: 0,
       max: 360
@@ -48,21 +61,41 @@ export function AnkhUiColorPalette({ name, colors }: IAnkhUiColorPalette) {
     {
       title: "Saturation",
       type: EAnkhUiFormInputType.Range,
-      value: colors[currentColorIndex as number]?.s || 0,
+      value: currentColors[currentColorIndex as number]?.s || 0,
+      onChange: (event) => setCurrentColors((curCols) => {
+        console.log((event.target as HTMLInputElement).value);
+        if (isNaN(currentColorIndex as number)) return curCols;
+
+        const currentCol = curCols[currentColorIndex as number];
+        if (!currentCol) return curCols;
+
+        currentCol.s = parseInt((event.target as HTMLInputElement).value, 10);
+        curCols.splice(currentColorIndex as number, 1, currentCol!);
+        return [...curCols];
+      }),
       label: "S",
-      min: 0,
-      max: 100
+      min: (rules.tone as any)[selectedTone]?.s?.min || 0,
+      max: (rules.tone as any)[selectedTone]?.s?.max || 100
     },
     {
       title: "Lightness",
       type: EAnkhUiFormInputType.Range,
-      value: colors[currentColorIndex as number]?.l || 0,
+      value: currentColors[currentColorIndex as number]?.l || 0,
+      onChange: (event) => setCurrentColors((curCols) => {
+        if (isNaN(currentColorIndex as number)) return curCols;
+
+        const currentCol = curCols[currentColorIndex as number];
+        if (!currentCol) return curCols;
+
+        currentCol.l = parseInt((event.target as HTMLInputElement).value, 10);
+        curCols.splice(currentColorIndex as number, 1, currentCol!);
+        return [...curCols];
+      }),
       label: "L",
-      min: 0,
-      max: 100,
+      min: (rules.tone as any)[selectedTone]?.l?.min || 0,
+      max: (rules.tone as any)[selectedTone]?.l?.max || 100
     }
   ];
-
   const formItemsCreate: IAnkhUiFormItem[] = [
     // { title: "Hue", type: EAnkhUiFormInputType.Range, min: 0, max: 360, value: 240 },
     {

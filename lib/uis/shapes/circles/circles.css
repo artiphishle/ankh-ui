@@ -4,6 +4,7 @@
 
 [data-ui='circles'] .circles {
   display: flex;
+  align-items: center;
 }
 
 [data-ui='circles'] [data-ui='circle'] {

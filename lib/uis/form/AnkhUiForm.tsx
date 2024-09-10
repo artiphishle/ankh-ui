@@ -10,7 +10,7 @@ export function AnkhUiForm({ items }: IAnkhUiForm) {
           switch (type) {
             case EAnkhUiFormInputType.Range:
             case EAnkhUiFormInputType.Text: return (
-              <div className='flex items-center gap-1'>
+              <div key={`form-field-${index}`} className='flex items-center gap-1'>
                 {label && <label>{label}</label>}
                 <input
                   title={title}
