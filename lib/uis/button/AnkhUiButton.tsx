@@ -8,6 +8,7 @@ import { stringifyHsl } from '@/uis/utils/color.util';
 
 export function AnkhUiButton({
   size = EAnkhUiSize.Md,
+  className = "",
   icon,
   label,
   variant = EAnkhUiVariant.Default,
@@ -46,12 +47,12 @@ export function AnkhUiButton({
     color: COLOR[variant]!.text,
     borderColor: COLOR[variant]!.border,
     fontSize: `${size}rem`,
-    padding: `${size as number / 2}rem ${size}rem`
+    padding: `${(parseInt((size as string), 10) / 3)}px`
   };
 
   return (
     <Auth.ReadRole>
-      <button className='flex border-[1px]'
+      <button className={`flex border-[1px] ${className}`}
         data-ui="button"
         style={$}
         type="button"
@@ -65,13 +66,14 @@ export function AnkhUiButton({
 }
 
 export interface IAnkhUiButton {
-  label: string;
-  backgroundColor?: string;
-  icon?: string;
-  size?: EAnkhUiSize | string;
-  style?: any;
-  variant?: EAnkhUiVariant;
-  onClick?: (event: MouseEvent) => void;
+  readonly backgroundColor?: string;
+  readonly className?: string;
+  readonly icon?: string;
+  readonly label?: string;
+  readonly size?: EAnkhUiSize | string;
+  readonly style?: any;
+  readonly variant?: EAnkhUiVariant;
+  readonly onClick?: (event: MouseEvent) => void;
 }
 
 enum EAnkhUiSize {
@@ -82,4 +84,8 @@ enum EAnkhUiSize {
   Xl = 2.4
 }
 
-interface IButtonColor { bg: string, text: string, border: string }
+interface IButtonColor {
+  readonly bg: string;
+  readonly text: string;
+  readonly border: string;
+}
