@@ -1,0 +1,16 @@
+.is-active {
+  font-weight: bold;
+  background: #fff;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+s {
+  text-decoration: line-through;
+}
