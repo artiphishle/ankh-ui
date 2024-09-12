@@ -1,15 +1,17 @@
 "use client";
+import { useEffect } from "react";
 import { useEditor, EditorContent, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
-import { EAnkhUiSize } from "ankh-types";
+import { EAnkhUiSize, IAnkhUiIntrinsicProps } from "ankh-types";
 import { Auth } from "@/auth/Auth";
 import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 import { AnkhUiButtonGroup } from "@/uis/button/AnkhUiButtonGroup";
 import "./wysiwyg.css";
 import Image from "@tiptap/extension-image";
 import Typography from "@tiptap/extension-typography";
+import { useIndexedDb } from "ankh-hooks";
 
 export function AnkhUiWysiwygMenuBar({ editor }: IAnkhUiWysiwygMenuBar) {
   if (!editor) return;
@@ -51,7 +53,46 @@ export function AnkhUiWysiwygMenuBar({ editor }: IAnkhUiWysiwygMenuBar) {
   );
 };
 
-export function AnkhUiWysiwyg() {
+export function AnkhUiWysiwyg({ _ui: { id } }: IAnkhUiWysiwyg) {
+  const { db, api } = useIndexedDb<IAnkhUiWysiwygConfig>({ dbName: 'ankh-cms', storeName: 'ui-config' });
+  const $e = {
+    save: () => {
+      const html = editor?.getHTML();
+      if (typeof html !== 'string') return;
+      api.put({ id, html });
+    }
+  };
+
+  useEffect(() => {
+    if (!db) return;
+
+    const content = `
+      <h1>Wysiwyg Editor</h1>
+      <h2>Headings</h2>
+      <p>Support of 4 heading levels</p>
+      <h2>Text Style</h2>
+      <p>Support of <strong>Bold text</strong>, <em>italic text</em>, <s>strike-through text</s>, <mark>highlighted text</mark></p>
+      <h2>Text Alignment</h2>
+      <p style='text-align:left'>Left</p>
+      <p style='text-align:center'>Center</p>
+      <p style='text-align:right'>Right</p>
+      <p style='text-align:justify'>Justify. And here another text, very long to visualize the meaning of justified text in a paragraph. I really don't know what I should write so I'm just typing and typing and hopefully this is enough now.</p>
+      <h2>Images</h2>
+      <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" />
+    `;
+
+    const loadConfig = async () => {
+      const defaultConfig = { id, html: content };
+
+      const storedConfig = await api.get(id);
+      if (!storedConfig) await api.add(defaultConfig);
+
+      const config = storedConfig || defaultConfig;
+      editor?.chain().setContent(config.html).run();
+    };
+    loadConfig();
+  }, [db]);
+
   const extensions = [
     Highlight,
     Image,
@@ -60,33 +101,12 @@ export function AnkhUiWysiwyg() {
     Typography
   ];
 
-  const $e = {
-    save: () => {
-      const value = editor?.getHTML();
-      if (value === undefined) return;
-      console.log('todo save. length:', value.length);
-    }
-  };
-
   const editor = useEditor({
     onUpdate: $e.save,
     extensions,
-    content: `
-    <h1>Wysiwyg Editor</h1>
-    <h2>Headings</h2>
-    <p>Support of 4 heading levels</p>
-    <h2>Text Style</h2>
-    <p>Support of <strong>Bold text</strong>, <em>italic text</em>, <s>strike-through text</s>, <mark>highlighted text</mark></p>
-    <h2>Text Alignment</h2>
-    <p style='text-align:left'>Left</p>
-    <p style='text-align:center'>Center</p>
-    <p style='text-align:right'>Right</p>
-    <p style='text-align:justify'>Justify. And here another text, very long to visualize the meaning of justified text in a paragraph. I really don't know what I should write so I'm just typing and typing and hopefully this is enough now.</p>
-    <h2>Images</h2>
-    <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" />
-  ` });
-  if (!editor) return;
+  });
 
+  if (!editor) return;
 
   return (
     <Auth.ReadRole>
@@ -98,4 +118,8 @@ export function AnkhUiWysiwyg() {
 
 interface IAnkhUiWysiwygMenuBar {
   readonly editor: Editor;
+}
+interface IAnkhUiWysiwyg extends IAnkhUiIntrinsicProps { }
+interface IAnkhUiWysiwygConfig {
+  readonly id: number | string;
 }

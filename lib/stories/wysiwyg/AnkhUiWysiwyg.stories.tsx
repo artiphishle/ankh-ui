@@ -10,5 +10,7 @@ export default meta;
 type Story = StoryObj<typeof AnkhUiWysiwyg>;
 
 export const DefaultEditor: Story = {
-  args: {},
+  args: {
+    _ui: { id: 'sb-wysiwyg-01' }
+  },
 };

@@ -1,20 +1,16 @@
 "use client";
-import { type FC, type SVGProps } from 'react';
-// import Image from 'next/image';
+import { useMemo, type FC, type SVGProps } from 'react';
+import { useSvg } from 'ankh-hooks';
 import { EAnkhUiSize } from 'ankh-types';
 import { Auth } from '@/auth/Auth';
-import { useSvg } from 'ankh-hooks';
 
 export function AnkhUiIcon({ name, size = EAnkhUiSize.Xs }: IAnkhUiIcon) {
   const { svg }: any = useSvg(`/icons/${name.toLowerCase()}.svg`);
-
-  /** @todo Show loader? */
-  if (!svg) return <Auth.ReadRole />
+  const memoizedSvg = useMemo(() => ({ __html: svg }), [svg]);
 
   return (
     <Auth.ReadRole>
-      <div dangerouslySetInnerHTML={{ __html: svg }} />
-      {/*<Image alt={name} src={`./icons/${name.toLowerCase()}.svg`} width={parseInt(size)} height={parseInt(size)} />*/}
+      <div dangerouslySetInnerHTML={memoizedSvg} />
     </Auth.ReadRole>
   );
 }

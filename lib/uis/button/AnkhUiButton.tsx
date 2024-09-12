@@ -1,5 +1,5 @@
 "use client";
-import { type MouseEvent, useState } from 'react';
+import { type MouseEvent, useEffect, useState } from 'react';
 import { useActivePalette } from 'ankh-config';
 import { EAnkhUiVariant, type IAnkhCmsThemePalette } from 'ankh-types';
 import { Auth } from '@/auth/Auth';
@@ -16,6 +16,7 @@ export function AnkhUiButton({
 }: IAnkhUiButton) {
   /** @todo Extract this function to ankh-hooks */
   const [palette, setPalette] = useState<IAnkhCmsThemePalette | null>(null);
+
   useActivePalette().then((activePalette) => setPalette(activePalette));
 
   if (!palette) return;
