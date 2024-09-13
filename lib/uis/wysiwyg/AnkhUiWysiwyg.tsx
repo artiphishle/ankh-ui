@@ -1,29 +1,48 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+
 import { useEditor, EditorContent, type Editor } from "@tiptap/react";
+import Document from "@tiptap/extension-document";
+import Image from "@tiptap/extension-image";
 import StarterKit from "@tiptap/starter-kit";
+import Typography from "@tiptap/extension-typography";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
+import Youtube from "@tiptap/extension-youtube";
+
+import { useIndexedDb } from "ankh-hooks";
 import { EAnkhUiSize, IAnkhUiIntrinsicProps } from "ankh-types";
+
 import { Auth } from "@/auth/Auth";
 import { AnkhUiButton } from "@/uis/button/AnkhUiButton";
 import { AnkhUiButtonGroup } from "@/uis/button/AnkhUiButtonGroup";
-import "./wysiwyg.css";
-import Image from "@tiptap/extension-image";
-import Typography from "@tiptap/extension-typography";
-import { useIndexedDb } from "ankh-hooks";
 
-export function AnkhUiWysiwygMenuBar({ editor }: IAnkhUiWysiwygMenuBar) {
+import "./wysiwyg.css";
+
+function AnkhUiWysiwygMenuBar({ editor }: IAnkhUiWysiwygMenuBar) {
+  const [height, setHeight] = useState(480);
+  const [width, setWidth] = useState(640);
   if (!editor) return;
 
   const $e = {
     handleImage: () => {
       const url = window.prompt('URL');
       if (url) editor.chain().focus().setImage({ src: url }).run();
+    },
+    handleYoutube: () => {
+      const url = prompt('Enter YouTube URL')
+
+      if (url) {
+        editor.commands.setYoutubeVideo({
+          src: url,
+          height: Math.max(180, height) || 480,
+          width: Math.max(320, width) || 640,
+        })
+      }
     }
   }
 
-  return (
+  const memoizedWysiwygMenuBar = useMemo(() => (
     <Auth.WriteRole>
       <div className="flex gap-2">
         <AnkhUiButtonGroup _ui={{ id: 'wysiwyg-btn-group-heading' }}>
@@ -45,12 +64,15 @@ export function AnkhUiWysiwygMenuBar({ editor }: IAnkhUiWysiwygMenuBar) {
           <AnkhUiButton size={EAnkhUiSize.Xs} icon="align-right" onClick={() => editor.chain().focus().setTextAlign("right").run()} className={editor.isActive('right') ? 'is-active' : ''} />
           <AnkhUiButton size={EAnkhUiSize.Xs} icon="align-justify" onClick={() => editor.chain().focus().setTextAlign("justify").run()} className={editor.isActive('justify') ? 'is-active' : ''} />
         </AnkhUiButtonGroup>
-        <AnkhUiButtonGroup _ui={{ id: 'wysiwyg-btn-group-image' }}>
+        <AnkhUiButtonGroup _ui={{ id: 'wysiwyg-btn-group-media' }}>
           <AnkhUiButton size={EAnkhUiSize.Xs} icon="image" onClick={$e.handleImage} />
+          <AnkhUiButton size={EAnkhUiSize.Xs} icon="youtube" onClick={$e.handleYoutube} />
         </AnkhUiButtonGroup>
       </div>
     </Auth.WriteRole >
-  );
+  ), []);
+
+  return memoizedWysiwygMenuBar;
 };
 
 export function AnkhUiWysiwyg({ _ui: { id } }: IAnkhUiWysiwyg) {
@@ -94,11 +116,13 @@ export function AnkhUiWysiwyg({ _ui: { id } }: IAnkhUiWysiwyg) {
   }, [db]);
 
   const extensions = [
+    Document,
     Highlight,
     Image,
     StarterKit,
     TextAlign.configure({ types: ['heading', 'paragraph'] }),
-    Typography
+    Typography,
+    Youtube
   ];
 
   const editor = useEditor({
